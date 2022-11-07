@@ -7,6 +7,7 @@
 ## LIBRARIES
 library(here)
 library(dplyr)
+library(stringr)
 
 ## CEDAR CREEK TRAIT DATA
 cdr.SLA <- read.delim("https://pasta.lternet.edu/package/data/eml/knb-lter-cdr/322/8/5400b565d3fc39248e91632603db36ef", header = TRUE)
@@ -172,6 +173,7 @@ newdf$Seed_mass[newdf$monospecies == "Anemone cylindrica"] <- cdr.bigbiotraits$S
 newdf$Seed_mass[newdf$monospecies == "Asclepias tuberosa"] <- cdr.bigbiotraits$Seed_weight_.g.[cdr.bigbiotraits$Species == "Asclepias tuberosa"]
 newdf$Seed_mass[newdf$monospecies == "Petalostemum villosum"] <- cdr.bigbiotraits$Seed_weight_.g.[cdr.bigbiotraits$Species == "Petalostemum villosa"] # nomenclature differences b/t experiments
 
+newdf$monospecies <- newdf$monospecies %>% str_replace_all(" ", ".")
 
 ### Split traits into treatments for future analysis & save .csv files
 cdr.naca <- newdf[which(newdf$CO2.Treatment == "Camb" & newdf$Nitrogen.Treatment == "Namb"),]
@@ -183,8 +185,3 @@ write.csv(cdr.naca, here("data/Cleaned/cdrnaca_traitsout.csv"), row.names = FALS
 write.csv(cdr.nace, here("data/Cleaned/cdrnace_traitsout.csv"), row.names = FALSE)
 write.csv(cdr.neca, here("data/Cleaned/cdrneca_traitsout.csv"), row.names = FALSE)
 write.csv(cdr.nece, here("data/Cleaned/cdrnece_traitsout.csv"), row.names = FALSE)
-
-
-combn(newdf[,c(4:12)], 2, simplify = FALSE)
-
-
