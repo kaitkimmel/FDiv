@@ -11,7 +11,7 @@ library(tidyr)
 
 
 # load data
-sev.comm <- read.csv(here('data/sevcommunity_KOtrait.csv'), row.names = 1)
+sev.comm <- read.csv(here('data/Sev/sevcommunity_KOtrait.csv'), row.names = 1)
 
 ## For FD package: rows are 'sites' in this case our plots & columns are 'species'
 
@@ -26,9 +26,11 @@ for (i in 1:nrow(temp)){
 
 temp$check <- rowSums(temp[,c(3:50)]) # all = 100
 
+fin.dat <- temp[,c(1:50)]
+
 #split communities
-sev.blue <- temp[which(temp$site== 'core_blue'),]
-sev.black <- temp[which(temp$site== 'core_black'),]
+sev.blue <- fin.dat[which(fin.dat$site== 'core_blue'),]
+sev.black <- fin.dat[which(fin.dat$site== 'core_black'),]
 
 #save community data
 write.csv(sev.blue,(here('data/Cleaned/sevblue_commout.csv')), row.names = FALSE)

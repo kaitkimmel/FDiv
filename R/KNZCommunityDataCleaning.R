@@ -14,7 +14,9 @@ library(readxl)
 # Load Data
 # community composition data
 dat <- read.csv("https://pasta.lternet.edu/package/data/eml/knb-lter-knz/69/19/63768b48f41e790a40e7fa4f9267c3a2")
-# species code to species name data
+# species code to species name data. 
+# downloaded from: http://lter.konza.ksu.edu/content/pvc02-plant-species-composition-selected-watersheds-konza-prairie
+# on november 13, 2022
 sp_dat <- read_xlsx(here("data/Konza/sp_list.xlsx"))
 
 # using 2010 - the year the data was collected

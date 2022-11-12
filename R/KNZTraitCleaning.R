@@ -14,7 +14,9 @@ library(stringr)
 
 kt1 <- read.csv(here("data/Konza/kon_firegraze_trait.csv"))
 sp_names <- read.csv(here("data/Konza/SANA_grass_spp.csv"))
+knz_sp <- read_xlsx(here("data/Konza/sp_list.xlsx"))
 # trait data from watersheds that are burned annually with no grazers
+
 
 kt2 <- kt1[which(kt1$fire == 1 & kt1$trt == 'ungrazed'),]
 
@@ -75,12 +77,23 @@ trait_means$spi[which(is.nan(trait_means$spi))] <- NA
 
 # replace sp codes with sp names and numbers
 
-trait_means <- merge(trait_means, sp_names, all.x = TRUE)
+trait_means<- merge(trait_means, sp_names, all.x = TRUE)
 
-# Some speices not in the list - will need to figure out matches with community data
+trait_means[which(is.na(trait_means$sp_name)),]
+# Some speices not in the list - match from other konza sp data
+# MUHRAC = muhlenbergia racemosa
+# PANOLI = dichanthelium oligosanthe
+# SETVIR = setaria viridis
+
+trait_means$sp_name[which(trait_means$sp_code == "MUHRAC")] <- "muhlenbergia_racemosa"
+trait_means$sp_name[which(trait_means$sp_code == "PANOLI")] <- "dichanthelium_oligosanthe"
+trait_means$sp_name[which(trait_means$sp_code == "SETVIR")] <- "setaria_viridis"
+
+trait_means <- trait_means[,c(14,2:13)]
 
 # save trait data
 
 write.csv(trait_means, here("data/Cleaned/knz_traitsout.csv"), row.names = FALSE)
 
+## ONLY 11 species with full species data
 
