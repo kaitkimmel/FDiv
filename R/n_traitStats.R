@@ -616,10 +616,10 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
-
+png(here("Figures/cdr_Ntraits.png"))
 ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE,
           labels = c("A", "B", "C", "D", "E"))
-
+dev.off()
 
 ###SEV####
 
@@ -728,8 +728,9 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
-png()
+png(here("Figures/Sev_Ntraits.png"))
 ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE, 
        labels = c("A", "B", "C", "D", "E"))
+dev.off()
 
 
