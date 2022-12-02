@@ -66,7 +66,7 @@ df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ 
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = gowdis(focal_list[[i]])
     a = comm_list[[1]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
@@ -74,8 +74,8 @@ for(j in 1:length(trait_comb_list)){
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
-    if(ncol(x) == 4){
-      temp.cor <- rquery.cormat(x, type="flatten", graph=FALSE, method = 'spearman')
+    if(ncol(focal_list[[i]]) == 4){
+      temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
       temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
       temp$min_cor <- min(temp.cor$r$cor)
       temp$max_cor <- max(temp.cor$r$cor)
@@ -104,7 +104,7 @@ df.out2 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ 
 for(j in 1:length(trait_comb_list2)){
   focal_list <- trait_comb_list2[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = gowdis(focal_list[[i]])
     a = comm_list[[2]]
     out <- dbFD(x, a, m = 2)
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
@@ -112,8 +112,8 @@ for(j in 1:length(trait_comb_list2)){
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
-    if(ncol(x) == 4){
-      temp.cor <- rquery.cormat(x, type="flatten", graph=FALSE, method = 'spearman')
+    if(ncol(focal_list[[i]]) == 4){
+      temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
       temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
       temp$min_cor <- min(temp.cor$r$cor)
       temp$max_cor <- max(temp.cor$r$cor)
@@ -143,7 +143,7 @@ df.out3 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ 
 for(j in 1:length(trait_comb_list3)){
   focal_list <- trait_comb_list3[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = gowdis(focal_list[[i]])
     a = comm_list[[3]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
@@ -151,8 +151,8 @@ for(j in 1:length(trait_comb_list3)){
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
-    if(ncol(x) == 4){
-      temp.cor <- rquery.cormat(x, type="flatten", graph=FALSE, method = 'spearman')
+    if(ncol(focal_list[[i]]) == 4){
+      temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
       temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
       temp$min_cor <- min(temp.cor$r$cor)
       temp$max_cor <- max(temp.cor$r$cor)
@@ -183,7 +183,7 @@ df.out4 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ 
 for(j in 1:length(trait_comb_list4)){
   focal_list <- trait_comb_list4[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = gowdis(focal_list[[i]])
     a = comm_list[[4]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
@@ -191,8 +191,8 @@ for(j in 1:length(trait_comb_list4)){
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
-    if(ncol(x) == 4){
-      temp.cor <- rquery.cormat(x, type="flatten", graph=FALSE, method = 'spearman')
+    if(ncol(focal_list[[i]]) == 4){
+      temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
       temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
       temp$min_cor <- min(temp.cor$r$cor)
       temp$max_cor <- max(temp.cor$r$cor)

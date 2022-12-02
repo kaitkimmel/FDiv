@@ -77,8 +77,8 @@ for (i in 2:10){
 #### BLACK ####
 # Create dataframe to store metrics
 df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                      sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                      min_cor = NA, max_cor = NA)
+                          sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
+                          min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -125,8 +125,8 @@ for (i in 2:10){
 }
 # Create dataframe to store metrics
 df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                          sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                          min_cor = NA, max_cor = NA)
+                         sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
+                         min_cor = NA, max_cor = NA)
 # get plots
 sev.blueplots <- sev.blue[,2]
 # Loop to run through different trait combinations
