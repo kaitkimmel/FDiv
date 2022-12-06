@@ -117,6 +117,24 @@ for(j in 1:length(trait_comb_list)){
 
 df.outblack <- df.outblack[-which(is.na(df.outblack)),]
 
+
+
+##This is where Tim is going to start trying out KDE stuff
+library(BAT)
+
+temp.to <- kernel.build(comm = subset(sev.black2,BOER4 != 100), trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)#one problem here is that I can't run this when any community with just a single species is in the community dataframe. I suggest removing all plots in which there is only a single species, however, this will need to be done before Kaitlin's code in order to be able to match up the rows later.
+temp.to2 <- kernel.alpha(temp.to)
+data.frame(temp.to2)%>%
+  dplyr::rename( "kernel.alpha" = "temp.to2")
+temp.to2 <- kernel.evenness(temp.to)
+data.frame(temp.to2)%>%
+  dplyr::rename( "kernel.evenness" = "temp.to2")
+temp.to2 <- kernel.dispersion(temp.to)
+data.frame(temp.to2)%>%
+  dplyr::rename( "kernel.dispersion" = "temp.to2")
+
+
+
 #### BLUE ####
 # get all combinations of traits
 trait_comb_list1 <- list()
@@ -169,7 +187,7 @@ df.outblue <- df.outblue[-which(is.na(df.outblue)),]
 
 #### SAVE OUTPUT FOR ANALYSIS
 
-write.csv(df.outblack, here("data/Cleaned/sevblack.csv"), row.names = FALSE)
-write.csv(df.outblue, here("data/Cleaned/sevblue.csv"), row.names = FALSE)
+#write.csv(df.outblack, here("data/Cleaned/sevblack.csv"), row.names = FALSE)
+#write.csv(df.outblue, here("data/Cleaned/sevblue.csv"), row.names = FALSE)
 
 
