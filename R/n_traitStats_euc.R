@@ -611,7 +611,7 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
-png(here("Figures/cdr_Ntraits_euc.png"))
+png(here("Figures/cdr_Ntraits_euc.png"), height = 5, width = 9, units = 'in', res = 300)
 ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE,
           labels = c("A", "B", "C", "D", "E"))
 dev.off()
@@ -724,7 +724,7 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
-png(here("Figures/Sev_Ntraits_euc.png"))
+png(here("Figures/Sev_Ntraits_euc.png"), height = 5, width = 9, units = 'in', res = 300)
 ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE, 
           labels = c("A", "B", "C", "D", "E"))
 dev.off()

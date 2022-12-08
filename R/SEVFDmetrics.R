@@ -130,9 +130,6 @@ for(j in 1:length(trait_comb_list)){
 df.outblack <- df.outblack[-which(is.na(df.outblack)),]
 
 
-
-
-
 #### BLUE ####
 # get all combinations of traits
 trait_comb_list1 <- list()
@@ -170,18 +167,18 @@ for(j in 1:length(trait_comb_list)){
     temp <- cbind(temp, sev.blueplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
-    if(ncol(focal_list[[i]]) == 4){
-      if(is.numeric(focal_list[[i]][,c(1:4)])){
+    if(ncol(focal_list[[i]]) == 4 & is.numeric(focal_list[[i]][,c(1:4)])){
+      #if(is.numeric(focal_list[[i]][,c(1:4)])){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
         temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
         temp$min_cor <- min(temp.cor$r$cor)
         temp$max_cor <- max(temp.cor$r$cor)
-      }
-      else {
-        temp$mean_cor <- NA
-        temp$min_cor <- NA
-        temp$max_cor <- NA
-      }
+      
+      # else {
+      #   temp$mean_cor <- NA
+      #   temp$min_cor <- NA
+      #   temp$max_cor <- NA
+      # }
     } else {
       temp$mean_cor <- NA
       temp$min_cor <- NA
