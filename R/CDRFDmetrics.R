@@ -59,9 +59,8 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                     Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                     min_cor = NA, max_cor = NA)
+df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -69,9 +68,19 @@ for(j in 1:length(trait_comb_list)){
     x = gowdis(focal_list[[i]])
     a = comm_list[[1]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
-    temp <- cbind(temp, enviro_list[[1]])
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)    temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -98,17 +107,27 @@ for (i in 2:9){
 }
 
 
-df.out2 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                     Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                     min_cor = NA, max_cor = NA)
+df.out2 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+
 for(j in 1:length(trait_comb_list2)){
   focal_list <- trait_comb_list2[[j]]
   for (i in 1:length(focal_list)){
     x = gowdis(focal_list[[i]])
     a = comm_list[[2]]
     out <- dbFD(x, a, m = 2)
-    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    #####END TIM'S EXPERIMENT
+    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
@@ -136,9 +155,7 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out3 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                      Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                      min_cor = NA, max_cor = NA)
+df.out3 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list3)){
   focal_list <- trait_comb_list3[[j]]
@@ -146,8 +163,19 @@ for(j in 1:length(trait_comb_list3)){
     x = gowdis(focal_list[[i]])
     a = comm_list[[3]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
-    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    #####END TIM'S EXPERIMENT
+    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
@@ -176,9 +204,7 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out4 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                      Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                      min_cor = NA, max_cor = NA)
+df.out4 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list4)){
   focal_list <- trait_comb_list4[[j]]
@@ -186,8 +212,19 @@ for(j in 1:length(trait_comb_list4)){
     x = gowdis(focal_list[[i]])
     a = comm_list[[4]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
-    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv =out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    #####END TIM'S EXPERIMENT
+    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
     temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i

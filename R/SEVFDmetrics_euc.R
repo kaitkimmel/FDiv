@@ -15,7 +15,9 @@ source("http://www.sthda.com/upload/rquery_cormat.r")
 
 sev.trait <- read.csv(here("data/Cleaned/sev_traitsout.csv"))
 sev.blue <- read.csv(here("data/Cleaned/sevblue_commout.csv"))
+sev.blue <- subset(sev.blue, BOGR2 != 100)#remove rows with single species. necessary to calculate metrics
 sev.black <- read.csv(here("data/Cleaned/sevblack_commout.csv"))
+sev.black <- subset(sev.black, BOER4 != 100)#remove rows with single species. necessary to calculate metrics
 
 
 ### CHECK TRAIT COVERAGE 
@@ -77,9 +79,7 @@ for (i in 2:9){
 
 #### BLACK ####
 # Create dataframe to store metrics
-df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                      sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                      min_cor = NA, max_cor = NA)
+df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -90,8 +90,20 @@ for(j in 1:length(trait_comb_list)){
     if(is.null(out$FDiv)){
       out$FDiv = rep(NA,29)
     }
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
     temp <- cbind(temp, sev.blackplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
@@ -118,9 +130,7 @@ for (i in 2:9){
   trait_comb_list1[[i-1]] <- combn(sev.bluetr[,c(1:9)], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
-df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                          sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                          min_cor = NA, max_cor = NA)
+df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # get plots
 sev.blueplots <- sev.blue[,2]
 # Loop to run through different trait combinations
@@ -133,8 +143,20 @@ for(j in 1:length(trait_comb_list)){
     if(is.null(out$FDiv)){
       out$FDiv = rep(NA,30)
     }
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
     temp <- cbind(temp, sev.blueplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i

@@ -16,8 +16,9 @@ source("http://www.sthda.com/upload/rquery_cormat.r")
 
 sev.trait <- read.csv(here("data/Cleaned/sev_traitsout.csv"))
 sev.blue <- read.csv(here("data/Cleaned/sevblue_commout.csv"))
+sev.blue <- subset(sev.blue, BOGR2 != 100)#remove rows with single species. necessary to calculate metrics
 sev.black <- read.csv(here("data/Cleaned/sevblack_commout.csv"))
-
+sev.black <- subset(sev.black, BOER4 != 100)#remove rows with single species. necessary to calculate metrics
 
 ### CHECK TRAIT COVERAGE 
 # "Before analysis, we will remove species that have less than 100% trait coverage. 
@@ -77,9 +78,7 @@ for (i in 2:10){
 
 #### BLACK ####
 # Create dataframe to store metrics
-df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                          sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                          min_cor = NA, max_cor = NA)
+df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -87,11 +86,23 @@ for(j in 1:length(trait_comb_list)){
     x = gowdis(focal_list[[i]])
     a = sev.black2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
-    if(is.null(out$FDiv)){
-      out$FDiv = rep(NA,29)
-    }
+    #if(is.null(out$FDiv)){
+    #  out$FDiv = rep(NA,29)
+    #}
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
     temp <- cbind(temp, sev.blackplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
@@ -120,18 +131,7 @@ df.outblack <- df.outblack[-which(is.na(df.outblack)),]
 
 
 
-#####This is where Tim is going to start trying out KDE stuff
-temp.to <- kernel.build(comm = subset(sev.black2,BOER4 != 100), trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)#one problem here is that I can't run this when any community with just a single species is in the community dataframe. I suggest removing all plots in which there is only a single species, however, this will need to be done before Kaitlin's code in order to be able to match up the rows later.
-kde.alpha <- kernel.alpha(temp.to)
-kde.alpha <- data.frame(kde.alpha)
 
-kde.evenness <- kernel.evenness(temp.to)
-kde.evenness <- data.frame(kde.evenness)
-
-kde.dispersion <- kernel.dispersion(temp.to)
-kde.dispersion <- data.frame(kde.dispersion)
-
-#####END TIM'S EXPERIMENT
 
 #### BLUE ####
 # get all combinations of traits
@@ -140,9 +140,7 @@ for (i in 2:10){
   trait_comb_list1[[i-1]] <- combn(sev.bluetr[,c(1:10)], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
-df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA,
-                         sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, 
-                         min_cor = NA, max_cor = NA)
+df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # get plots
 sev.blueplots <- sev.blue[,2]
 # Loop to run through different trait combinations
@@ -155,8 +153,20 @@ for(j in 1:length(trait_comb_list)){
     if(is.null(out$FDiv)){
       out$FDiv = rep(NA,30)
     }
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ)
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
     temp <- cbind(temp, sev.blueplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
@@ -185,7 +195,7 @@ df.outblue <- df.outblue[-which(is.na(df.outblue)),]
 
 #### SAVE OUTPUT FOR ANALYSIS
 
-#write.csv(df.outblack, here("data/Cleaned/sevblack.csv"), row.names = FALSE)
-#write.csv(df.outblue, here("data/Cleaned/sevblue.csv"), row.names = FALSE)
+write.csv(df.outblack, here("data/Cleaned/sevblack.csv"), row.names = FALSE)
+write.csv(df.outblue, here("data/Cleaned/sevblue.csv"), row.names = FALSE)
 
 
