@@ -80,7 +80,8 @@ for(j in 1:length(trait_comb_list)){
     kde.dispersion <- data.frame(kde.dispersion)
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)    temp <- cbind(temp, enviro_list[[1]])
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)    
+    temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
