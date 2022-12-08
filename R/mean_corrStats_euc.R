@@ -442,93 +442,93 @@ cdr.full <- cdr.full %>% group_by(community, mean_cor) %>%
   summarize (FRic = mean(FRic), FEve = mean(FEve), FDis = mean(FDis),
              FDiv = mean(FDiv), RaoQ = mean(RaoQ))
 
-new.df <- data.frame(mean_cor = seq(-0.3, .8, by = .1))
+new.df <- data.frame(mean_cor = seq(-0.3, .8, by = 0.01))
 
 
 ##############################################
 ############## CDR 1 ########################
 #############################################
 fr.1 <- as.data.frame(predictSE.lme(fricmod_cdr1, new.df))
-fr.1$mean_cor <- seq(-0.3, .8, by = .1)
+fr.1$mean_cor <- seq(-0.3, .8, by = 0.01)
 fr.1$lwr <- fr.1$fit - fr.1$se.fit
 fr.1$upr <- fr.1$fit + fr.1$se.fit
 fe.1 <- as.data.frame(predictSE.lme(fevemod_cdr1, new.df))
-fe.1$mean_cor <- seq(-0.3, .8, by = .1)
+fe.1$mean_cor <- seq(-0.3, .8, by = 0.01)
 fe.1$lwr <- fe.1$fit - fe.1$se.fit
 fe.1$upr <- fe.1$fit + fe.1$se.fit
 fdis.1 <- as.data.frame(predictSE.lme(fdismod_cdr1, new.df))
-fdis.1$mean_cor <- seq(-0.3, .8, by = .1)
+fdis.1$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdis.1$lwr <- fdis.1$fit - fdis.1$se.fit
 fdis.1$upr <- fdis.1$fit + fdis.1$se.fit
 fdiv.1 <- as.data.frame(predictSE.lme(fdivmod_cdr1, new.df))
-fdiv.1$mean_cor <- seq(-0.3, .8, by = .1)
+fdiv.1$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdiv.1$lwr <- fdiv.1$fit - fdiv.1$se.fit
 fdiv.1$upr <- fdiv.1$fit + fdiv.1$se.fit
 rq.1 <- as.data.frame(predictSE.lme(raoqmod_cdr1, new.df))
-rq.1$mean_cor <- seq(-0.3, .8, by = .1)
+rq.1$mean_cor <- seq(-0.3, .8, by = 0.01)
 rq.1$lwr <- rq.1$fit - rq.1$se.fit
 rq.1$upr <- rq.1$fit + rq.1$se.fit
 
 fr.2 <- as.data.frame(predictSE.lme(fricmod_cdr2, new.df))
-fr.2$mean_cor <- seq(-0.3, .8, by = .1)
+fr.2$mean_cor <- seq(-0.3, .8, by = 0.01)
 fr.2$lwr <- fr.2$fit - fr.2$se.fit
 fr.2$upr <- fr.2$fit + fr.2$se.fit
 fe.2 <- as.data.frame(predictSE.lme(fevemod_cdr2, new.df))
-fe.2$mean_cor <- seq(-0.3, .8, by = .1)
+fe.2$mean_cor <- seq(-0.3, .8, by = 0.01)
 fe.2$lwr <- fe.2$fit - fe.2$se.fit
 fe.2$upr <- fe.2$fit + fe.2$se.fit
 fdis.2 <- as.data.frame(predictSE.lme(fdismod_cdr2, new.df))
-fdis.2$mean_cor <- seq(-0.3, .8, by = .1)
+fdis.2$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdis.2$lwr <- fdis.2$fit - fdis.2$se.fit
 fdis.2$upr <- fdis.2$fit + fdis.2$se.fit
 fdiv.2 <- as.data.frame(predictSE.lme(fdivmod_cdr2, new.df))
-fdiv.2$mean_cor <- seq(-0.3, .8, by = .1)
+fdiv.2$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdiv.2$lwr <- fdiv.2$fit - fdiv.2$se.fit
 fdiv.2$upr <- fdiv.2$fit + fdiv.2$se.fit
 rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdr2, new.df))
-rq.2$mean_cor <- seq(-0.3, .8, by = .1)
+rq.2$mean_cor <- seq(-0.3, .8, by = 0.01)
 rq.2$lwr <- rq.2$fit - rq.2$se.fit
 rq.2$upr <- rq.2$fit + rq.2$se.fit
 
 fr.3 <- as.data.frame(predictSE.lme(fricmod_cdr3, new.df))
-fr.3$mean_cor <- seq(-0.3, .8, by = .1)
+fr.3$mean_cor <- seq(-0.3, .8, by = 0.01)
 fr.3$lwr <- fr.3$fit - fr.3$se.fit
 fr.3$upr <- fr.3$fit + fr.3$se.fit
 fe.3 <- as.data.frame(predictSE.lme(fevemod_cdr3, new.df))
-fe.3$mean_cor <- seq(-0.3, .8, by = .1)
+fe.3$mean_cor <- seq(-0.3, .8, by = 0.01)
 fe.3$lwr <- fe.3$fit - fe.3$se.fit
 fe.3$upr <- fe.3$fit + fe.3$se.fit
 fdis.3 <- as.data.frame(predictSE.lme(fdismod_cdr3, new.df))
-fdis.3$mean_cor <- seq(-0.3, .8, by = .1)
+fdis.3$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdis.3$lwr <- fdis.3$fit - fdis.3$se.fit
 fdis.3$upr <- fdis.3$fit + fdis.3$se.fit
 fdiv.3 <- as.data.frame(predictSE.lme(fdivmod_cdr3, new.df))
-fdiv.3$mean_cor <- seq(-0.3, .8, by = .1)
+fdiv.3$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdiv.3$lwr <- fdiv.3$fit - fdiv.3$se.fit
 fdiv.3$upr <- fdiv.3$fit + fdiv.3$se.fit
 rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdr3, new.df))
-rq.3$mean_cor <- seq(-0.3, .8, by = .1)
+rq.3$mean_cor <- seq(-0.3, .8, by = 0.01)
 rq.3$lwr <- rq.3$fit - rq.3$se.fit
 rq.3$upr <- rq.3$fit + rq.3$se.fit
 
 fr.4 <- as.data.frame(predictSE.lme(fricmod_cdr4, new.df))
-fr.4$mean_cor <- seq(-0.3, .8, by = .1)
+fr.4$mean_cor <- seq(-0.3, .8, by = 0.01)
 fr.4$lwr <- fr.4$fit - fr.4$se.fit
 fr.4$upr <- fr.4$fit + fr.4$se.fit
 fe.4 <- as.data.frame(predictSE.lme(fevemod_cdr4, new.df))
-fe.4$mean_cor <- seq(-0.3, .8, by = .1)
+fe.4$mean_cor <- seq(-0.3, .8, by = 0.01)
 fe.4$lwr <- fe.4$fit - fe.4$se.fit
 fe.4$upr <- fe.4$fit + fe.4$se.fit
 fdis.4 <- as.data.frame(predictSE.lme(fdismod_cdr4, new.df))
-fdis.4$mean_cor <- seq(-0.3, .8, by = .1)
+fdis.4$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdis.4$lwr <- fdis.4$fit - fdis.4$se.fit
 fdis.4$upr <- fdis.4$fit + fdis.4$se.fit
 fdiv.4 <- as.data.frame(predictSE.lme(fdivmod_cdr4, new.df))
-fdiv.4$mean_cor <- seq(-0.3, .8, by = .1)
+fdiv.4$mean_cor <- seq(-0.3, .8, by = 0.01)
 fdiv.4$lwr <- fdiv.4$fit - fdiv.4$se.fit
 fdiv.4$upr <- fdiv.4$fit + fdiv.4$se.fit
 rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdr4, new.df))
-rq.4$mean_cor <- seq(-0.3, .8, by = .1)
+rq.4$mean_cor <- seq(-0.3, .8, by = 0.01)
 rq.4$lwr <- rq.4$fit - rq.4$se.fit
 rq.4$upr <- rq.4$fit + rq.4$se.fit
 
@@ -544,7 +544,7 @@ A <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fr.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FRic, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FRich") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FRich") +
   theme_pubr()
 
 B <- ggplot() + 
@@ -558,7 +558,7 @@ B <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fe.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FEve, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FEve") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FEve") +
   theme_pubr()
 
 C <-ggplot() + 
@@ -572,7 +572,7 @@ C <-ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdis.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FDis, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDis") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FDis") +
   theme_pubr()
 
 D <- ggplot() + 
@@ -586,7 +586,7 @@ D <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdiv.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FDiv, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDiv") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FDiv") +
   theme_pubr()
 
 E <- ggplot() + 
@@ -600,7 +600,7 @@ E <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = rq.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = RaoQ, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "Rao Q") +
+  labs(x = "Mean Trait-Trait Correlation", y = "Rao Q") +
   theme_pubr()
 
 png(here("Figures/cdr_meancor_euc.png"), height = 5, width = 9, units = 'in', res = 300)
@@ -622,47 +622,47 @@ sev.full <- sev.full %>% group_by(community, mean_cor) %>%
              FDis = mean(FDis, na.rm = TRUE), FDiv = mean(FDiv, na.rm = TRUE), 
              RaoQ = mean(RaoQ, na.rm = TRUE))
 
-new.df <- data.frame(mean_cor = seq(-0.3, .4, by = .1))
+new.df <- data.frame(mean_cor = seq(-0.3, .4, by = 0.01))
 
 fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df))
-fr.blue$mean_cor <- seq(-0.3, .4, by = .1)
+fr.blue$mean_cor <- seq(-0.3, .4, by = 0.01)
 fr.blue$lwr <- fr.blue$fit - fr.blue$se.fit
 fr.blue$upr <- fr.blue$fit + fr.blue$se.fit
 fe.blue <- as.data.frame(predictSE.lme(fevemod_blue, new.df))
-fe.blue$mean_cor <- seq(-0.3, .4, by = .1)
+fe.blue$mean_cor <- seq(-0.3, .4, by = 0.01)
 fe.blue$lwr <- fe.blue$fit - fe.blue$se.fit
 fe.blue$upr <- fe.blue$fit + fe.blue$se.fit
 fdis.blue <- as.data.frame(predictSE.lme(fdismod_blue, new.df))
-fdis.blue$mean_cor <- seq(-0.3, .4, by = .1)
+fdis.blue$mean_cor <- seq(-0.3, .4, by = 0.01)
 fdis.blue$lwr <- fdis.blue$fit - fdis.blue$se.fit
 fdis.blue$upr <- fdis.blue$fit + fdis.blue$se.fit
 fdiv.blue <- as.data.frame(predictSE.lme(fdivmod_blue, new.df))
-fdiv.blue$mean_cor <- seq(-0.3, .4, by = .1)
+fdiv.blue$mean_cor <- seq(-0.3, .4, by = 0.01)
 fdiv.blue$lwr <- fdiv.blue$fit - fdiv.blue$se.fit
 fdiv.blue$upr <- fdiv.blue$fit + fdiv.blue$se.fit
 rq.blue <- as.data.frame(predictSE.lme(raoqmod_blue, new.df))
-rq.blue$mean_cor <- seq(-0.3, .4, by = .1)
+rq.blue$mean_cor <- seq(-0.3, .4, by = 0.01)
 rq.blue$lwr <- rq.blue$fit - rq.blue$se.fit
 rq.blue$upr <- rq.blue$fit + rq.blue$se.fit
 
 fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df))
-fr.black$mean_cor <- seq(-0.3, .4, by = .1)
+fr.black$mean_cor <- seq(-0.3, .4, by = 0.01)
 fr.black$lwr <- fr.black$fit - fr.black$se.fit
 fr.black$upr <- fr.black$fit + fr.black$se.fit
 fe.black <- as.data.frame(predictSE.lme(fevemod_black, new.df))
-fe.black$mean_cor <- seq(-0.3, .4, by = .1)
+fe.black$mean_cor <- seq(-0.3, .4, by = 0.01)
 fe.black$lwr <- fe.black$fit - fe.black$se.fit
 fe.black$upr <- fe.black$fit + fe.black$se.fit
 fdis.black <- as.data.frame(predictSE.lme(fdismod_black, new.df))
-fdis.black$mean_cor <- seq(-0.3, .4, by = .1)
+fdis.black$mean_cor <- seq(-0.3, .4, by = 0.01)
 fdis.black$lwr <- fdis.black$fit - fdis.black$se.fit
 fdis.black$upr <- fdis.black$fit + fdis.black$se.fit
 fdiv.black <- as.data.frame(predictSE.lme(fdivmod_black, new.df))
-fdiv.black$mean_cor <- seq(-0.3, .4, by = .1)
+fdiv.black$mean_cor <- seq(-0.3, .4, by = 0.01)
 fdiv.black$lwr <- fdiv.black$fit - fdiv.black$se.fit
 fdiv.black$upr <- fdiv.black$fit + fdiv.black$se.fit
 rq.black <- as.data.frame(predictSE.lme(raoqmod_black, new.df))
-rq.black$mean_cor <- seq(-0.3, .4, by = .1)
+rq.black$mean_cor <- seq(-0.3, .4, by = 0.01)
 rq.black$lwr <- rq.black$fit - rq.black$se.fit
 rq.black$upr <- rq.black$fit + rq.black$se.fit
 
@@ -673,7 +673,7 @@ A <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fr.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FRic, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FRich") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FRich") +
   theme_pubr()
 
 B <- ggplot() + 
@@ -683,7 +683,7 @@ B <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fe.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FEve, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FEve") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FEve") +
   theme_pubr()
 
 C <- ggplot() + 
@@ -693,7 +693,7 @@ C <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdis.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FDis, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDis") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FDis") +
   theme_pubr()
 
 D <- ggplot() + 
@@ -703,7 +703,7 @@ D <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdiv.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FDiv, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDiv") +
+  labs(x = "Mean Trait-Trait Correlation", y = "FDiv") +
   theme_pubr()
 
 E <- ggplot() + 
@@ -713,7 +713,7 @@ E <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = rq.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = RaoQ, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "Rao Q") +
+  labs(x = "Mean Trait-Trait Correlation", y = "Rao Q") +
   theme_pubr()
 
 png(here("Figures/Sev_meancorr_euc.png"), height = 5, width = 9, units = 'in', res = 300)
