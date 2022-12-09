@@ -109,7 +109,7 @@ for(j in 1:length(trait_comb_list)){
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
-      if(is.numeric(focal_list[[i]][,c(1:4)])){
+      if(is.numeric(focal_list[[i]][,c(1:4)])==TRUE){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
         temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
         temp$min_cor <- min(temp.cor$r$cor)
