@@ -16,7 +16,7 @@ source("http://www.sthda.com/upload/rquery_cormat.r")
 
 sev.trait <- read.csv(here("data/Cleaned/sev_traitsout.csv"))
 sev.blue <- read.csv(here("data/Cleaned/sevblue_commout.csv"))
-sev.blue <- subset(sev.blue, BOGR2 != 100)#remove rows with single species. necessary to calculate metrics
+sev.blue <- subset(sev.blue, BOGR2 != 100 & plotID != "1 N 3")#remove rows with single species. necessary to calculate metrics
 sev.black <- read.csv(here("data/Cleaned/sevblack_commout.csv"))
 sev.black <- subset(sev.black, BOER4 != 100)#remove rows with single species. necessary to calculate metrics
 
@@ -79,6 +79,8 @@ for (i in 2:10){
 #### BLACK ####
 # Create dataframe to store metrics
 df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+
+
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -86,9 +88,9 @@ for(j in 1:length(trait_comb_list)){
     x = gowdis(focal_list[[i]])
     a = sev.black2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
-    #if(is.null(out$FDiv)){
-    #  out$FDiv = rep(NA,29)
-    #}
+    if(is.null(out$FDiv)){
+      out$FDiv = rep(NA,27)
+    }
     #####This is where Tim is going to start trying out KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
@@ -137,7 +139,7 @@ for (i in 2:10){
   trait_comb_list1[[i-1]] <- combn(sev.bluetr[,c(1:10)], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
-df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # get plots
 sev.blueplots <- sev.blue[,2]
 # Loop to run through different trait combinations
@@ -148,7 +150,7 @@ for(j in 1:length(trait_comb_list)){
     a = sev.blue2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     if(is.null(out$FDiv)){
-      out$FDiv = rep(NA,30)
+      out$FDiv = rep(NA,28)
     }
     #####This is where Tim is going to start trying out KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)

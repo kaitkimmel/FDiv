@@ -88,7 +88,7 @@ for(j in 1:length(trait_comb_list)){
     a = sev.black2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     if(is.null(out$FDiv)){
-      out$FDiv = rep(NA,29)
+      out$FDiv = rep(NA,27)
     }
     #####This is where Tim is going to start trying out KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
@@ -141,7 +141,7 @@ for(j in 1:length(trait_comb_list)){
     a = sev.blue2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     if(is.null(out$FDiv)){
-      out$FDiv = rep(NA,30)
+      out$FDiv = rep(NA,28)
     }
     #####This is where Tim is going to start trying out KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)

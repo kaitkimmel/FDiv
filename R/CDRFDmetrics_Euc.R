@@ -59,7 +59,7 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
@@ -108,7 +108,7 @@ for (i in 2:9){
 }
 
 
-df.out2 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.out2 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 
 for(j in 1:length(trait_comb_list2)){
   focal_list <- trait_comb_list2[[j]]
@@ -157,7 +157,7 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out3 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.out3 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list3)){
@@ -208,7 +208,7 @@ for (i in 2:9){
 }
 
 # Create dataframe to store metrics
-df.out4 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.out4 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list4)){
