@@ -91,7 +91,7 @@ for(j in 1:length(trait_comb_list)){
     if(is.null(out$FDiv)){
       out$FDiv = rep(NA,27)
     }
-    #####This is where Tim is going to start trying out KDE stuff
+    #####This is where Tim is going to do KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
     kde.alpha <- data.frame(kde.alpha)
@@ -102,14 +102,14 @@ for(j in 1:length(trait_comb_list)){
     kde.dispersion <- kernel.dispersion(temp.to)
     kde.dispersion <- data.frame(kde.dispersion)
     
-    #####END TIM'S EXPERIMENT
+    #####END TIM'S BIT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
     temp <- cbind(temp, sev.blackplots)
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
-      if(is.numeric(focal_list[[i]][,c(1:4)])==TRUE){
+      if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
         temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
         temp$min_cor <- min(temp.cor$r$cor)
@@ -170,7 +170,7 @@ for(j in 1:length(trait_comb_list)){
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
-      if(is.numeric(focal_list[[i]][,c(1:4)])==TRUE){
+      if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
         temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
         temp$min_cor <- min(temp.cor$r$cor)
