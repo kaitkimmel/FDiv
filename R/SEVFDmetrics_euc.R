@@ -130,7 +130,7 @@ for (i in 2:9){
   trait_comb_list1[[i-1]] <- combn(sev.bluetr[,c(1:9)], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
-df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.outblue <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blueplots = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # get plots
 sev.blueplots <- sev.blue[,2]
 # Loop to run through different trait combinations
