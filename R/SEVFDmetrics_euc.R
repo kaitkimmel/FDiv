@@ -15,7 +15,7 @@ source("http://www.sthda.com/upload/rquery_cormat.r")
 
 sev.trait <- read.csv(here("data/Cleaned/sev_traitsout.csv"))
 sev.blue <- read.csv(here("data/Cleaned/sevblue_commout.csv"))
-sev.blue <- subset(sev.blue, BOGR2 != 100)#remove rows with single species. necessary to calculate metrics
+sev.blue <- subset(sev.blue, BOGR2 != 100 & plotID != "1 N 3")#remove rows with single species. necessary to calculate metrics
 sev.black <- read.csv(here("data/Cleaned/sevblack_commout.csv"))
 sev.black <- subset(sev.black, BOER4 != 100)#remove rows with single species. necessary to calculate metrics
 
