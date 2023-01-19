@@ -485,9 +485,9 @@ mod1 <- lme(kde.dispersion ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = c
 mod2 <- lme(kde.dispersion ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.dispersion ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2
-anova(mod, mod2, mod1) # not sig. diff. using mod
-#kde.dispersionmod_cdr3 <- lme(kde.dispersion ~ n_trait, random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod1
+anova(mod, mod1) # sig. diff. using mod1
+kde.dispersionmod_cdr3 <- lme(kde.dispersion ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ n_trait, random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
