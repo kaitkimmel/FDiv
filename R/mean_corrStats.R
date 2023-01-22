@@ -619,6 +619,18 @@ rq.1 <- as.data.frame(predictSE.lme(raoqmod_cdr1, new.df))
 rq.1$mean_cor <- seq(-0.3, .8, by = .1)
 rq.1$lwr <- rq.1$fit - rq.1$se.fit
 rq.1$upr <- rq.1$fit + rq.1$se.fit
+kde.alpha.1 <- as.data.frame(predictSE.lme(kde.alphamod_cdr1, new.df))
+kde.alpha.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.1$lwr <- kde.alpha.1$fit - kde.alpha.1$se.fit
+kde.alpha.1$upr <- kde.alpha.1$fit + kde.alpha.1$se.fit
+kde.evenness.1 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr1, new.df))
+kde.evenness.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.1$lwr <- kde.evenness.1$fit - kde.evenness.1$se.fit
+kde.evenness.1$upr <- kde.evenness.1$fit + kde.evenness.1$se.fit
+kde.dispersion.1 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr1, new.df))
+kde.dispersion.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.1$lwr <- kde.dispersion.1$fit - kde.dispersion.1$se.fit
+kde.dispersion.1$upr <- kde.dispersion.1$fit + kde.dispersion.1$se.fit
 
 fr.2 <- as.data.frame(predictSE.lme(fricmod_cdr2, new.df))
 fr.2$mean_cor <- seq(-0.3, .8, by = .1)
@@ -640,6 +652,18 @@ rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdr2, new.df))
 rq.2$mean_cor <- seq(-0.3, .8, by = .1)
 rq.2$lwr <- rq.2$fit - rq.2$se.fit
 rq.2$upr <- rq.2$fit + rq.2$se.fit
+kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdr2, new.df))
+kde.alpha.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.2$lwr <- kde.alpha.2$fit - kde.alpha.2$se.fit
+kde.alpha.2$upr <- kde.alpha.2$fit + kde.alpha.2$se.fit
+kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr2, new.df))
+kde.evenness.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
+kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
+kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr2, new.df))
+kde.dispersion.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.2$lwr <- kde.dispersion.2$fit - kde.dispersion.2$se.fit
+kde.dispersion.2$upr <- kde.dispersion.2$fit + kde.dispersion.2$se.fit
 
 fr.3 <- as.data.frame(predictSE.lme(fricmod_cdr3, new.df))
 fr.3$mean_cor <- seq(-0.3, .8, by = .1)
@@ -661,6 +685,18 @@ rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdr3, new.df))
 rq.3$mean_cor <- seq(-0.3, .8, by = .1)
 rq.3$lwr <- rq.3$fit - rq.3$se.fit
 rq.3$upr <- rq.3$fit + rq.3$se.fit
+kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdr3, new.df))
+kde.alpha.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.3$lwr <- kde.alpha.3$fit - kde.alpha.3$se.fit
+kde.alpha.3$upr <- kde.alpha.3$fit + kde.alpha.3$se.fit
+kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr3, new.df))
+kde.evenness.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
+kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
+kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr3, new.df))
+kde.dispersion.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.3$lwr <- kde.dispersion.3$fit - kde.dispersion.3$se.fit
+kde.dispersion.3$upr <- kde.dispersion.3$fit + kde.dispersion.3$se.fit
 
 fr.4 <- as.data.frame(predictSE.lme(fricmod_cdr4, new.df))
 fr.4$mean_cor <- seq(-0.3, .8, by = .1)
@@ -682,6 +718,19 @@ rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdr4, new.df))
 rq.4$mean_cor <- seq(-0.3, .8, by = .1)
 rq.4$lwr <- rq.4$fit - rq.4$se.fit
 rq.4$upr <- rq.4$fit + rq.4$se.fit
+kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdr4, new.df))
+kde.alpha.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.4$lwr <- kde.alpha.4$fit - kde.alpha.4$se.fit
+kde.alpha.4$upr <- kde.alpha.4$fit + kde.alpha.4$se.fit
+kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr4, new.df))
+kde.evenness.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.4$lwr <- kde.evenness.4$fit - kde.evenness.4$se.fit
+kde.evenness.4$upr <- kde.evenness.4$fit + kde.evenness.4$se.fit
+kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr4, new.df))
+kde.dispersion.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.4$lwr <- kde.dispersion.4$fit - kde.dispersion.4$se.fit
+kde.dispersion.4$upr <- kde.dispersion.4$fit + kde.dispersion.4$se.fit
+
 
 
 A <- ggplot() + 
@@ -754,9 +803,51 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
+F <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.1, alpha = 0.5, fill = "#9D8F0F") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.1, lwd = 2, color = "#9D8F0F") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
+  geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
+  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.alpha") +
+  theme_pubr()
+
+G <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.1, alpha = 0.5, fill = "#9D8F0F") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.1, lwd = 2, color = "#9D8F0F") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
+  geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
+  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.evenness") +
+  theme_pubr()
+
+H <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.1, alpha = 0.5, fill = "#9D8F0F") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.1, lwd = 2, color = "#9D8F0F") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.4, lwd = 2, color = "#075A13") + 
+  geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = cdr.full, size = 3) + 
+  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.dispersion") +
+  theme_pubr()
+
 png(here("Figures/cdr_meancor.png"), height = 5, width = 9, units = 'in', res = 300)
-ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE,
-          labels = c("A", "B", "C", "D", "E"))
+ggarrange(plotlist = list(A, B, C, D, E, F, G, H), common.legend = TRUE,
+          labels = c("A", "B", "C", "D", "E", "F", "G", "H"))
 dev.off()
 
 
@@ -795,6 +886,19 @@ rq.blue <- as.data.frame(predictSE.lme(raoqmod_blue, new.df))
 rq.blue$mean_cor <- seq(-0.3, .4, by = .1)
 rq.blue$lwr <- rq.blue$fit - rq.blue$se.fit
 rq.blue$upr <- rq.blue$fit + rq.blue$se.fit
+kde.alpha.blue <- as.data.frame(predictSE.lme(kde.alphamod_blue, new.df))
+kde.alpha.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.alpha.blue$lwr <- kde.alpha.blue$fit - kde.alpha.blue$se.fit
+kde.alpha.blue$upr <- kde.alpha.blue$fit + kde.alpha.blue$se.fit
+kde.evenness.blue <- as.data.frame(predictSE.lme(kde.evennessmod_blue, new.df))
+kde.evenness.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.evenness.blue$lwr <- kde.evenness.blue$fit - kde.evenness.blue$se.fit
+kde.evenness.blue$upr <- kde.evenness.blue$fit + kde.evenness.blue$se.fit
+kde.dispersion.blue <- as.data.frame(predictSE.lme(kde.dispersionmod_blue, new.df))
+kde.dispersion.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.dispersion.blue$lwr <- kde.dispersion.blue$fit - kde.dispersion.blue$se.fit
+kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
+
 
 fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df))
 fr.black$mean_cor <- seq(-0.3, .4, by = .1)
@@ -816,6 +920,18 @@ rq.black <- as.data.frame(predictSE.lme(raoqmod_black, new.df))
 rq.black$mean_cor <- seq(-0.3, .4, by = .1)
 rq.black$lwr <- rq.black$fit - rq.black$se.fit
 rq.black$upr <- rq.black$fit + rq.black$se.fit
+kde.alpha.black <- as.data.frame(predictSE.lme(kde.alphamod_black, new.df))
+kde.alpha.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.alpha.black$lwr <- kde.alpha.black$fit - kde.alpha.black$se.fit
+kde.alpha.black$upr <- kde.alpha.black$fit + kde.alpha.black$se.fit
+kde.evenness.black <- as.data.frame(predictSE.lme(kde.evennessmod_black, new.df))
+kde.evenness.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.evenness.black$lwr <- kde.evenness.black$fit - kde.evenness.black$se.fit
+kde.evenness.black$upr <- kde.evenness.black$fit + kde.evenness.black$se.fit
+kde.dispersion.black <- as.data.frame(predictSE.lme(kde.dispersionmod_black, new.df))
+kde.dispersion.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.dispersion.black$lwr <- kde.dispersion.black$fit - kde.dispersion.black$se.fit
+kde.dispersion.black$upr <- kde.dispersion.black$fit + kde.dispersion.black$se.fit
 
 A <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = fr.blue, alpha = 0.5, fill = "navyblue") + 
@@ -867,9 +983,40 @@ E <- ggplot() +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
+F <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.blue, alpha = 0.5, fill = "navyblue") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.blue, lwd = 2, color = "navyblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.alpha.black, alpha = 0.5, fill = "black") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
+  geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = sev.full, size = 3) + 
+  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.alpha") +
+  theme_pubr()
+
+G <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.blue, alpha = 0.5, fill = "navyblue") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.blue, lwd = 2, color = "navyblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.evenness.black, alpha = 0.5, fill = "black") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
+  geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = sev.full, size = 3) + 
+  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.evenness") +
+  theme_pubr()
+
+H <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.blue, alpha = 0.5, fill = "navyblue") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.blue, lwd = 2, color = "navyblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = mean_cor), data = kde.dispersion.black, alpha = 0.5, fill = "black") + 
+  geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.black, lwd = 2, color = "black") + 
+  geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
+  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
+  labs(x = "Number of Traits", y = "kde.dispersion") +
+  theme_pubr()
+
+
 png(here("Figures/Sev_meancorr.png"))
-ggarrange(plotlist = list(A, B, C, D, E), common.legend = TRUE, 
-          labels = c("A", "B", "C", "D", "E"))
+ggarrange(plotlist = list(A, B, C, D, E, F, G, H), common.legend = TRUE, 
+          labels = c("A", "B", "C", "D", "E", "F", "G", "H"))
 dev.off()
 
 
