@@ -56,8 +56,8 @@ mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|se
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod1
-anova(mod, mod1)
-#kde.alphamod_blue <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+anova(mod, mod1) ## sig dif use mod1
+kde.alphamod_blue <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -74,9 +74,9 @@ mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots, 
 mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod2, mod3) ### mod1
-anova(mod, mod1)
-#kde.evennessmod_blue <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1, mod2, mod3) ### mod3
+anova(mod2, mod3) ## sig dif use mod3
+kde.evennessmod_blue <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -94,8 +94,8 @@ mod2 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = 
 mod3 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod1
-anova(mod, mod1)
-#kde.dispersionmod_blue <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+anova(mod, mod1) #sig diff use mod1
+kde.dispersionmod_blue <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -112,8 +112,9 @@ mod1 <- lme(RaoQ ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = 
 mod2 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod3 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1,mod2, mod3) #mod best fit
-raoqmod_blue <- lme(RaoQ ~ mean_cor, random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1,mod2, mod3) #mod1
+anova(mod, mod1) ##sig dif use mod1
+raoqmod_blue <- lme(RaoQ ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 
 summary(fricmod_blue)
@@ -140,8 +141,8 @@ mod2 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.bla
 mod3 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FRic)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod1 lowest
-anova(mod, mod1) #mod for simplicity
-fricmod_black <- lme(FRic ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FRic)),], correlation = corCompSymm(form = ~ 1|sev.blackplots))
+anova(mod, mod1) # sig diff use mod1
+fricmod_black <- lme(FRic ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FRic)),], correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ### KDE richness
 mod <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
@@ -150,8 +151,8 @@ mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|se
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod1 lowest
-anova(mod, mod1) #mod for simplicity
-#kde.alphamod_black <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+anova(mod, mod1) # sig diff use mod1
+kde.alphamod_black <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
@@ -168,9 +169,8 @@ mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,
 mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod2, mod3) ### mod1 lowest
-anova(mod, mod1) #mod for simplicity
-#kde.evennessmod_black <- lme(kde.evenness ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod2, mod3) ### mod lowest
+kde.evennessmod_black <- lme(kde.evenness ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
@@ -178,9 +178,8 @@ mod1 <- lme(FDis ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,  data =
 mod2 <- lme(FDis ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod3 <- lme(FDis ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1,mod2, mod3) #mod2 best fit
-anova(mod, mod2, mod1) # mod2 sign diff
-fdismod_black <- lme(FDis ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1,mod2, mod3) #mod best fit
+fdismod_black <- lme(FDis ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ### KDE dispersion
 mod <- lme(kde.dispersion ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
@@ -189,8 +188,8 @@ mod2 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = 
 mod3 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod1 lowest
-anova(mod, mod1) #mod for simplicity
-#kde.dispersionsmod_black <- lme(kde.dispersion ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+anova(mod, mod1) # sig diff use mod1
+kde.dispersionmod_black <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
@@ -207,8 +206,8 @@ mod1 <- lme(RaoQ ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots,  data =
 mod2 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod3 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1,mod2, mod3) #mod2
-anova(mod, mod2, mod1) # all similar - using mod
+AIC(mod, mod1,mod2, mod3) #mod1
+anova(mod, mod1) # all similar - using mod
 raoqmod_black <- lme(RaoQ ~ mean_cor, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
@@ -238,7 +237,7 @@ mod1 <- lme(FRic ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.1, me
 mod2 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2 & mod3
+AIC(mod, mod1, mod2, mod3) ### mod2
 fricmod_cdr1 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE richness
@@ -247,8 +246,9 @@ mod1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.
 mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2 & mod3
-#kde.alphamod_cdr1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod2
+anova(mod1, mod2) ##sig dif use mod2
+kde.alphamod_cdr1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -265,8 +265,8 @@ mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = c
 mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2 & mod3
-#kde.evennessmod_cdr1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod
+kde.evennessmod_cdr1 <- lme(kde.evenness ~ mean_cor, random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -283,8 +283,8 @@ mod1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data =
 mod2 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2 & mod3
-#kde.dispersionmod_cdr1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod1
+kde.dispersionmod_cdr1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -327,6 +327,7 @@ mod2 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  
 mod3 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
+anova(mod2, mod3) ##sig dif use mod3
 fricmod_cdr2 <- lme(FRic ~ mean_cor + I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE richness
@@ -336,7 +337,7 @@ mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Pl
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.alphamod_cdr2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+kde.alphamod_cdr2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -353,8 +354,9 @@ mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = c
 mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.evennessmod_cdr2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod1
+anova(mod, mod1) ##sig dif use mod1
+kde.evennessmod_cdr2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -371,8 +373,9 @@ mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = c
 mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.evennessmod_cdr2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod1
+anova(mod, mod1) ##sig dif use mod1
+kde.dispersionmod_cdr2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -381,6 +384,7 @@ mod2 <- lme(FDiv ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  
 mod3 <- lme(FDiv ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1,mod2, mod3) #mod3 best fit
+anova(mod2, mod3) ##sig diff use mod3
 fdivmod_cdr2 <- lme(FDiv ~ mean_cor+ I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 ### Rao's Q
@@ -390,6 +394,7 @@ mod2 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  
 mod3 <- lme(RaoQ ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1,mod2, mod3) #mod2
+anova(mod1, mod2) ##sig dif use mod2
 raoqmod_cdr2 <- lme(RaoQ ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 
@@ -423,8 +428,9 @@ mod1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.
 mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2
-#kde.alphamod_cdr3 <- lme(kde.alpha ~ mean_cor+ I(mean_cor^2)+ I(mean_cor^3), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod3
+anova(mod2, mod3) #sig dif use mod3
+kde.alphamod_cdr3 <- lme(kde.alpha ~ mean_cor+ I(mean_cor^2)+ I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -442,7 +448,8 @@ mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod2
-#kde.evennessmod_cdr3 <- lme(kde.evenness ~ mean_cor+ I(mean_cor^2)+ I(mean_cor^3), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
+anova(mod1, mod2) ##no sif dif use mod1
+kde.evennessmod_cdr3 <- lme(kde.evenness ~ mean_cor+ I(mean_cor^2), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -460,8 +467,9 @@ mod1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data =
 mod2 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod3 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod2, mod3) ### mod2
-#kde.dispersionmod_cdr3 <- lme(kde.dispersion ~ mean_cor+ I(mean_cor^2)+ I(mean_cor^3), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod2, mod3) ### mod3
+anova(mod1, mod3) #no sig dif use mod1
+kde.dispersionmod_cdr3 <- lme(kde.dispersion ~ mean_cor+ I(mean_cor^2), random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -504,7 +512,8 @@ mod2 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Plot,  
 mod3 <- lme(FRic ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
-fricmod_cdr4 <- lme(FRic ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+anova(mod1, mod3) #no sig dif use mod1
+fricmod_cdr4 <- lme(FRic ~ mean_cor+ I(mean_cor^2), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE richness
 mod <- lme(kde.alpha ~ mean_cor, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
@@ -513,7 +522,8 @@ mod2 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1|Pl
 mod3 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.alphamod_cdr4 <- lme(kde.alpha ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+anova(mod2, mod3) #sig dif use mod3
+kde.alphamod_cdr4 <- lme(kde.alpha ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -531,7 +541,8 @@ mod2 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = ~1
 mod3 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.evennessmod_cdr4 <- lme(kde.evenness ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+anova(mod2, mod3) ##sig dif use mod3
+kde.evennessmod_cdr4 <- lme(kde.evenness ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ## FDis
 mod <- lme(FDis ~ mean_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -549,7 +560,7 @@ mod2 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3), random = 
 mod3 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1, mod2, mod3) ### mod3
-#kde.dispersionmod_cdr4 <- lme(kde.dispersion ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+kde.dispersionmod_cdr4 <- lme(kde.dispersion ~ mean_cor+ I(mean_cor^2) + I(mean_cor^3) + I(mean_cor^4), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -591,7 +602,7 @@ cdr.full <- rbind(cdr.1, cdr.2, cdr.3, cdr.4)
 
 cdr.full <- cdr.full %>% group_by(community, mean_cor) %>%
   summarize (FRic = mean(FRic), FEve = mean(FEve), FDis = mean(FDis),
-             FDiv = mean(FDiv), RaoQ = mean(RaoQ))
+             FDiv = mean(FDiv), RaoQ = mean(RaoQ), kde.alpha = mean(kde.alpha), kde.evenness  = mean(kde.evenness), kde.dispersion = mean(kde.dispersion))
 
 new.df <- data.frame(mean_cor = seq(-0.3, .8, by = .1))
 
@@ -620,15 +631,15 @@ rq.1$mean_cor <- seq(-0.3, .8, by = .1)
 rq.1$lwr <- rq.1$fit - rq.1$se.fit
 rq.1$upr <- rq.1$fit + rq.1$se.fit
 kde.alpha.1 <- as.data.frame(predictSE.lme(kde.alphamod_cdr1, new.df))
-kde.alpha.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.1$mean_cor <- seq(-0.3, .8, by = .1)
 kde.alpha.1$lwr <- kde.alpha.1$fit - kde.alpha.1$se.fit
 kde.alpha.1$upr <- kde.alpha.1$fit + kde.alpha.1$se.fit
 kde.evenness.1 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr1, new.df))
-kde.evenness.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.1$mean_cor <- seq(-0.3, .8, by = .1)
 kde.evenness.1$lwr <- kde.evenness.1$fit - kde.evenness.1$se.fit
 kde.evenness.1$upr <- kde.evenness.1$fit + kde.evenness.1$se.fit
 kde.dispersion.1 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr1, new.df))
-kde.dispersion.1$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.1$mean_cor <- seq(-0.3, .8, by = .1)
 kde.dispersion.1$lwr <- kde.dispersion.1$fit - kde.dispersion.1$se.fit
 kde.dispersion.1$upr <- kde.dispersion.1$fit + kde.dispersion.1$se.fit
 
@@ -653,15 +664,15 @@ rq.2$mean_cor <- seq(-0.3, .8, by = .1)
 rq.2$lwr <- rq.2$fit - rq.2$se.fit
 rq.2$upr <- rq.2$fit + rq.2$se.fit
 kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdr2, new.df))
-kde.alpha.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.2$mean_cor <- seq(-0.3, .8, by = .1)
 kde.alpha.2$lwr <- kde.alpha.2$fit - kde.alpha.2$se.fit
 kde.alpha.2$upr <- kde.alpha.2$fit + kde.alpha.2$se.fit
 kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr2, new.df))
-kde.evenness.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.2$mean_cor <- seq(-0.3, .8, by = .1)
 kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
 kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
 kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr2, new.df))
-kde.dispersion.2$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.2$mean_cor <- seq(-0.3, .8, by = .1)
 kde.dispersion.2$lwr <- kde.dispersion.2$fit - kde.dispersion.2$se.fit
 kde.dispersion.2$upr <- kde.dispersion.2$fit + kde.dispersion.2$se.fit
 
@@ -686,15 +697,15 @@ rq.3$mean_cor <- seq(-0.3, .8, by = .1)
 rq.3$lwr <- rq.3$fit - rq.3$se.fit
 rq.3$upr <- rq.3$fit + rq.3$se.fit
 kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdr3, new.df))
-kde.alpha.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.3$mean_cor <- seq(-0.3, .8, by = .1)
 kde.alpha.3$lwr <- kde.alpha.3$fit - kde.alpha.3$se.fit
 kde.alpha.3$upr <- kde.alpha.3$fit + kde.alpha.3$se.fit
 kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr3, new.df))
-kde.evenness.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.3$mean_cor <- seq(-0.3, .8, by = .1)
 kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
 kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
 kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr3, new.df))
-kde.dispersion.3$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.3$mean_cor <- seq(-0.3, .8, by = .1)
 kde.dispersion.3$lwr <- kde.dispersion.3$fit - kde.dispersion.3$se.fit
 kde.dispersion.3$upr <- kde.dispersion.3$fit + kde.dispersion.3$se.fit
 
@@ -719,15 +730,15 @@ rq.4$mean_cor <- seq(-0.3, .8, by = .1)
 rq.4$lwr <- rq.4$fit - rq.4$se.fit
 rq.4$upr <- rq.4$fit + rq.4$se.fit
 kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdr4, new.df))
-kde.alpha.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.alpha.4$mean_cor <- seq(-0.3, .8, by = .1)
 kde.alpha.4$lwr <- kde.alpha.4$fit - kde.alpha.4$se.fit
 kde.alpha.4$upr <- kde.alpha.4$fit + kde.alpha.4$se.fit
 kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr4, new.df))
-kde.evenness.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.evenness.4$mean_cor <- seq(-0.3, .8, by = .1)
 kde.evenness.4$lwr <- kde.evenness.4$fit - kde.evenness.4$se.fit
 kde.evenness.4$upr <- kde.evenness.4$fit + kde.evenness.4$se.fit
 kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr4, new.df))
-kde.dispersion.4$n_trait <- seq(-0.3, .8, by = .1)
+kde.dispersion.4$mean_cor <- seq(-0.3, .8, by = .1)
 kde.dispersion.4$lwr <- kde.dispersion.4$fit - kde.dispersion.4$se.fit
 kde.dispersion.4$upr <- kde.dispersion.4$fit + kde.dispersion.4$se.fit
 
@@ -857,12 +868,12 @@ dev.off()
 # create combined data set of raw data
 sev.black$community <- "black"
 sev.blue$community <- "blue"
-sev.full <- rbind(sev.blue[,-7], sev.black[,-7])
+sev.full <- rbind(sev.blue[,-10], sev.black[,-10])
 
 sev.full <- sev.full %>% group_by(community, mean_cor) %>%
   summarize (FRic = mean(FRic, na.rm = TRUE), FEve = mean(FEve, na.rm = TRUE), 
              FDis = mean(FDis, na.rm = TRUE), FDiv = mean(FDiv, na.rm = TRUE), 
-             RaoQ = mean(RaoQ, na.rm = TRUE))
+             RaoQ = mean(RaoQ, na.rm = TRUE), kde.alpha = mean(kde.alpha), kde.evenness = mean(kde.evenness), kde.dispersion = mean(kde.dispersion))
 
 new.df <- data.frame(mean_cor = seq(-0.3, .4, by = .1))
 
@@ -887,15 +898,15 @@ rq.blue$mean_cor <- seq(-0.3, .4, by = .1)
 rq.blue$lwr <- rq.blue$fit - rq.blue$se.fit
 rq.blue$upr <- rq.blue$fit + rq.blue$se.fit
 kde.alpha.blue <- as.data.frame(predictSE.lme(kde.alphamod_blue, new.df))
-kde.alpha.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.alpha.blue$mean_cor <- seq(-0.3, .4, by = .1)
 kde.alpha.blue$lwr <- kde.alpha.blue$fit - kde.alpha.blue$se.fit
 kde.alpha.blue$upr <- kde.alpha.blue$fit + kde.alpha.blue$se.fit
 kde.evenness.blue <- as.data.frame(predictSE.lme(kde.evennessmod_blue, new.df))
-kde.evenness.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.evenness.blue$mean_cor <- seq(-0.3, .4, by = .1)
 kde.evenness.blue$lwr <- kde.evenness.blue$fit - kde.evenness.blue$se.fit
 kde.evenness.blue$upr <- kde.evenness.blue$fit + kde.evenness.blue$se.fit
 kde.dispersion.blue <- as.data.frame(predictSE.lme(kde.dispersionmod_blue, new.df))
-kde.dispersion.blue$n_trait <- seq(-0.3, .4, by = .1)
+kde.dispersion.blue$mean_cor <- seq(-0.3, .4, by = .1)
 kde.dispersion.blue$lwr <- kde.dispersion.blue$fit - kde.dispersion.blue$se.fit
 kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
 
@@ -921,15 +932,15 @@ rq.black$mean_cor <- seq(-0.3, .4, by = .1)
 rq.black$lwr <- rq.black$fit - rq.black$se.fit
 rq.black$upr <- rq.black$fit + rq.black$se.fit
 kde.alpha.black <- as.data.frame(predictSE.lme(kde.alphamod_black, new.df))
-kde.alpha.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.alpha.black$mean_cor <- seq(-0.3, .4, by = .1)
 kde.alpha.black$lwr <- kde.alpha.black$fit - kde.alpha.black$se.fit
 kde.alpha.black$upr <- kde.alpha.black$fit + kde.alpha.black$se.fit
 kde.evenness.black <- as.data.frame(predictSE.lme(kde.evennessmod_black, new.df))
-kde.evenness.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.evenness.black$mean_cor <- seq(-0.3, .4, by = .1)
 kde.evenness.black$lwr <- kde.evenness.black$fit - kde.evenness.black$se.fit
 kde.evenness.black$upr <- kde.evenness.black$fit + kde.evenness.black$se.fit
 kde.dispersion.black <- as.data.frame(predictSE.lme(kde.dispersionmod_black, new.df))
-kde.dispersion.black$n_trait <- seq(-0.3, .4, by = .1)
+kde.dispersion.black$mean_cor <- seq(-0.3, .4, by = .1)
 kde.dispersion.black$lwr <- kde.dispersion.black$fit - kde.dispersion.black$se.fit
 kde.dispersion.black$upr <- kde.dispersion.black$fit + kde.dispersion.black$se.fit
 
