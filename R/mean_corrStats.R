@@ -755,7 +755,7 @@ A <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fr.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FRic, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FRich") +
+  labs(x = "Mean correlation", y = "FRich") +
   theme_pubr()
 
 B <- ggplot() + 
@@ -769,7 +769,7 @@ B <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fe.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FEve, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FEve") +
+  labs(x = "Mean correlation", y = "FEve") +
   theme_pubr()
 
 C <-ggplot() + 
@@ -783,7 +783,7 @@ C <-ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdis.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FDis, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDis") +
+  labs(x = "Mean correlation", y = "FDis") +
   theme_pubr()
 
 D <- ggplot() + 
@@ -797,7 +797,7 @@ D <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdiv.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = FDiv, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDiv") +
+  labs(x = "Mean correlation", y = "FDiv") +
   theme_pubr()
 
 E <- ggplot() + 
@@ -811,7 +811,7 @@ E <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = rq.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = RaoQ, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "Rao Q") +
+  labs(x = "Mean correlation", y = "Rao Q") +
   theme_pubr()
 
 F <- ggplot() + 
@@ -825,7 +825,7 @@ F <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.alpha") +
+  labs(x = "Mean correlation", y = "kde.alpha") +
   theme_pubr()
 
 G <- ggplot() + 
@@ -839,7 +839,7 @@ G <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.evenness") +
+  labs(x = "Mean correlation", y = "kde.evenness") +
   theme_pubr()
 
 H <- ggplot() + 
@@ -853,7 +853,7 @@ H <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.dispersion") +
+  labs(x = "Mean correlation", y = "kde.dispersion") +
   theme_pubr()
 
 png(here("Figures/cdr_meancor.png"), height = 5, width = 9, units = 'in', res = 300)
@@ -951,7 +951,7 @@ A <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fr.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FRic, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FRich") +
+  labs(x = "Mean correlation", y = "FRich") +
   theme_pubr()
 
 B <- ggplot() + 
@@ -961,7 +961,7 @@ B <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fe.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FEve, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FEve") +
+  labs(x = "Mean correlation", y = "FEve") +
   theme_pubr()
 
 C <- ggplot() + 
@@ -971,7 +971,7 @@ C <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdis.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FDis, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDis") +
+  labs(x = "Mean correlation", y = "FDis") +
   theme_pubr()
 
 D <- ggplot() + 
@@ -981,7 +981,7 @@ D <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = fdiv.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = FDiv, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "FDiv") +
+  labs(x = "Mean correlation", y = "FDiv") +
   theme_pubr()
 
 E <- ggplot() + 
@@ -991,7 +991,7 @@ E <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = rq.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = RaoQ, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "Rao Q") +
+  labs(x = "Mean correlation", y = "Rao Q") +
   theme_pubr()
 
 F <- ggplot() + 
@@ -1001,7 +1001,7 @@ F <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.alpha") +
+  labs(x = "Mean correlation", y = "kde.alpha") +
   theme_pubr()
 
 G <- ggplot() + 
@@ -1011,7 +1011,7 @@ G <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.evenness") +
+  labs(x = "Mean correlation", y = "kde.evenness") +
   theme_pubr()
 
 H <- ggplot() + 
@@ -1021,7 +1021,7 @@ H <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "kde.dispersion") +
+  labs(x = "Mean correlation", y = "kde.dispersion") +
   theme_pubr()
 
 
