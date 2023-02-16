@@ -82,8 +82,8 @@ mod1 <- lme(FDis ~ n_trait + I(n_trait^2), random = ~1|sev.blueplots,  data = se
 mod2 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod3 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1,mod2, mod3) #mod1 best fit
-anova(mod, mod1) # mod1 sig better
+AIC(mod, mod1,mod2, mod3) #mod2 best fit
+anova(mod2, mod1) # mod1 no sig
 fdismod_blue <- lme(FDis ~ n_trait + I(n_trait^2), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ##KDE dispersion
@@ -181,7 +181,7 @@ mod2 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|sev.blackp
 mod3 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|sev.blackplots,  data = sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 AIC(mod, mod1,mod2, mod3) #mod2 best fit
-anova(mod, mod2, mod1) # mod2 sign diff
+anova( mod2, mod1) # mod2 sign diff
 fdismod_black <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ### KDE dispersion
@@ -199,6 +199,7 @@ mod <- lme(FDiv ~ n_trait, random = ~1|sev.blackplots,  data = sev.black[-which(
 mod1 <- lme(FDiv ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod2 <- lme(FDiv ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod3 <- lme(FDiv ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
+
 
 AIC(mod, mod1,mod2, mod3) #mod1 best fit
 anova(mod, mod1) #mod1 sig diff 
@@ -220,8 +221,8 @@ summary(fdismod_black)
 summary(fdivmod_black)
 summary(raoqmod_black)
 summary(kde.alphamod_black)
-summary(kde.evenness_black)
-summary(kde.dispersion_black)
+summary(kde.evennessmod_black)
+summary(kde.dispersionmod_black)
 
 #########################################
 ######### CEDAR CREEK #####################
@@ -282,7 +283,7 @@ mod2 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  dat
 mod3 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1,mod2, mod3) #mod2 best fit
-anova(mod, mod2, mod1) # mod2 sig diff
+anova(mod2, mod1) # mod2 sig diff
 fdismod_cdr1 <- lme(FDis ~ n_trait+ I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 ##KDE dispersion
@@ -357,7 +358,7 @@ mod2 <- lme(FEve ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  dat
 mod3 <- lme(FEve ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1,mod2, mod3) ## mod2 best fit
-anova(mod, mod2, mod1) # sign diff. using mod2
+anova(mod, mod2) # sign diff. using mod2
 fevemod_cdr2 <- lme(FEve ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE evenness
@@ -376,7 +377,7 @@ mod2 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3), random = ~1|Plot,  dat
 mod3 <- lme(FDis ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 AIC(mod, mod1,mod2, mod3) #mod2 best fit
-anova(mod, mod2, mod1) #mod1 similar to mod 2 - using 1
+anova(mod2, mod1) #mod1 similar to mod 2 - using 1
 fdismod_cdr2 <- lme(FDis ~ n_trait+ I(n_trait^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ##KDE dispersion
@@ -398,6 +399,8 @@ mod3 <- lme(FDiv ~ n_trait + I(n_trait^2) + I(n_trait^3) + I(n_trait^4), random 
 AIC(mod, mod1,mod2, mod3) #mod1 best fit
 anova(mod, mod1) # sign diff. using mod 1
 fdivmod_cdr2 <- lme(FDiv ~ n_trait+ I(n_trait^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
+
+
 
 ### Rao's Q
 mod <- lme(RaoQ ~ n_trait, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
