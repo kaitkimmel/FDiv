@@ -382,7 +382,7 @@ mod3 <- lme(kde.evenness ~ max_cor + I(max_cor^2) + I(max_cor^3) + I(max_cor^4),
 
 AIC(mod, mod1, mod2, mod3) ### mod2
 anova( mod2, mod1) ##sig dif use mod2
-kde.dispersionmod_cdr2 <- lme(kde.evenness ~ max_cor + I(max_cor^2) + I(max_cor^3), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+kde.dispersionmod_cdr2 <- lme(kde.dispersion ~ max_cor + I(max_cor^2) + I(max_cor^3), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ max_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
@@ -622,135 +622,143 @@ new.df <- data.frame(max_cor = seq(-.02, .92, by = 0.01))
 ##############################################
 ############## CDR 1 ########################
 #############################################
-fr.1 <- as.data.frame(predictSE.lme(fricmod_cdr1, new.df))
-fr.1$max_cor <- seq(-.02, .92, by = 0.01)
+range(cdr.1$max_cor)
+new.df1 <- data.frame(max_cor = seq(0.13, 0.85, by = 0.01))
+fr.1 <- as.data.frame(predictSE.lme(fricmod_cdr1, new.df1))
+fr.1$max_cor <- seq(0.13, 0.85, by = 0.01)
 fr.1$lwr <- fr.1$fit - fr.1$se.fit
 fr.1$upr <- fr.1$fit + fr.1$se.fit
-fe.1 <- as.data.frame(predictSE.lme(fevemod_cdr1, new.df))
-fe.1$max_cor <- seq(-.02, .92, by = 0.01)
+fe.1 <- as.data.frame(predictSE.lme(fevemod_cdr1, new.df1))
+fe.1$max_cor <- seq(0.13, 0.85, by = 0.01)
 fe.1$lwr <- fe.1$fit - fe.1$se.fit
 fe.1$upr <- fe.1$fit + fe.1$se.fit
-fdis.1 <- as.data.frame(predictSE.lme(fdismod_cdr1, new.df))
-fdis.1$max_cor <- seq(-.02, .92, by = 0.01)
+fdis.1 <- as.data.frame(predictSE.lme(fdismod_cdr1, new.df1))
+fdis.1$max_cor <- seq(0.13, 0.85, by = 0.01)
 fdis.1$lwr <- fdis.1$fit - fdis.1$se.fit
 fdis.1$upr <- fdis.1$fit + fdis.1$se.fit
-fdiv.1 <- as.data.frame(predictSE.lme(fdivmod_cdr1, new.df))
-fdiv.1$max_cor <- seq(-.02, .92, by = 0.01)
+fdiv.1 <- as.data.frame(predictSE.lme(fdivmod_cdr1, new.df1))
+fdiv.1$max_cor <- seq(0.13, 0.85, by = 0.01)
 fdiv.1$lwr <- fdiv.1$fit - fdiv.1$se.fit
 fdiv.1$upr <- fdiv.1$fit + fdiv.1$se.fit
-rq.1 <- as.data.frame(predictSE.lme(raoqmod_cdr1, new.df))
-rq.1$max_cor <- seq(-.02, .92, by = 0.01)
+rq.1 <- as.data.frame(predictSE.lme(raoqmod_cdr1, new.df1))
+rq.1$max_cor <- seq(0.13, 0.85, by = 0.01)
 rq.1$lwr <- rq.1$fit - rq.1$se.fit
 rq.1$upr <- rq.1$fit + rq.1$se.fit
-kde.alpha.1 <- as.data.frame(predictSE.lme(kde.alphamod_cdr1, new.df))
-kde.alpha.1$max_cor <- seq(-.02, .92, by = .01)
+kde.alpha.1 <- as.data.frame(predictSE.lme(kde.alphamod_cdr1, new.df1))
+kde.alpha.1$max_cor <- seq(0.13, 0.85, by = .01)
 kde.alpha.1$lwr <- kde.alpha.1$fit - kde.alpha.1$se.fit
 kde.alpha.1$upr <- kde.alpha.1$fit + kde.alpha.1$se.fit
-kde.evenness.1 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr1, new.df))
-kde.evenness.1$max_cor <- seq(-.02, .92, by = .01)
+kde.evenness.1 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr1, new.df1))
+kde.evenness.1$max_cor <- seq(0.13, 0.85, by = .01)
 kde.evenness.1$lwr <- kde.evenness.1$fit - kde.evenness.1$se.fit
 kde.evenness.1$upr <- kde.evenness.1$fit + kde.evenness.1$se.fit
-kde.dispersion.1 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr1, new.df))
-kde.dispersion.1$max_cor <- seq(-.02, .92, by = .01)
+kde.dispersion.1 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr1, new.df1))
+kde.dispersion.1$max_cor <- seq(0.13, 0.85, by = .01)
 kde.dispersion.1$lwr <- kde.dispersion.1$fit - kde.dispersion.1$se.fit
 kde.dispersion.1$upr <- kde.dispersion.1$fit + kde.dispersion.1$se.fit
 
-fr.2 <- as.data.frame(predictSE.lme(fricmod_cdr2, new.df))
-fr.2$max_cor <- seq(-.02, .92, by = .01)
+range(cdr.2$max_cor)
+new.df2 <- data.frame(max_cor = seq(-0.014, 0.91, by = 0.01))
+fr.2 <- as.data.frame(predictSE.lme(fricmod_cdr2, new.df2))
+fr.2$max_cor <- seq(-0.014, 0.91, by = .01)
 fr.2$lwr <- fr.2$fit - fr.2$se.fit
 fr.2$upr <- fr.2$fit + fr.2$se.fit
-fe.2 <- as.data.frame(predictSE.lme(fevemod_cdr2, new.df))
-fe.2$max_cor <- seq(-.02, .92, by = .01)
+fe.2 <- as.data.frame(predictSE.lme(fevemod_cdr2, new.df2))
+fe.2$max_cor <- seq(-0.014, 0.91, by = .01)
 fe.2$lwr <- fe.2$fit - fe.2$se.fit
 fe.2$upr <- fe.2$fit + fe.2$se.fit
-fdis.2 <- as.data.frame(predictSE.lme(fdismod_cdr2, new.df))
-fdis.2$max_cor <- seq(-.02, .92, by = .01)
+fdis.2 <- as.data.frame(predictSE.lme(fdismod_cdr2, new.df2))
+fdis.2$max_cor <- seq(-0.014, 0.91, by = .01)
 fdis.2$lwr <- fdis.2$fit - fdis.2$se.fit
 fdis.2$upr <- fdis.2$fit + fdis.2$se.fit
-fdiv.2 <- as.data.frame(predictSE.lme(fdivmod_cdr2, new.df))
-fdiv.2$max_cor <- seq(-.02, .92, by = .01)
+fdiv.2 <- as.data.frame(predictSE.lme(fdivmod_cdr2, new.df2))
+fdiv.2$max_cor <- seq(-0.014, 0.91, by = .01)
 fdiv.2$lwr <- fdiv.2$fit - fdiv.2$se.fit
 fdiv.2$upr <- fdiv.2$fit + fdiv.2$se.fit
-rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdr2, new.df))
-rq.2$max_cor <- seq(-.02, .92, by = .01)
+rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdr2, new.df2))
+rq.2$max_cor <- seq(-0.014, 0.91, by = .01)
 rq.2$lwr <- rq.2$fit - rq.2$se.fit
 rq.2$upr <- rq.2$fit + rq.2$se.fit
-kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdr2, new.df))
-kde.alpha.2$max_cor <- seq(-.02, .92, by = .01)
+kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdr2, new.df2))
+kde.alpha.2$max_cor <- seq(-0.014, 0.91, by = .01)
 kde.alpha.2$lwr <- kde.alpha.2$fit - kde.alpha.2$se.fit
 kde.alpha.2$upr <- kde.alpha.2$fit + kde.alpha.2$se.fit
-kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr2, new.df))
-kde.evenness.2$max_cor <- seq(-.02, .92, by = .01)
+kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr2, new.df2))
+kde.evenness.2$max_cor <- seq(-0.014, 0.91, by = .01)
 kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
 kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
-kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr2, new.df))
-kde.dispersion.2$max_cor <- seq(-.02, .92, by = .01)
+kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr2, new.df2))
+kde.dispersion.2$max_cor <- seq(-0.014, 0.91, by = .01)
 kde.dispersion.2$lwr <- kde.dispersion.2$fit - kde.dispersion.2$se.fit
 kde.dispersion.2$upr <- kde.dispersion.2$fit + kde.dispersion.2$se.fit
 
-fr.3 <- as.data.frame(predictSE.lme(fricmod_cdr3, new.df))
-fr.3$max_cor <- seq(-.02, .92, by = .01)
+range(cdr.3$max_cor)
+new.df3 <- data.frame(max_cor = seq(0.32, 0.77, by = 0.01))
+fr.3 <- as.data.frame(predictSE.lme(fricmod_cdr3, new.df3))
+fr.3$max_cor <- seq(0.32, 0.77, by = .01)
 fr.3$lwr <- fr.3$fit - fr.3$se.fit
 fr.3$upr <- fr.3$fit + fr.3$se.fit
-fe.3 <- as.data.frame(predictSE.lme(fevemod_cdr3, new.df))
-fe.3$max_cor <- seq(-.02, .92, by = .01)
+fe.3 <- as.data.frame(predictSE.lme(fevemod_cdr3, new.df3))
+fe.3$max_cor <- seq(0.32, 0.77, by = .01)
 fe.3$lwr <- fe.3$fit - fe.3$se.fit
 fe.3$upr <- fe.3$fit + fe.3$se.fit
-fdis.3 <- as.data.frame(predictSE.lme(fdismod_cdr3, new.df))
-fdis.3$max_cor <- seq(-.02, .92, by = .01)
+fdis.3 <- as.data.frame(predictSE.lme(fdismod_cdr3, new.df3))
+fdis.3$max_cor <- seq(0.32, 0.77, by = .01)
 fdis.3$lwr <- fdis.3$fit - fdis.3$se.fit
 fdis.3$upr <- fdis.3$fit + fdis.3$se.fit
-fdiv.3 <- as.data.frame(predictSE.lme(fdivmod_cdr3, new.df))
-fdiv.3$max_cor <- seq(-.02, .92, by = .01)
+fdiv.3 <- as.data.frame(predictSE.lme(fdivmod_cdr3, new.df3))
+fdiv.3$max_cor <- seq(0.32, 0.77, by = .01)
 fdiv.3$lwr <- fdiv.3$fit - fdiv.3$se.fit
 fdiv.3$upr <- fdiv.3$fit + fdiv.3$se.fit
-rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdr3, new.df))
-rq.3$max_cor <- seq(-.02, .92, by = .01)
+rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdr3, new.df3))
+rq.3$max_cor <- seq(0.32, 0.77, by = .01)
 rq.3$lwr <- rq.3$fit - rq.3$se.fit
 rq.3$upr <- rq.3$fit + rq.3$se.fit
-kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdr3, new.df))
-kde.alpha.3$max_cor <- seq(-.02, .92, by = .01)
+kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdr3, new.df3))
+kde.alpha.3$max_cor <- seq(0.32, 0.77, by = .01)
 kde.alpha.3$lwr <- kde.alpha.3$fit - kde.alpha.3$se.fit
 kde.alpha.3$upr <- kde.alpha.3$fit + kde.alpha.3$se.fit
-kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr3, new.df))
-kde.evenness.3$max_cor <- seq(-.02, .92, by = .01)
+kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr3, new.df3))
+kde.evenness.3$max_cor <- seq(0.32, 0.77, by = .01)
 kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
 kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
-kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr3, new.df))
-kde.dispersion.3$max_cor <- seq(-.02, .92, by = .01)
+kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr3, new.df3))
+kde.dispersion.3$max_cor <- seq(0.32, 0.77, by = .01)
 kde.dispersion.3$lwr <- kde.dispersion.3$fit - kde.dispersion.3$se.fit
 kde.dispersion.3$upr <- kde.dispersion.3$fit + kde.dispersion.3$se.fit
 
-fr.4 <- as.data.frame(predictSE.lme(fricmod_cdr4, new.df))
-fr.4$max_cor <- seq(-.02, .92, by = .01)
+range(cdr.4$max_cor)
+new.df4 <- data.frame(max_cor = seq(0.15, 0.82, by = 0.01))
+fr.4 <- as.data.frame(predictSE.lme(fricmod_cdr4, new.df4))
+fr.4$max_cor <- seq(0.15, 0.82, by = .01)
 fr.4$lwr <- fr.4$fit - fr.4$se.fit
 fr.4$upr <- fr.4$fit + fr.4$se.fit
-fe.4 <- as.data.frame(predictSE.lme(fevemod_cdr4, new.df))
-fe.4$max_cor <- seq(-.02, .92, by = .01)
+fe.4 <- as.data.frame(predictSE.lme(fevemod_cdr4, new.df4))
+fe.4$max_cor <- seq(0.15, 0.82, by = .01)
 fe.4$lwr <- fe.4$fit - fe.4$se.fit
 fe.4$upr <- fe.4$fit + fe.4$se.fit
-fdis.4 <- as.data.frame(predictSE.lme(fdismod_cdr4, new.df))
-fdis.4$max_cor <- seq(-.02, .92, by = .01)
+fdis.4 <- as.data.frame(predictSE.lme(fdismod_cdr4, new.df4))
+fdis.4$max_cor <- seq(0.15, 0.82, by = .01)
 fdis.4$lwr <- fdis.4$fit - fdis.4$se.fit
 fdis.4$upr <- fdis.4$fit + fdis.4$se.fit
-fdiv.4 <- as.data.frame(predictSE.lme(fdivmod_cdr4, new.df))
-fdiv.4$max_cor <- seq(-.02, .92, by = .01)
+fdiv.4 <- as.data.frame(predictSE.lme(fdivmod_cdr4, new.df4))
+fdiv.4$max_cor <- seq(0.15, 0.82, by = .01)
 fdiv.4$lwr <- fdiv.4$fit - fdiv.4$se.fit
 fdiv.4$upr <- fdiv.4$fit + fdiv.4$se.fit
-rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdr4, new.df))
-rq.4$max_cor <- seq(-.02, .92, by = .01)
+rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdr4, new.df4))
+rq.4$max_cor <- seq(0.15, 0.82, by = .01)
 rq.4$lwr <- rq.4$fit - rq.4$se.fit
 rq.4$upr <- rq.4$fit + rq.4$se.fit
-kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdr4, new.df))
-kde.alpha.4$max_cor <- seq(-.02, .92, by = .01)
+kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdr4, new.df4))
+kde.alpha.4$max_cor <- seq(0.15, 0.82, by = .01)
 kde.alpha.4$lwr <- kde.alpha.4$fit - kde.alpha.4$se.fit
 kde.alpha.4$upr <- kde.alpha.4$fit + kde.alpha.4$se.fit
-kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr4, new.df))
-kde.evenness.4$max_cor <- seq(-.02, .92, by = .01)
+kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr4, new.df4))
+kde.evenness.4$max_cor <- seq(0.15, 0.82, by = .01)
 kde.evenness.4$lwr <- kde.evenness.4$fit - kde.evenness.4$se.fit
 kde.evenness.4$upr <- kde.evenness.4$fit + kde.evenness.4$se.fit
-kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr4, new.df))
-kde.dispersion.4$max_cor <- seq(-.02, .92, by = .01)
+kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr4, new.df4))
+kde.dispersion.4$max_cor <- seq(0.15, 0.82, by = .01)
 kde.dispersion.4$lwr <- kde.dispersion.4$fit - kde.dispersion.4$se.fit
 kde.dispersion.4$upr <- kde.dispersion.4$fit + kde.dispersion.4$se.fit
 
@@ -770,6 +778,20 @@ A <- ggplot() +
   theme_pubr()
 
 B <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.1, alpha = 0.5, fill = "#9D8F0F") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.1, lwd = 2, color = "#9D8F0F") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
+  geom_point(aes(x = max_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
+  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
+  labs(x = "Maximum Trait-Trait Correlation", y = "KDE richness") +
+  theme_pubr()
+
+C <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fe.1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= max_cor, y = fit), data = fe.1, lwd = 2, color = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fe.2, alpha = 0.5, fill = "#731279") + 
@@ -783,7 +805,21 @@ B <- ggplot() +
   labs(x = "Maximum Trait-Trait Correlation", y = "FEve") +
   theme_pubr()
 
-C <-ggplot() + 
+D <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.1, alpha = 0.5, fill = "#9D8F0F") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.1, lwd = 2, color = "#9D8F0F") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
+  geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
+  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
+  labs(x = "Maximum Trait-Trait Correlation", y = "Kde Evenness") +
+  theme_pubr()
+
+E <-ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdis.1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= max_cor, y = fit), data = fdis.1, lwd = 2, color = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdis.2, alpha = 0.5, fill = "#731279") + 
@@ -797,7 +833,7 @@ C <-ggplot() +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDis") +
   theme_pubr()
 
-D <- ggplot() + 
+F <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdiv.1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= max_cor, y = fit), data = fdiv.1, lwd = 2, color = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdiv.2, alpha = 0.5, fill = "#731279") + 
@@ -811,7 +847,7 @@ D <- ggplot() +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDiv") +
   theme_pubr()
 
-E <- ggplot() + 
+G <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = rq.1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= max_cor, y = fit), data = rq.1, lwd = 2, color = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = rq.2, alpha = 0.5, fill = "#731279") + 
@@ -825,34 +861,6 @@ E <- ggplot() +
   labs(x = "Maximum Trait-Trait Correlation", y = "Rao Q") +
   theme_pubr()
 
-F <- ggplot() + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.1, alpha = 0.5, fill = "#9D8F0F") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
-  geom_point(aes(x = max_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.alpha") +
-  theme_pubr()
-
-G <- ggplot() + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.1, alpha = 0.5, fill = "#9D8F0F") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
-  geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.evenness") +
-  theme_pubr()
-
 H <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.dispersion.1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= max_cor, y = fit), data = kde.dispersion.1, lwd = 2, color = "#9D8F0F") + 
@@ -864,7 +872,7 @@ H <- ggplot() +
   geom_line(aes(x= max_cor, y = fit), data = kde.dispersion.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = max_cor, y = kde.dispersion, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.dispersion") +
+  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
 png(here("Figures/cdr_maxcor.png"), height = 5, width = 9, units = 'in', res = 300)
@@ -886,8 +894,9 @@ sev.full <- sev.full %>% group_by(community, max_cor) %>%
              FDis = mean(FDis, na.rm = TRUE), FDiv = mean(FDiv, na.rm = TRUE), 
              RaoQ = mean(RaoQ, na.rm = TRUE), kde.alpha = mean(kde.alpha), kde.evenness  = mean(kde.evenness), kde.dispersion = mean(kde.dispersion))
 
-new.df <- data.frame(max_cor = seq(-0.03, .6, by = 0.01))
 
+range(cdr.2$max_cor)
+new.df2 <- data.frame(max_cor = seq(-0.014, 0.91, by = 0.01))
 fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df))
 fr.blue$max_cor <- seq(-0.03, .6, by = 0.01)
 fr.blue$lwr <- fr.blue$fit - fr.blue$se.fit
@@ -921,7 +930,8 @@ kde.dispersion.blue$max_cor <- seq(-0.03, .6, by = .01)
 kde.dispersion.blue$lwr <- kde.dispersion.blue$fit - kde.dispersion.blue$se.fit
 kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
 
-
+range(cdr.2$max_cor)
+new.df2 <- data.frame(max_cor = seq(-0.014, 0.91, by = 0.01))
 fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df))
 fr.black$max_cor <- seq(-0.03, .6, by = .01)
 fr.black$lwr <- fr.black$fit - fr.black$se.fit
