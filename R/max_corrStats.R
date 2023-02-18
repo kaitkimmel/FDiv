@@ -775,6 +775,7 @@ A <- ggplot() +
   geom_point(aes(x = max_cor, y = FRic, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FRich") +
+  guides(color = "none") +
   theme_pubr()
 
 B <- ggplot() + 
@@ -789,6 +790,7 @@ B <- ggplot() +
   geom_point(aes(x = max_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE richness") +
+  guides(color = "none") +
   theme_pubr()
 
 C <- ggplot() + 
@@ -803,6 +805,7 @@ C <- ggplot() +
   geom_point(aes(x = max_cor, y = FEve, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FEve") +
+  guides(color = "none") +
   theme_pubr()
 
 D <- ggplot() + 
@@ -817,6 +820,7 @@ D <- ggplot() +
   geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "Kde Evenness") +
+  guides(color = "none") +
   theme_pubr()
 
 E <-ggplot() + 
@@ -831,6 +835,7 @@ E <-ggplot() +
   geom_point(aes(x = max_cor, y = FDis, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDis") +
+  guides(color = "none") +
   theme_pubr()
 
 F <- ggplot() + 
@@ -845,6 +850,7 @@ F <- ggplot() +
   geom_point(aes(x = max_cor, y = FDiv, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDiv") +
+  guides(color = "none") +
   theme_pubr()
 
 G <- ggplot() + 
@@ -859,6 +865,7 @@ G <- ggplot() +
   geom_point(aes(x = max_cor, y = RaoQ, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "Rao Q") +
+  guides(color = "none") +
   theme_pubr()
 
 H <- ggplot() + 
@@ -873,6 +880,7 @@ H <- ggplot() +
   geom_point(aes(x = max_cor, y = kde.dispersion, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE Dispersion") +
+  guides(color = "none") +
   theme_pubr()
 
 png(here("Figures/cdr_maxcor.png"), height = 5, width = 9, units = 'in', res = 300)
@@ -895,77 +903,77 @@ sev.full <- sev.full %>% group_by(community, max_cor) %>%
              RaoQ = mean(RaoQ, na.rm = TRUE), kde.alpha = mean(kde.alpha), kde.evenness  = mean(kde.evenness), kde.dispersion = mean(kde.dispersion))
 
 
-range(cdr.2$max_cor)
-new.df2 <- data.frame(max_cor = seq(-0.014, 0.91, by = 0.01))
-fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df))
-fr.blue$max_cor <- seq(-0.03, .6, by = 0.01)
+range(sev.blue$max_cor)
+new.df5 <- data.frame(max_cor = seq(-0.024, 0.5, by = 0.01))
+fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df5))
+fr.blue$max_cor <- seq(-0.024, 0.5, by = 0.01)
 fr.blue$lwr <- fr.blue$fit - fr.blue$se.fit
 fr.blue$upr <- fr.blue$fit + fr.blue$se.fit
-fe.blue <- as.data.frame(predictSE.lme(fevemod_blue, new.df))
-fe.blue$max_cor <- seq(-0.03, .6, by = 0.01)
+fe.blue <- as.data.frame(predictSE.lme(fevemod_blue, new.df5))
+fe.blue$max_cor <- seq(-0.024, 0.5, by = 0.01)
 fe.blue$lwr <- fe.blue$fit - fe.blue$se.fit
 fe.blue$upr <- fe.blue$fit + fe.blue$se.fit
-fdis.blue <- as.data.frame(predictSE.lme(fdismod_blue, new.df))
-fdis.blue$max_cor <- seq(-0.03, .6, by = 0.01)
+fdis.blue <- as.data.frame(predictSE.lme(fdismod_blue, new.df5))
+fdis.blue$max_cor <- seq(-0.024, 0.5, by = 0.01)
 fdis.blue$lwr <- fdis.blue$fit - fdis.blue$se.fit
 fdis.blue$upr <- fdis.blue$fit + fdis.blue$se.fit
-fdiv.blue <- as.data.frame(predictSE.lme(fdivmod_blue, new.df))
-fdiv.blue$max_cor <- seq(-0.03, .6, by = 0.01)
+fdiv.blue <- as.data.frame(predictSE.lme(fdivmod_blue, new.df5))
+fdiv.blue$max_cor <- seq(-0.024, 0.5, by = 0.01)
 fdiv.blue$lwr <- fdiv.blue$fit - fdiv.blue$se.fit
 fdiv.blue$upr <- fdiv.blue$fit + fdiv.blue$se.fit
-rq.blue <- as.data.frame(predictSE.lme(raoqmod_blue, new.df))
-rq.blue$max_cor <- seq(-0.03, .6, by = 0.01)
+rq.blue <- as.data.frame(predictSE.lme(raoqmod_blue, new.df5))
+rq.blue$max_cor <- seq(-0.024, 0.5, by = 0.01)
 rq.blue$lwr <- rq.blue$fit - rq.blue$se.fit
 rq.blue$upr <- rq.blue$fit + rq.blue$se.fit
-kde.alpha.blue <- as.data.frame(predictSE.lme(kde.alphamod_blue, new.df))
-kde.alpha.blue$max_cor <- seq(-0.03, .6, by = .01)
+kde.alpha.blue <- as.data.frame(predictSE.lme(kde.alphamod_blue, new.df5))
+kde.alpha.blue$max_cor <- seq(-0.024, 0.5, by = .01)
 kde.alpha.blue$lwr <- kde.alpha.blue$fit - kde.alpha.blue$se.fit
 kde.alpha.blue$upr <- kde.alpha.blue$fit + kde.alpha.blue$se.fit
-kde.evenness.blue <- as.data.frame(predictSE.lme(kde.evennessmod_blue, new.df))
-kde.evenness.blue$max_cor <- seq(-0.03, .6, by = .01)
+kde.evenness.blue <- as.data.frame(predictSE.lme(kde.evennessmod_blue, new.df5))
+kde.evenness.blue$max_cor <- seq(-0.024, 0.5, by = .01)
 kde.evenness.blue$lwr <- kde.evenness.blue$fit - kde.evenness.blue$se.fit
 kde.evenness.blue$upr <- kde.evenness.blue$fit + kde.evenness.blue$se.fit
-kde.dispersion.blue <- as.data.frame(predictSE.lme(kde.dispersionmod_blue, new.df))
-kde.dispersion.blue$max_cor <- seq(-0.03, .6, by = .01)
+kde.dispersion.blue <- as.data.frame(predictSE.lme(kde.dispersionmod_blue, new.df5))
+kde.dispersion.blue$max_cor <- seq(-0.024, 0.5, by = .01)
 kde.dispersion.blue$lwr <- kde.dispersion.blue$fit - kde.dispersion.blue$se.fit
 kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
 
-range(cdr.2$max_cor)
-new.df2 <- data.frame(max_cor = seq(-0.014, 0.91, by = 0.01))
-fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df))
-fr.black$max_cor <- seq(-0.03, .6, by = .01)
+range(sev.black$max_cor)
+new.df6 <- data.frame(max_cor = seq(0.14, 0.58, by = 0.01))
+fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df6))
+fr.black$max_cor <- seq(0.14, 0.58, by = .01)
 fr.black$lwr <- fr.black$fit - fr.black$se.fit
 fr.black$upr <- fr.black$fit + fr.black$se.fit
-fe.black <- as.data.frame(predictSE.lme(fevemod_black, new.df))
-fe.black$max_cor <- seq(-0.03, .6, by = .01)
+fe.black <- as.data.frame(predictSE.lme(fevemod_black, new.df6))
+fe.black$max_cor <- seq(0.14, 0.58, by = .01)
 fe.black$lwr <- fe.black$fit - fe.black$se.fit
 fe.black$upr <- fe.black$fit + fe.black$se.fit
-fdis.black <- as.data.frame(predictSE.lme(fdismod_black, new.df))
-fdis.black$max_cor <- seq(-0.03, .6, by = .01)
+fdis.black <- as.data.frame(predictSE.lme(fdismod_black, new.df6))
+fdis.black$max_cor <- seq(0.14, 0.58, by = .01)
 fdis.black$lwr <- fdis.black$fit - fdis.black$se.fit
 fdis.black$upr <- fdis.black$fit + fdis.black$se.fit
-fdiv.black <- as.data.frame(predictSE.lme(fdivmod_black, new.df))
-fdiv.black$max_cor <- seq(-0.03, .6, by = .01)
+fdiv.black <- as.data.frame(predictSE.lme(fdivmod_black, new.df6))
+fdiv.black$max_cor <- seq(0.14, 0.58, by = .01)
 fdiv.black$lwr <- fdiv.black$fit - fdiv.black$se.fit
 fdiv.black$upr <- fdiv.black$fit + fdiv.black$se.fit
-rq.black <- as.data.frame(predictSE.lme(raoqmod_black, new.df))
-rq.black$max_cor <- seq(-0.03, .6, by = .01)
+rq.black <- as.data.frame(predictSE.lme(raoqmod_black, new.df6))
+rq.black$max_cor <- seq(0.14, 0.58, by = .01)
 rq.black$lwr <- rq.black$fit - rq.black$se.fit
 rq.black$upr <- rq.black$fit + rq.black$se.fit
-kde.alpha.black <- as.data.frame(predictSE.lme(kde.alphamod_black, new.df))
-kde.alpha.black$max_cor <- seq(-0.03, .6, by = .01)
+kde.alpha.black <- as.data.frame(predictSE.lme(kde.alphamod_black, new.df6))
+kde.alpha.black$max_cor <- seq(0.14, 0.58, by = .01)
 kde.alpha.black$lwr <- kde.alpha.black$fit - kde.alpha.black$se.fit
 kde.alpha.black$upr <- kde.alpha.black$fit + kde.alpha.black$se.fit
-kde.evenness.black <- as.data.frame(predictSE.lme(kde.evennessmod_black, new.df))
-kde.evenness.black$max_cor <- seq(-0.03, .6, by = .01)
+kde.evenness.black <- as.data.frame(predictSE.lme(kde.evennessmod_black, new.df6))
+kde.evenness.black$max_cor <- seq(0.14, 0.58, by = .01)
 kde.evenness.black$lwr <- kde.evenness.black$fit - kde.evenness.black$se.fit
 kde.evenness.black$upr <- kde.evenness.black$fit + kde.evenness.black$se.fit
-kde.dispersion.black <- as.data.frame(predictSE.lme(kde.dispersionmod_black, new.df))
-kde.dispersion.black$max_cor <- seq(-0.03, .6, by = .01)
+kde.dispersion.black <- as.data.frame(predictSE.lme(kde.dispersionmod_black, new.df6))
+kde.dispersion.black$max_cor <- seq(0.14, 0.58, by = .01)
 kde.dispersion.black$lwr <- kde.dispersion.black$fit - kde.dispersion.black$se.fit
 kde.dispersion.black$upr <- kde.dispersion.black$fit + kde.dispersion.black$se.fit
 
-A <- ggplot() + 
+AA <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fr.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = fr.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fr.black, alpha = 0.5, fill = "black") + 
@@ -973,9 +981,21 @@ A <- ggplot() +
   geom_point(aes(x = max_cor, y = FRic, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FRich") +
+  guides(color = "none") +
   theme_pubr()
 
-B <- ggplot() + 
+BB <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.blue, alpha = 0.5, fill = "navyblue") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.blue, lwd = 2, color = "navyblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.black, alpha = 0.5, fill = "black") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
+  geom_point(aes(x = max_cor, y = kde.alpha, color = community), data = sev.full, size = 3) + 
+  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
+  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Richness") +
+  guides(color = "none") +
+  theme_pubr()
+
+CC <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fe.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = fe.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fe.black, alpha = 0.5, fill = "black") + 
@@ -983,9 +1003,21 @@ B <- ggplot() +
   geom_point(aes(x = max_cor, y = FEve, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FEve") +
+  guides(color = "none") +
   theme_pubr()
 
-C <- ggplot() + 
+DD <- ggplot() + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.blue, alpha = 0.5, fill = "navyblue") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.blue, lwd = 2, color = "navyblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.black, alpha = 0.5, fill = "black") + 
+  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
+  geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = sev.full, size = 3) + 
+  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
+  labs(x = "maximum Trait-Trait Correlation", y = "KDE Evenness") +
+  guides(color = "none") +
+  theme_pubr()
+
+EE <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdis.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = fdis.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdis.black, alpha = 0.5, fill = "black") + 
@@ -993,9 +1025,10 @@ C <- ggplot() +
   geom_point(aes(x = max_cor, y = FDis, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDis") +
+  guides(color = "none") +
   theme_pubr()
 
-D <- ggplot() + 
+FF <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdiv.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = fdiv.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = fdiv.black, alpha = 0.5, fill = "black") + 
@@ -1003,9 +1036,10 @@ D <- ggplot() +
   geom_point(aes(x = max_cor, y = FDiv, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDiv") +
+  guides(color = "none") +
   theme_pubr()
 
-E <- ggplot() + 
+GG <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = rq.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = rq.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = rq.black, alpha = 0.5, fill = "black") + 
@@ -1013,42 +1047,30 @@ E <- ggplot() +
   geom_point(aes(x = max_cor, y = RaoQ, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "Rao Q") +
+  guides(color = "none") +
   theme_pubr()
 
-F <- ggplot() + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.blue, alpha = 0.5, fill = "navyblue") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.blue, lwd = 2, color = "navyblue") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.alpha.black, alpha = 0.5, fill = "black") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
-  geom_point(aes(x = max_cor, y = kde.alpha, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.alpha") +
-  theme_pubr()
 
-G <- ggplot() + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.blue, alpha = 0.5, fill = "navyblue") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.blue, lwd = 2, color = "navyblue") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.evenness.black, alpha = 0.5, fill = "black") + 
-  geom_line(aes(x= max_cor, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
-  geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.evenness") +
-  theme_pubr()
-
-H <- ggplot() + 
+HH <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.dispersion.blue, alpha = 0.5, fill = "navyblue") + 
   geom_line(aes(x= max_cor, y = fit), data = kde.dispersion.blue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = max_cor), data = kde.dispersion.black, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= max_cor, y = fit), data = kde.dispersion.black, lwd = 2, color = "black") + 
   geom_point(aes(x = max_cor, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "maximum Trait-Trait Correlation", y = "kde.dispersion") +
+  guides(color = "none") +
+  labs(x = "maximum Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
 png(here("Figures/Sev_maxcorr.png"), height = 5, width = 9, units = 'in', res = 300)
-ggarrange(plotlist = list(A, B, C, D, E, F, G, H), common.legend = TRUE, 
+ggarrange(plotlist = list(AA, BB, CC, DD, EE, FF, GG, HH), common.legend = TRUE, 
           labels = c("A", "B", "C", "D", "E", "F", "G", "H"))
 dev.off()
 
 
+png(here("Figures/max_corr.png"), height = 8, width = 12, units = 'in', res = 300)
+ggarrange(plotlist = list(A, AA, B, BB, C, CC, D, DD, E, EE, F, FF, G, GG, H, HH), 
+          labels = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
+                     "O", "P"), ncol = 4, nrow = 4, common.legend = TRUE, align = "hv")
+dev.off()
 
