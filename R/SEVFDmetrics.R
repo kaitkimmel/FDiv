@@ -131,7 +131,6 @@ for(j in 1:length(trait_comb_list)){
 
 df.outblack <- df.outblack[-which(is.na(df.outblack)),]
 
-
 #### BLUE ####
 # get all combinations of traits
 trait_comb_list1 <- list()
@@ -192,9 +191,73 @@ for(j in 1:length(trait_comb_list)){
 
 df.outblue <- df.outblue[-which(is.na(df.outblue)),]
 
+
+#########################################
+##### SENSITIVITY ANALYSES ##############
+########################################
+trait.list <- trait_comb_list[c(3:9)]
+
+
+#### BLACK ####
+# Create dataframe to store metrics
+df.outblack.sen <- data.frame(FRich = NA, m = NA, sev.blackplots = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list)){
+  focal_list <- trait.list[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = sev.black2
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, sev.blackplots)
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.outblack.sen <- rbind(df.outblack.sen, temp)
+    }
+    
+  }
+}
+
+df.outblack.sen <- df.outblack.sen[-which(is.na(df.outblack.sen)),]
+
+
+#### BLUE ####
+trait.list1 <- trait_comb_list1[c(3:9)]
+# Create dataframe to store metrics
+df.outblue.sen <- data.frame(FRich = NA, m = NA, sev.blueplots = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list1)){
+  focal_list <- trait.list1[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = sev.blue2
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, sev.blueplots)
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.outblue.sen <- rbind(df.outblue.sen, temp)
+    }
+    
+  }
+}
+
+df.outblue.sen <- df.outblue.sen[-which(is.na(df.outblue.sen)),]
+
 #### SAVE OUTPUT FOR ANALYSIS
 
 write.csv(df.outblack, here("data/Cleaned/sevblack.csv"), row.names = FALSE)
 write.csv(df.outblue, here("data/Cleaned/sevblue.csv"), row.names = FALSE)
+
+write.csv(df.outblack.sen, here("data/Cleaned/sevblack_sen.csv"), row.names = FALSE)
+write.csv(df.outblue.sen, here("data/Cleaned/sevblue_sen.csv"), row.names = FALSE)
 
 

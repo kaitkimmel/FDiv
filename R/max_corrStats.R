@@ -812,7 +812,7 @@ D <- ggplot() +
   geom_line(aes(x= max_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = max_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "Kde Evenness") +
+  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Evenness") +
   guides(color = "none") +
   theme_pubr()
 

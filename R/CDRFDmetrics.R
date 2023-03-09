@@ -130,7 +130,7 @@ for(j in 1:length(trait_comb_list2)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[2]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -178,7 +178,7 @@ for(j in 1:length(trait_comb_list3)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[3]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -227,7 +227,7 @@ for(j in 1:length(trait_comb_list4)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[4]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -246,9 +246,122 @@ for(j in 1:length(trait_comb_list4)){
 
 df.out4 <- df.out4[-which(is.na(df.out4)),]
 ###
+
+#### SENSTITIVY ANALYSES ####
+
+trait.list1 <- trait_comb_list[c(3:8)]
+# Create dataframe to store metrics
+df.out1.sen <- data.frame(FRich = NA, m = NA, Ring = NA, Plot = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list1)){
+  focal_list <- trait.list1[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = comm_list[[1]]
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, enviro_list[[1]])
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.out1.sen <- rbind(df.out1.sen, temp)
+    }
+    
+  }
+}
+
+df.out1.sen <- df.out1.sen[-which(is.na(df.out1.sen)),]
+
+trait.list2 <- trait_comb_list2[c(3:8)]
+# Create dataframe to store metrics
+df.out2.sen <- data.frame(FRich = NA, m = NA, Ring = NA, Plot = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list2)){
+  focal_list <- trait.list2[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = comm_list[[2]]
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, enviro_list[[2]])
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.out2.sen <- rbind(df.out2.sen, temp)
+    }
+    
+  }
+}
+
+df.out2.sen <- df.out2.sen[-which(is.na(df.out2.sen)),]
+
+trait.list1 <- trait_comb_list1[c(3:8)]
+# Create dataframe to store metrics
+df.out3.sen <- data.frame(FRich = NA, m = NA, Ring = NA, Plot = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list3)){
+  focal_list <- trait.list3[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = comm_list[[3]]
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, enviro_list[[3]])
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.out3.sen <- rbind(df.out3.sen, temp)
+    }
+    
+  }
+}
+
+df.out3.sen <- df.out3.sen[-which(is.na(df.out3.sen)),]
+
+trait.list4 <- trait_comb_list4[c(3:8)]
+# Create dataframe to store metrics
+df.out4.sen <- data.frame(FRich = NA, m = NA, Ring = NA, Plot = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list4)){
+  focal_list <- trait.list4[[j]]
+  for (i in 1:length(focal_list)){
+    x = gowdis(focal_list[[i]])
+    a = comm_list[[4]]
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, enviro_list[[4]])
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.out4.sen <- rbind(df.out4.sen, temp)
+    }
+    
+  }
+}
+
+df.out4.sen <- df.out4.sen[-which(is.na(df.out4.sen)),]
 #### SAVE OUTPUT FOR ANALYSIS
 
 write.csv(df.out1, here("data/Cleaned/cdr1.csv"), row.names = FALSE)
 write.csv(df.out2, here("data/Cleaned/cdr2.csv"), row.names = FALSE)
 write.csv(df.out3, here("data/Cleaned/cdr3.csv"), row.names = FALSE)
 write.csv(df.out4, here("data/Cleaned/cdr4.csv"), row.names = FALSE)
+
+write.csv(df.out1.sen, here("data/Cleaned/cdr1_sen.csv"), row.names = FALSE)
+write.csv(df.out2.sen, here("data/Cleaned/cdr2_sen.csv"), row.names = FALSE)
+write.csv(df.out3.sen, here("data/Cleaned/cdr3_sen.csv"), row.names = FALSE)
+write.csv(df.out4.sen, here("data/Cleaned/cdr4_sen.csv"), row.names = FALSE)
+
+
