@@ -28,6 +28,14 @@ sev.blue <- sev.blue[-which(is.na(sev.blue$max_cor)),]
 sev.black <- read.csv(here("data/Cleaned/sevblack.csv"))
 sev.black <- sev.black[-which(is.na(sev.black$max_cor)),]
 
+#absolute value of correlations
+cdr.1$max_cor <- abs(cdr.1$max_cor)
+cdr.2$max_cor <- abs(cdr.2$max_cor)
+cdr.3$max_cor <- abs(cdr.3$max_cor)
+cdr.4$max_cor <- abs(cdr.4$max_cor)
+sev.blue$max_cor <- abs(sev.blue$max_cor)
+sev.black$max_cor <- abs(sev.black$max_cor)
+
 #############################################################
 ################ SEV #######################################
 ###########################################################

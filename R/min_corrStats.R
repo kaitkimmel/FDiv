@@ -28,6 +28,15 @@ sev.blue <- sev.blue[-which(is.na(sev.blue$min_cor)),]
 sev.black <- read.csv(here("data/Cleaned/sevblack.csv"))
 sev.black <- sev.black[-which(is.na(sev.black$min_cor)),]
 
+#absolute value of correlations
+cdr.1$min_cor <- abs(cdr.1$min_cor)
+cdr.2$min_cor <- abs(cdr.2$min_cor)
+cdr.3$min_cor <- abs(cdr.3$min_cor)
+cdr.4$min_cor <- abs(cdr.4$min_cor)
+sev.blue$min_cor <- abs(sev.blue$min_cor)
+sev.black$min_cor <- abs(sev.black$min_cor)
+
+
 #############################################################
 ################ SEV #######################################
 ###########################################################
