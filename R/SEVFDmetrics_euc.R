@@ -5,6 +5,7 @@
 # CREATED BY: KAITLIN KIMMEL
 
 # load libraries
+library(BAT)
 library(FD)
 library(here)
 source("http://www.sthda.com/upload/rquery_cormat.r")

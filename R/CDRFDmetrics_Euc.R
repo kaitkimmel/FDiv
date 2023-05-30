@@ -7,6 +7,7 @@
 # load libraries
 library(FD)
 library(here)
+library(BAT)
 source("http://www.sthda.com/upload/rquery_cormat.r")
 
 # load data
