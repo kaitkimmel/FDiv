@@ -111,9 +111,9 @@ for(j in 1:length(trait_comb_list)){
     if(ncol(focal_list[[i]]) == 4){
       if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-        temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-        temp$min_cor <- min(temp.cor$r$cor)
-        temp$max_cor <- max(temp.cor$r$cor)
+        temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+        temp$min_cor <- min(abs(temp.cor$r$cor))
+        temp$max_cor <- max(abs(temp.cor$r$cor))
       }
       else {
         temp$mean_cor <- NA
@@ -171,9 +171,9 @@ for(j in 1:length(trait_comb_list)){
     if(ncol(focal_list[[i]]) == 4){
       if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
         temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-        temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-        temp$min_cor <- min(temp.cor$r$cor)
-        temp$max_cor <- max(temp.cor$r$cor)
+        temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+        temp$min_cor <- min(abs(temp.cor$r$cor))
+        temp$max_cor <- max(abs(temp.cor$r$cor))
       }
       else {
         temp$mean_cor <- NA
