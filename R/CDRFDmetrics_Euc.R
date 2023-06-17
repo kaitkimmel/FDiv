@@ -130,7 +130,7 @@ for(j in 1:length(trait_comb_list2)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[2]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -180,7 +180,7 @@ for(j in 1:length(trait_comb_list3)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[3]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -231,7 +231,7 @@ for(j in 1:length(trait_comb_list4)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[4]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -256,3 +256,35 @@ write.csv(df.out1, here("data/Cleaned/cdr1_euc.csv"), row.names = FALSE)
 write.csv(df.out2, here("data/Cleaned/cdr2_euc.csv"), row.names = FALSE)
 write.csv(df.out3, here("data/Cleaned/cdr3_euc.csv"), row.names = FALSE)
 write.csv(df.out4, here("data/Cleaned/cdr4_euc.csv"), row.names = FALSE)
+
+
+
+##### CALCULATE FRich FOR m = 2,3,&4 ####
+
+trait.list <- trait_comb_list[c(3:8)]
+
+df.out1.sen <- data.frame(FRich = NA, m = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, SR = NA)
+
+
+# Loop to run through different trait combinations
+for(j in 1:length(trait.list)){
+  focal_list <- trait.list[[j]]
+  for (i in 1:length(focal_list)){
+    x = focal_list[[i]]
+    a = comm_list[[1]]
+    for(k in c(2:4)){
+      out <- dbFD(x, a, m = k) 
+      temp <- data.frame(SR = out$nbsp, FRich = out$FRic)
+      temp <- cbind(temp, enviro_list[[1]])
+      temp$n_trait = ncol(focal_list[[i]])
+      temp$traits = i
+      temp$m = k
+      df.out1.sen <- rbind(df.out1.sen, temp)
+    }
+    
+  }
+}
+
+df.outblack.sen <- df.outblack.sen[-which(is.na(df.outblack.sen)),]
+
+### Looks like this is always removing axes to make m = 2. Requires more species than traits

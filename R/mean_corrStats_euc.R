@@ -836,7 +836,7 @@ B <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Richness") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Richness") +
   theme_pubr()
 
 C <- ggplot() + 
@@ -850,7 +850,7 @@ C <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Evenness") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Evenness") +
   theme_pubr()
 
 H <- ggplot() + 
@@ -864,7 +864,7 @@ H <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = cdr.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Dispersion") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
 png(here("Figures/cdr_meancor_euc.png"), height = 5, width = 9, units = 'in', res = 300)
@@ -1013,7 +1013,7 @@ BB <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.alpha, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Richness") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Richness") +
   theme_pubr()
 
 DD <- ggplot() + 
@@ -1023,7 +1023,7 @@ DD <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.evenness, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Evenness") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Evenness") +
   theme_pubr()
 
 HH <- ggplot() + 
@@ -1033,7 +1033,7 @@ HH <- ggplot() +
   geom_line(aes(x= mean_cor, y = fit), data = kde.dispersion.black, lwd = 2, color = "black") + 
   geom_point(aes(x = mean_cor, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
-  labs(x = "Number of Traits", y = "KDE Dispersion") +
+  labs(x = "Mean Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
 png(here("Figures/Sev_meancorr_euc.png"), height = 5, width = 9, units = 'in', res = 300)
