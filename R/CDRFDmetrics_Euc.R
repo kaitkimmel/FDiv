@@ -7,6 +7,7 @@
 # load libraries
 library(FD)
 library(here)
+library(BAT)
 source("http://www.sthda.com/upload/rquery_cormat.r")
 
 # load data
@@ -86,9 +87,9 @@ for(j in 1:length(trait_comb_list)){
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
       temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-      temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-      temp$min_cor <- min(temp.cor$r$cor)
-      temp$max_cor <- max(temp.cor$r$cor)
+      temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+      temp$min_cor <- min(abs(temp.cor$r$cor))
+      temp$max_cor <- max(abs(temp.cor$r$cor))
     } else {
       temp$mean_cor <- NA
       temp$min_cor <- NA
@@ -135,9 +136,9 @@ for(j in 1:length(trait_comb_list2)){
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
       temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-      temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-      temp$min_cor <- min(temp.cor$r$cor)
-      temp$max_cor <- max(temp.cor$r$cor)
+      temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+      temp$min_cor <- min(abs(temp.cor$r$cor))
+      temp$max_cor <- max(abs(temp.cor$r$cor))
     } else {
       temp$mean_cor <- NA
       temp$min_cor <- NA
@@ -185,9 +186,9 @@ for(j in 1:length(trait_comb_list3)){
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
       temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-      temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-      temp$min_cor <- min(temp.cor$r$cor)
-      temp$max_cor <- max(temp.cor$r$cor)
+      temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+      temp$min_cor <- min(abs(temp.cor$r$cor))
+      temp$max_cor <- max(abs(temp.cor$r$cor))
     } else {
       temp$mean_cor <- NA
       temp$min_cor <- NA
@@ -236,9 +237,9 @@ for(j in 1:length(trait_comb_list4)){
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
       temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-      temp$mean_cor <- mean(temp.cor$r$cor) # USE ABSOLUTE VALUES? 
-      temp$min_cor <- min(temp.cor$r$cor)
-      temp$max_cor <- max(temp.cor$r$cor)
+      temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+      temp$min_cor <- min(abs(temp.cor$r$cor))
+      temp$max_cor <- max(abs(temp.cor$r$cor))
     } else {
       temp$mean_cor <- NA
       temp$min_cor <- NA
