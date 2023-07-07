@@ -648,10 +648,10 @@ summary(raoqmod_cdr4)
 
 
 # create combined data set of raw data
-cdr.1$community <- "ambient"
-cdr.2$community <- "elevated_N"
-cdr.3$community <- "elevated_CO2"
-cdr.4$community <- "elevated_N_CO2"
+cdr.1$community <- "CDR1"
+cdr.2$community <- "CDR2"
+cdr.3$community <- "CDR3"
+cdr.4$community <- "CDR4"
 cdr.full <- rbind(cdr.1, cdr.2, cdr.3, cdr.4)
 
 cdr.full <- cdr.full %>% group_by(community, min_cor) %>%
