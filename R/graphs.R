@@ -924,7 +924,7 @@ kdedispersion_e <- ggplot() +
   theme_pubr()
 
 
-png(here('Figures/n_trait_full.png'), height = 9, width = 10, units = 'in', res = 150)
+png(here('Figures/n_trait_full.png'), height = 9, width = 12, units = 'in', res = 150)
 ggarrange(plotlist = list(Frich_g, Frich_e, kderichness_g, kderichness_e, FEve_g, FEve_e, 
                           kdeevenness_g, kdeevenness_e, FDis_g, FDis_e, FDiv_g, FDiv_e, 
                           RaoQ_g, RaoQ_e, kdedispersion_g, kdedispersion_e), ncol = 4, nrow = 4, 
