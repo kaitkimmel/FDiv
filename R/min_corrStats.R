@@ -663,142 +663,142 @@ cdr.full <- cdr.full %>% group_by(community, min_cor) %>%
 ############## CDR 1 ########################
 #############################################
 range(cdr.1$min_cor)
-new.df1 <- data.frame(min_cor = seq(-0.83, 0.45, by = 0.01))
+new.df1 <- data.frame(min_cor = seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01))
 fr.1 <- as.data.frame(predictSE.lme(fricmod_cdr1, new.df1))
-fr.1$min_cor <- seq(-0.83, 0.45, by = 0.01)
+fr.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01)
 fr.1$lwr <- fr.1$fit - fr.1$se.fit
 fr.1$upr <- fr.1$fit + fr.1$se.fit
 fe.1 <- as.data.frame(predictSE.lme(fevemod_cdr1, new.df1))
-fe.1$min_cor <- seq(-0.83, 0.45, by = 0.01)
+fe.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01)
 fe.1$lwr <- fe.1$fit - fe.1$se.fit
 fe.1$upr <- fe.1$fit + fe.1$se.fit
 fdis.1 <- as.data.frame(predictSE.lme(fdismod_cdr1, new.df1))
-fdis.1$min_cor <- seq(-0.83, 0.45, by = 0.01)
+fdis.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01)
 fdis.1$lwr <- fdis.1$fit - fdis.1$se.fit
 fdis.1$upr <- fdis.1$fit + fdis.1$se.fit
 fdiv.1 <- as.data.frame(predictSE.lme(fdivmod_cdr1, new.df1))
-fdiv.1$min_cor <- seq(-0.83, 0.45, by = 0.01)
+fdiv.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01)
 fdiv.1$lwr <- fdiv.1$fit - fdiv.1$se.fit
 fdiv.1$upr <- fdiv.1$fit + fdiv.1$se.fit
 rq.1 <- as.data.frame(predictSE.lme(raoqmod_cdr1, new.df1))
-rq.1$min_cor <- seq(-0.83, 0.45, by = 0.01)
+rq.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = 0.01)
 rq.1$lwr <- rq.1$fit - rq.1$se.fit
 rq.1$upr <- rq.1$fit + rq.1$se.fit
 kde.alpha.1 <- as.data.frame(predictSE.lme(kde.alphamod_cdr1, new.df1))
-kde.alpha.1$min_cor <- seq(-0.83, 0.45, by = .01)
+kde.alpha.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = .01)
 kde.alpha.1$lwr <- kde.alpha.1$fit - kde.alpha.1$se.fit
 kde.alpha.1$upr <- kde.alpha.1$fit + kde.alpha.1$se.fit
 kde.evenness.1 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr1, new.df1))
-kde.evenness.1$min_cor <- seq(-0.83, 0.45, by = .01)
+kde.evenness.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = .01)
 kde.evenness.1$lwr <- kde.evenness.1$fit - kde.evenness.1$se.fit
 kde.evenness.1$upr <- kde.evenness.1$fit + kde.evenness.1$se.fit
 kde.dispersion.1 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr1, new.df1))
-kde.dispersion.1$min_cor <- seq(-0.83, 0.45, by = .01)
+kde.dispersion.1$min_cor <- seq(min(cdr.1$min_cor), max(cdr.1$min_cor), by = .01)
 kde.dispersion.1$lwr <- kde.dispersion.1$fit - kde.dispersion.1$se.fit
 kde.dispersion.1$upr <- kde.dispersion.1$fit + kde.dispersion.1$se.fit
 
 range(cdr.2$min_cor)
-new.df2 <- data.frame(min_cor = seq(-0.74, 0.61, by = 0.01))
+new.df2 <- data.frame(min_cor = seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = 0.01))
 fr.2 <- as.data.frame(predictSE.lme(fricmod_cdr2, new.df2))
-fr.2$min_cor <- seq(-0.74, 0.61, by = .01)
+fr.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 fr.2$lwr <- fr.2$fit - fr.2$se.fit
 fr.2$upr <- fr.2$fit + fr.2$se.fit
 fe.2 <- as.data.frame(predictSE.lme(fevemod_cdr2, new.df2))
-fe.2$min_cor <- seq(-0.74, 0.61, by = .01)
+fe.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 fe.2$lwr <- fe.2$fit - fe.2$se.fit
 fe.2$upr <- fe.2$fit + fe.2$se.fit
 fdis.2 <- as.data.frame(predictSE.lme(fdismod_cdr2, new.df2))
-fdis.2$min_cor <- seq(-0.74, 0.61, by = .01)
+fdis.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 fdis.2$lwr <- fdis.2$fit - fdis.2$se.fit
 fdis.2$upr <- fdis.2$fit + fdis.2$se.fit
 fdiv.2 <- as.data.frame(predictSE.lme(fdivmod_cdr2, new.df2))
-fdiv.2$min_cor <- seq(-0.74, 0.61, by = .01)
+fdiv.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 fdiv.2$lwr <- fdiv.2$fit - fdiv.2$se.fit
 fdiv.2$upr <- fdiv.2$fit + fdiv.2$se.fit
 rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdr2, new.df2))
-rq.2$min_cor <- seq(-0.74, 0.61, by = .01)
+rq.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 rq.2$lwr <- rq.2$fit - rq.2$se.fit
 rq.2$upr <- rq.2$fit + rq.2$se.fit
 kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdr2, new.df2))
-kde.alpha.2$min_cor <- seq(-0.74, 0.61, by = .01)
+kde.alpha.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 kde.alpha.2$lwr <- kde.alpha.2$fit - kde.alpha.2$se.fit
 kde.alpha.2$upr <- kde.alpha.2$fit + kde.alpha.2$se.fit
 kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr2, new.df2))
-kde.evenness.2$min_cor <- seq(-0.74, 0.61, by = .01)
+kde.evenness.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
 kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
 kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr2, new.df2))
-kde.dispersion.2$min_cor <- seq(-0.74, 0.61, by = .01)
+kde.dispersion.2$min_cor <- seq(min(cdr.2$min_cor), max(cdr.2$min_cor), by = .01)
 kde.dispersion.2$lwr <- kde.dispersion.2$fit - kde.dispersion.2$se.fit
 kde.dispersion.2$upr <- kde.dispersion.2$fit + kde.dispersion.2$se.fit
 
 range(cdr.3$min_cor)
-new.df3 <- data.frame(min_cor = seq(-0.62, 0.55, by = 0.01))
+new.df3 <- data.frame(min_cor = seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = 0.01))
 fr.3 <- as.data.frame(predictSE.lme(fricmod_cdr3, new.df3))
-fr.3$min_cor <- seq(-0.62, 0.55, by = .01)
+fr.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 fr.3$lwr <- fr.3$fit - fr.3$se.fit
 fr.3$upr <- fr.3$fit + fr.3$se.fit
 fe.3 <- as.data.frame(predictSE.lme(fevemod_cdr3, new.df3))
-fe.3$min_cor <- seq(-0.62, 0.55, by = .01)
+fe.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 fe.3$lwr <- fe.3$fit - fe.3$se.fit
 fe.3$upr <- fe.3$fit + fe.3$se.fit
 fdis.3 <- as.data.frame(predictSE.lme(fdismod_cdr3, new.df3))
-fdis.3$min_cor <- seq(-0.62, 0.55, by = .01)
+fdis.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 fdis.3$lwr <- fdis.3$fit - fdis.3$se.fit
 fdis.3$upr <- fdis.3$fit + fdis.3$se.fit
 fdiv.3 <- as.data.frame(predictSE.lme(fdivmod_cdr3, new.df3))
-fdiv.3$min_cor <- seq(-0.62, 0.55, by = .01)
+fdiv.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 fdiv.3$lwr <- fdiv.3$fit - fdiv.3$se.fit
 fdiv.3$upr <- fdiv.3$fit + fdiv.3$se.fit
 rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdr3, new.df3))
-rq.3$min_cor <- seq(-0.62, 0.55, by = .01)
+rq.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 rq.3$lwr <- rq.3$fit - rq.3$se.fit
 rq.3$upr <- rq.3$fit + rq.3$se.fit
 kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdr3, new.df3))
-kde.alpha.3$min_cor <- seq(-0.62, 0.55, by = .01)
+kde.alpha.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 kde.alpha.3$lwr <- kde.alpha.3$fit - kde.alpha.3$se.fit
 kde.alpha.3$upr <- kde.alpha.3$fit + kde.alpha.3$se.fit
 kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr3, new.df3))
-kde.evenness.3$min_cor <- seq(-0.62, 0.55, by = .01)
+kde.evenness.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
 kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
 kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr3, new.df3))
-kde.dispersion.3$min_cor <- seq(-0.62, 0.55, by = .01)
+kde.dispersion.3$min_cor <- seq(min(cdr.3$min_cor), max(cdr.3$min_cor), by = .01)
 kde.dispersion.3$lwr <- kde.dispersion.3$fit - kde.dispersion.3$se.fit
 kde.dispersion.3$upr <- kde.dispersion.3$fit + kde.dispersion.3$se.fit
 
 range(cdr.4$min_cor)
-new.df4 <- data.frame(min_cor = seq(-0.69, 0.46, by = 0.01))
+new.df4 <- data.frame(min_cor = seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = 0.01))
 fr.4 <- as.data.frame(predictSE.lme(fricmod_cdr4, new.df4))
-fr.4$min_cor <- seq(-0.69, 0.46, by = .01)
+fr.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 fr.4$lwr <- fr.4$fit - fr.4$se.fit
 fr.4$upr <- fr.4$fit + fr.4$se.fit
 fe.4 <- as.data.frame(predictSE.lme(fevemod_cdr4, new.df4))
-fe.4$min_cor <- seq(-0.69, 0.46, by = .01)
+fe.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 fe.4$lwr <- fe.4$fit - fe.4$se.fit
 fe.4$upr <- fe.4$fit + fe.4$se.fit
 fdis.4 <- as.data.frame(predictSE.lme(fdismod_cdr4, new.df4))
-fdis.4$min_cor <- seq(-0.69, 0.46, by = .01)
+fdis.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 fdis.4$lwr <- fdis.4$fit - fdis.4$se.fit
 fdis.4$upr <- fdis.4$fit + fdis.4$se.fit
 fdiv.4 <- as.data.frame(predictSE.lme(fdivmod_cdr4, new.df4))
-fdiv.4$min_cor <- seq(-0.69, 0.46, by = .01)
+fdiv.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 fdiv.4$lwr <- fdiv.4$fit - fdiv.4$se.fit
 fdiv.4$upr <- fdiv.4$fit + fdiv.4$se.fit
 rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdr4, new.df4))
-rq.4$min_cor <- seq(-0.69, 0.46, by = .01)
+rq.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 rq.4$lwr <- rq.4$fit - rq.4$se.fit
 rq.4$upr <- rq.4$fit + rq.4$se.fit
 kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdr4, new.df4))
-kde.alpha.4$min_cor <- seq(-0.69, 0.46, by = .01)
+kde.alpha.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 kde.alpha.4$lwr <- kde.alpha.4$fit - kde.alpha.4$se.fit
 kde.alpha.4$upr <- kde.alpha.4$fit + kde.alpha.4$se.fit
 kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdr4, new.df4))
-kde.evenness.4$min_cor <- seq(-0.69, 0.46, by = .01)
+kde.evenness.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 kde.evenness.4$lwr <- kde.evenness.4$fit - kde.evenness.4$se.fit
 kde.evenness.4$upr <- kde.evenness.4$fit + kde.evenness.4$se.fit
 kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdr4, new.df4))
-kde.dispersion.4$min_cor <- seq(-0.69, 0.46, by = .01)
+kde.dispersion.4$min_cor <- seq(min(cdr.4$min_cor), max(cdr.4$min_cor), by = .01)
 kde.dispersion.4$lwr <- kde.dispersion.4$fit - kde.dispersion.4$se.fit
 kde.dispersion.4$upr <- kde.dispersion.4$fit + kde.dispersion.4$se.fit
 
@@ -923,8 +923,8 @@ dev.off()
 
 ###SEV####
 
-sev.black$community <- "black"
-sev.blue$community <- "blue"
+sev.black$community <- "SEV1"
+sev.blue$community <- "SEV2"
 sev.full <- rbind(sev.blue[,-10], sev.black[,-10])
 
 sev.full <- sev.full %>% group_by(community, min_cor) %>%
@@ -934,72 +934,72 @@ sev.full <- sev.full %>% group_by(community, min_cor) %>%
 
 
 range(sev.blue$min_cor)
-new.df5 <- data.frame(min_cor = seq(-0.80, -0.03, by = 0.01))
+new.df5 <- data.frame(min_cor = seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01))
 fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df5))
-fr.blue$min_cor <- seq(-0.80, -0.03, by = 0.01)
+fr.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01)
 fr.blue$lwr <- fr.blue$fit - fr.blue$se.fit
 fr.blue$upr <- fr.blue$fit + fr.blue$se.fit
 fe.blue <- as.data.frame(predictSE.lme(fevemod_blue, new.df5))
-fe.blue$min_cor <- seq(-0.80, -0.03, by = 0.01)
+fe.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01)
 fe.blue$lwr <- fe.blue$fit - fe.blue$se.fit
 fe.blue$upr <- fe.blue$fit + fe.blue$se.fit
 fdis.blue <- as.data.frame(predictSE.lme(fdismod_blue, new.df5))
-fdis.blue$min_cor <- seq(-0.80, -0.03, by = 0.01)
+fdis.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01)
 fdis.blue$lwr <- fdis.blue$fit - fdis.blue$se.fit
 fdis.blue$upr <- fdis.blue$fit + fdis.blue$se.fit
 fdiv.blue <- as.data.frame(predictSE.lme(fdivmod_blue, new.df5))
-fdiv.blue$min_cor <- seq(-0.80, -0.03, by = 0.01)
+fdiv.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01)
 fdiv.blue$lwr <- fdiv.blue$fit - fdiv.blue$se.fit
 fdiv.blue$upr <- fdiv.blue$fit + fdiv.blue$se.fit
 rq.blue <- as.data.frame(predictSE.lme(raoqmod_blue, new.df5))
-rq.blue$min_cor <- seq(-0.80, -0.03, by = 0.01)
+rq.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = 0.01)
 rq.blue$lwr <- rq.blue$fit - rq.blue$se.fit
 rq.blue$upr <- rq.blue$fit + rq.blue$se.fit
 kde.alpha.blue <- as.data.frame(predictSE.lme(kde.alphamod_blue, new.df5))
-kde.alpha.blue$min_cor <- seq(-0.80, -0.03, by = .01)
+kde.alpha.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = .01)
 kde.alpha.blue$lwr <- kde.alpha.blue$fit - kde.alpha.blue$se.fit
 kde.alpha.blue$upr <- kde.alpha.blue$fit + kde.alpha.blue$se.fit
 kde.evenness.blue <- as.data.frame(predictSE.lme(kde.evennessmod_blue, new.df5))
-kde.evenness.blue$min_cor <- seq(-0.80, -0.03, by = .01)
+kde.evenness.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = .01)
 kde.evenness.blue$lwr <- kde.evenness.blue$fit - kde.evenness.blue$se.fit
 kde.evenness.blue$upr <- kde.evenness.blue$fit + kde.evenness.blue$se.fit
 kde.dispersion.blue <- as.data.frame(predictSE.lme(kde.dispersionmod_blue, new.df5))
-kde.dispersion.blue$min_cor <- seq(-0.80, -0.03, by = .01)
+kde.dispersion.blue$min_cor <- seq(min(sev.blue$min_cor), max(sev.blue$min_cor), by = .01)
 kde.dispersion.blue$lwr <- kde.dispersion.blue$fit - kde.dispersion.blue$se.fit
 kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
 
 range(sev.black$min_cor)
-new.df6 <- data.frame(min_cor = seq(-0.71, 0.16, by = 0.01))
+new.df6 <- data.frame(min_cor = seq(min(sev.black$min_cor), max(sev.black$min_cor), by = 0.01))
 fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df6))
-fr.black$min_cor <- seq(-0.71, 0.16, by = .01)
+fr.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 fr.black$lwr <- fr.black$fit - fr.black$se.fit
 fr.black$upr <- fr.black$fit + fr.black$se.fit
 fe.black <- as.data.frame(predictSE.lme(fevemod_black, new.df6))
-fe.black$min_cor <- seq(-0.71, 0.16, by = .01)
+fe.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 fe.black$lwr <- fe.black$fit - fe.black$se.fit
 fe.black$upr <- fe.black$fit + fe.black$se.fit
 fdis.black <- as.data.frame(predictSE.lme(fdismod_black, new.df6))
-fdis.black$min_cor <- seq(-0.71, 0.16, by = .01)
+fdis.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 fdis.black$lwr <- fdis.black$fit - fdis.black$se.fit
 fdis.black$upr <- fdis.black$fit + fdis.black$se.fit
 fdiv.black <- as.data.frame(predictSE.lme(fdivmod_black, new.df6))
-fdiv.black$min_cor <- seq(-0.71, 0.16, by = .01)
+fdiv.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 fdiv.black$lwr <- fdiv.black$fit - fdiv.black$se.fit
 fdiv.black$upr <- fdiv.black$fit + fdiv.black$se.fit
 rq.black <- as.data.frame(predictSE.lme(raoqmod_black, new.df6))
-rq.black$min_cor <- seq(-0.71, 0.16, by = .01)
+rq.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 rq.black$lwr <- rq.black$fit - rq.black$se.fit
 rq.black$upr <- rq.black$fit + rq.black$se.fit
 kde.alpha.black <- as.data.frame(predictSE.lme(kde.alphamod_black, new.df6))
-kde.alpha.black$min_cor <- seq(-0.71, 0.16, by = .01)
+kde.alpha.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 kde.alpha.black$lwr <- kde.alpha.black$fit - kde.alpha.black$se.fit
 kde.alpha.black$upr <- kde.alpha.black$fit + kde.alpha.black$se.fit
 kde.evenness.black <- as.data.frame(predictSE.lme(kde.evennessmod_black, new.df6))
-kde.evenness.black$min_cor <- seq(-0.71, 0.16, by = .01)
+kde.evenness.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 kde.evenness.black$lwr <- kde.evenness.black$fit - kde.evenness.black$se.fit
 kde.evenness.black$upr <- kde.evenness.black$fit + kde.evenness.black$se.fit
 kde.dispersion.black <- as.data.frame(predictSE.lme(kde.dispersionmod_black, new.df6))
-kde.dispersion.black$min_cor <- seq(-0.71, 0.16, by = .01)
+kde.dispersion.black$min_cor <- seq(min(sev.black$min_cor), max(sev.black$min_cor), by = .01)
 kde.dispersion.black$lwr <- kde.dispersion.black$fit - kde.dispersion.black$se.fit
 kde.dispersion.black$upr <- kde.dispersion.black$fit + kde.dispersion.black$se.fit
 
