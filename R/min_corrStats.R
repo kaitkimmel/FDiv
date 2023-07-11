@@ -57,6 +57,7 @@ mod2 <- lme(kde.alpha ~ min_cor + I(min_cor^2) + I(min_cor^3), random = ~1|sev.b
 mod3 <- lme(kde.alpha ~ min_cor + I(min_cor^2) + I(min_cor^3) + I(min_cor^4), random = ~1|sev.blueplots,  data = sev.blue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 AIC(mod, mod1, mod2, mod3) ### mod2
+anova(mod1, mod2)
 kde.alphamod_blue <- lme(kde.alpha ~ min_cor + I(min_cor^2) + I(min_cor^3), random = ~1|sev.blueplots,  data = sev.blue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 
