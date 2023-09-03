@@ -12,7 +12,7 @@ library(stringr)
 ## SEV TRAIT DATA
 
 sev.trait <- read.csv("https://pasta.lternet.edu/package/data/eml/knb-lter-sev/333/1/d6b91bac4e7d8e92e71c70f5d34d2af4", header = TRUE)
-sev.height <- read.csv(here("data/sev_npp_height_biomass.csv")) # ASK TIM FOR PASTA LINK
+sev.height <- read.csv(here("data/Sev/sev_npp_height_biomass.csv")) # ASK TIM FOR PASTA LINK
 
 # # TRAITS 
 # 1. maximum plant height

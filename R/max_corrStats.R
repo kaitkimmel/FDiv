@@ -1,5 +1,5 @@
 ################################################################
-#### STATISTICAL ANALYSES  EUCLIDEAN for TRAIT CORRELATIONS ####
+#### STATISTICAL ANALYSES GOWER for TRAIT CORRELATIONS ####
 ################################################################
 
 # CREATED BY: KAITLIN KIMMEL

@@ -32,7 +32,7 @@ temp <- cdr.biocon %>%
 temp$tot.cov <- rowSums(temp[,c(5:20)])
 temp$multiplyer <- 100/temp$tot.cov
 
-efor (i in 1:nrow(temp)){
+for (i in 1:nrow(temp)){
   temp[i,c(5:20)] <- temp[i,c(5:20)]*temp$multiplyer[i]
 }
 
