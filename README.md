@@ -87,9 +87,3 @@ distance.
         available on pasta.lternet.edu
 5.  Sevilleta community data (located in data/Sev)
     1.  sevcommunity_KOtrait.csv - blue and black gramma sites
-=======
-# FDiv
->>>>>>> 9047cef5d254f6d3ea8f1dd7e02136318b3178e3
-=======
-# FDiv
->>>>>>> 9047cef5d254f6d3ea8f1dd7e02136318b3178e3
