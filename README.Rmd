@@ -1,0 +1,57 @@
+---
+title: Exploring the impact of trait number and type on functional diversity metrics
+  in real-world ecosystems
+author: "Analyses by Kaitlin Kimmel and Tim Ohlert"
+date: "9/3/2023"
+output:
+  github_document: default
+  html_document: default
+---
+
+<p> This code corresponds to the analyses proposed in the stage 1 Registered Report "Exploring the impact of trait number and type on functional diversity metrics in real-world ecosystem" in PLoS One. Please contact kaitlinakimmel@gmail.com with questions regarding the code and data. Please contact Timothy.Ohlert@colostate.edu for all other questions regarding the manuscript. </p>
+
+<p> This code uses the here::here() function to call data and save files. This ensures that working directories do not have to be changed for each user contributing to the code. Create folders: 'data', 'R', and 'Figures' so code will run easily. </p>
+
+## <u>Code </u>
+Code is separated currently by site and/or distance matrix used and/or predictor variable. Run code in the order provided to obtain outputs necessary in subsequent steps. Note that for 2 & 3, scripts without '_euc' are gower distance and scripts with '_euc' are euclidean distance.
+
+1. <b> Data Cleaning Codes </b>
+    a. CDRCommunityDataCleaning.R
+    b. KNZCommunityDataCleaning.R
+    c. SEVCommunityDataCleaning.R
+    d. CDRTraitCleaning.R
+    e. KNZTraitCleaning.R
+    f. SEVTraitCleaning.R
+2. <b> Functional Diversity Metric Calculations </b> These codes are processing intensive and take a long time to run (mainly because of the KDE functions). All the output is saves in the data folder to avoid running these each time the code is used. 
+    a. CDRFDmetrics.R
+    b. CDRFDmetrics_Euc.R
+    c. KNZFDmetrics.R --> Konza did not have any communities that met the trait coverage threshold.
+    d. SEVFDmetrics.R
+    e. SEVDFmetrics_euc.R
+3. <b> AIC model selection </b>A bulk of this code is finding out best fits for correlations between number of traits, mean correlation of traits, maximum correlation of trait, minimum correlation of traits, and the calculated FD values. There is currently a separate script for each correlate and distance matrix. I do not have a master script that runs all of these simultaneously yet because we are still in the QA/QC process of making sure we have the correct models chosen for each FD metric, community, and distance matrix. Upon publication, a script will be written to run through this all without running each script individually. 
+    a. n_traitStats.R
+    b. n_traitStats_euc.R
+    c. max_corrStats.R
+    d. max_corrStats_euc.R
+    e. mean_corrStats.R
+    f. mean_corrStats_euc.R
+    g. min_corrStats.R
+    h. min_corrStats_euc.R
+4. <b> Graphs </b> Originally, graphs were separated out by correlate and distance matrix. These scripts are now not used and only four scripts are necessary to create the graphs that will be presented in the publication. 
+    a. graphs.R - number of traits; this code should be updated to pull model fits directly from n_traitStats.R and n_traitStats_euc.R
+    b. max_cor_graphs.R
+    c. min_cor_graphs.R
+    d. mean_cor_graphs.R
+    
+    
+## <u> Data </u> 
+1. All Cedar Creek data is pulled directly from pasta.lternet.edu
+2. Konza trait data (located in data/Konza)
+   a. firegraze_trait.csv - Trait data
+   b. SANA_grass_spp.csv - species names
+   c. sp_list.xlsx - species names
+3. Konza community data is pulled directly from pasta.lternet.edu
+4. Sevilleta trait data is pulled directly from pasta.lternet.edu except for height
+    a. located in data/Sev - sev_npp_height_biomass.csv - should be available on pasta.lternet.edu
+5. Sevilleta community data (located in data/Sev)
+    a. sevcommunity_KOtrait.csv - blue and black gramma sites 
