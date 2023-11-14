@@ -1,4 +1,4 @@
-############# MAX CORRELATION GRAPHS ##################
+############# MIN CORRELATION GRAPHS ##################
 
 #Libraries
 library(here)
@@ -296,7 +296,7 @@ kdeevenness_e <- ggplot() +
   scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Minimum Trait-Trait Correlation", y = "KDE Evenness") +
   theme_pubr()
-
+dev.new()
 kdedispersion_e <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = min_cor), data = kde.dispersion.e1, alpha = 0.1, fill = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = min_cor), data = kde.dispersion.e2, alpha = 0.1, fill = "#731279") +
@@ -317,8 +317,8 @@ kdedispersion_e <- ggplot() +
   theme_pubr()
 
 png(here('Figures/min_cor_full.png'), height = 9, width = 12, units = 'in', res = 150)
-ggarrange(plotlist = list(Frich_g, Frich_e, kderichness_g, kderichness_e, FEve_g, FEve_e, 
-                          kdeevenness_g, kdeevenness_e, FDis_g, FDis_e, FDiv_g, FDiv_e, 
-                          RaoQ_g, RaoQ_e, kdedispersion_g, kdedispersion_e), ncol = 4, nrow = 4, 
+ggarrange(plotlist = list(Frich_g,  kderichness_g, Frich_e,kderichness_e, FEve_g,  
+                          kdeevenness_g, FEve_e, kdeevenness_e, FDis_g, FDiv_g, FDis_e, FDiv_e, 
+                          RaoQ_g,  kdedispersion_g, RaoQ_e,kdedispersion_e), ncol = 4, nrow = 4, 
           labels = c("A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'), common.legend = TRUE)
 dev.off()
