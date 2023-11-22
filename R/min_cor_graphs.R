@@ -6,8 +6,8 @@ library(ggplot2)
 library(ggpubr)
 
 #Pull data from stats
-source(here("R/min_corrStats.R"))
-source(here("R/min_corrStatseuc.R"))
+source(here("R/min_corrStats_simplified.R"))
+source(here("R/min_corrStats_euc_simplified.R"))
 
 #### GOWER ####
 Frich_g <- ggplot() + 
