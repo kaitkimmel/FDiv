@@ -604,10 +604,10 @@ kde.alpha.e2 <- as.data.frame(predictSE.lme(kde.alphamod_cdre2, new.df))
 kde.alpha.e2$n_trait <- seq(2, 9, by = 1)
 kde.alpha.e2$lwr <- kde.alpha.e2$fit - kde.alpha.e2$se.fit
 kde.alpha.e2$upr <- kde.alpha.e2$fit + kde.alpha.e2$se.fit
-kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre2, new.df))
-kde.evenness.2$n_trait <- seq(2, 9, by = 1)
-kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
-kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
+kde.evenness.e2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre2, new.df))
+kde.evenness.e2$n_trait <- seq(2, 9, by = 1)
+kde.evenness.e2$lwr <- kde.evenness.e2$fit - kde.evenness.e2$se.fit
+kde.evenness.e2$upr <- kde.evenness.e2$fit + kde.evenness.e2$se.fit
 kde.dispersion.e2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre2, new.df))
 kde.dispersion.e2$n_trait <- seq(2, 9, by = 1)
 kde.dispersion.e2$lwr <- kde.dispersion.e2$fit - kde.dispersion.e2$se.fit
@@ -637,10 +637,10 @@ kde.alpha.e3 <- as.data.frame(predictSE.lme(kde.alphamod_cdre3, new.df))
 kde.alpha.e3$n_trait <- seq(2, 9, by = 1)
 kde.alpha.e3$lwr <- kde.alpha.e3$fit - kde.alpha.e3$se.fit
 kde.alpha.e3$upr <- kde.alpha.e3$fit + kde.alpha.e3$se.fit
-kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre3, new.df))
-kde.evenness.3$n_trait <- seq(2, 9, by = 1)
-kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
-kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
+kde.evenness.e3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre3, new.df))
+kde.evenness.e3$n_trait <- seq(2, 9, by = 1)
+kde.evenness.e3$lwr <- kde.evenness.e3$fit - kde.evenness.e3$se.fit
+kde.evenness.e3$upr <- kde.evenness.e3$fit + kde.evenness.e3$se.fit
 kde.dispersion.e3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre3, new.df))
 kde.dispersion.e3$n_trait <- seq(2, 9, by = 1)
 kde.dispersion.e3$lwr <- kde.dispersion.e3$fit - kde.dispersion.e3$se.fit
@@ -767,10 +767,10 @@ B <- ggplot() +
 D <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.e3, lwd = 2, color = "#00B7FF") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.e4, alpha = 0.5, fill = "#075A13") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = cdre.full, size = 3) + 
