@@ -803,9 +803,9 @@ dev.off()
 # create combined data set of raw data
 sev.eblack$community <- "black"
 sev.eblue$community <- "blue"
-sev.full <- rbind(sev.eblue[,-10], sev.eblack[,-10])
+seve.full <- rbind(sev.eblue[,-10], sev.eblack[,-10])
 
-sev.full <- sev.full %>% group_by(community, n_trait) %>%
+seve.full <- seve.full %>% group_by(community, n_trait) %>%
   summarize (FRic = mean(FRic, na.rm = TRUE), FEve = mean(FEve, na.rm = TRUE), 
              FDis = mean(FDis, na.rm = TRUE), FDiv = mean(FDiv, na.rm = TRUE), 
              RaoQ = mean(RaoQ, na.rm = TRUE), kde.alpha = mean(kde.alpha), kde.evenness = mean(kde.evenness), kde.dispersion = mean(kde.dispersion))
@@ -882,7 +882,7 @@ AA <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fr.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = fr.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = FRic, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = FRic, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FRich") +
   theme_pubr()
@@ -892,7 +892,7 @@ CC <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fe.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = fe.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = FEve, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = FEve, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FEve") +
   theme_pubr()
@@ -902,7 +902,7 @@ EE <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdis.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = fdis.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = FDis, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = FDis, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FDis") +
   theme_pubr()
@@ -912,7 +912,7 @@ FF <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdiv.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = fdiv.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = FDiv, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = FDiv, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FDiv") +
   theme_pubr()
@@ -922,7 +922,7 @@ GG <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = rq.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = rq.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = RaoQ, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = RaoQ, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
@@ -932,7 +932,7 @@ BB <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Richness") +
   theme_pubr()
@@ -942,7 +942,7 @@ DD <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Eveness") +
   theme_pubr()
@@ -952,7 +952,7 @@ HH <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.eblue, lwd = 2, color = "navyblue") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.eblack, alpha = 0.5, fill = "black") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.eblack, lwd = 2, color = "black") + 
-  geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
+  geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("black", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Dispersion") +
   theme_pubr()
