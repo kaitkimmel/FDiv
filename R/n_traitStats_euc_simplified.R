@@ -580,115 +580,115 @@ kde.dispersion.e1$n_trait <- seq(2, 9, by = 1)
 kde.dispersion.e1$lwr <- kde.dispersion.e1$fit - kde.dispersion.e1$se.fit
 kde.dispersion.e1$upr <- kde.dispersion.e1$fit + kde.dispersion.e1$se.fit
 
-fr.2 <- as.data.frame(predictSE.lme(fricmod_cdre2, new.df))
-fr.2$n_trait <- seq(2, 9, by = 1)
-fr.2$lwr <- fr.2$fit - fr.2$se.fit
-fr.2$upr <- fr.2$fit + fr.2$se.fit
-fe.2 <- as.data.frame(predictSE.lme(fevemod_cdre2, new.df))
-fe.2$n_trait <- seq(2, 9, by = 1)
-fe.2$lwr <- fe.2$fit - fe.2$se.fit
-fe.2$upr <- fe.2$fit + fe.2$se.fit
-fdis.2 <- as.data.frame(predictSE.lme(fdismod_cdre2, new.df))
-fdis.2$n_trait <- seq(2, 9, by = 1)
-fdis.2$lwr <- fdis.2$fit - fdis.2$se.fit
-fdis.2$upr <- fdis.2$fit + fdis.2$se.fit
-fdiv.2 <- as.data.frame(predictSE.lme(fdivmod_cdre2, new.df))
-fdiv.2$n_trait <- seq(2, 9, by = 1)
-fdiv.2$lwr <- fdiv.2$fit - fdiv.2$se.fit
-fdiv.2$upr <- fdiv.2$fit + fdiv.2$se.fit
-rq.2 <- as.data.frame(predictSE.lme(raoqmod_cdre2, new.df))
-rq.2$n_trait <- seq(2, 9, by = 1)
-rq.2$lwr <- rq.2$fit - rq.2$se.fit
-rq.2$upr <- rq.2$fit + rq.2$se.fit
-kde.alpha.2 <- as.data.frame(predictSE.lme(kde.alphamod_cdre2, new.df))
-kde.alpha.2$n_trait <- seq(2, 9, by = 1)
-kde.alpha.2$lwr <- kde.alpha.2$fit - kde.alpha.2$se.fit
-kde.alpha.2$upr <- kde.alpha.2$fit + kde.alpha.2$se.fit
+fr.e2 <- as.data.frame(predictSE.lme(fricmod_cdre2, new.df))
+fr.e2$n_trait <- seq(2, 9, by = 1)
+fr.e2$lwr <- fr.e2$fit - fr.e2$se.fit
+fr.e2$upr <- fr.e2$fit + fr.e2$se.fit
+fe.e2 <- as.data.frame(predictSE.lme(fevemod_cdre2, new.df))
+fe.e2$n_trait <- seq(2, 9, by = 1)
+fe.e2$lwr <- fe.e2$fit - fe.e2$se.fit
+fe.e2$upr <- fe.e2$fit + fe.e2$se.fit
+fdis.e2 <- as.data.frame(predictSE.lme(fdismod_cdre2, new.df))
+fdis.e2$n_trait <- seq(2, 9, by = 1)
+fdis.e2$lwr <- fdis.e2$fit - fdis.e2$se.fit
+fdis.e2$upr <- fdis.e2$fit + fdis.e2$se.fit
+fdiv.e2 <- as.data.frame(predictSE.lme(fdivmod_cdre2, new.df))
+fdiv.e2$n_trait <- seq(2, 9, by = 1)
+fdiv.e2$lwr <- fdiv.e2$fit - fdiv.e2$se.fit
+fdiv.e2$upr <- fdiv.e2$fit + fdiv.e2$se.fit
+rq.e2 <- as.data.frame(predictSE.lme(raoqmod_cdre2, new.df))
+rq.e2$n_trait <- seq(2, 9, by = 1)
+rq.e2$lwr <- rq.e2$fit - rq.e2$se.fit
+rq.e2$upr <- rq.e2$fit + rq.e2$se.fit
+kde.alpha.e2 <- as.data.frame(predictSE.lme(kde.alphamod_cdre2, new.df))
+kde.alpha.e2$n_trait <- seq(2, 9, by = 1)
+kde.alpha.e2$lwr <- kde.alpha.e2$fit - kde.alpha.e2$se.fit
+kde.alpha.e2$upr <- kde.alpha.e2$fit + kde.alpha.e2$se.fit
 kde.evenness.2 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre2, new.df))
 kde.evenness.2$n_trait <- seq(2, 9, by = 1)
 kde.evenness.2$lwr <- kde.evenness.2$fit - kde.evenness.2$se.fit
 kde.evenness.2$upr <- kde.evenness.2$fit + kde.evenness.2$se.fit
-kde.dispersion.2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre2, new.df))
-kde.dispersion.2$n_trait <- seq(2, 9, by = 1)
-kde.dispersion.2$lwr <- kde.dispersion.2$fit - kde.dispersion.2$se.fit
-kde.dispersion.2$upr <- kde.dispersion.2$fit + kde.dispersion.2$se.fit
+kde.dispersion.e2 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre2, new.df))
+kde.dispersion.e2$n_trait <- seq(2, 9, by = 1)
+kde.dispersion.e2$lwr <- kde.dispersion.e2$fit - kde.dispersion.e2$se.fit
+kde.dispersion.e2$upr <- kde.dispersion.e2$fit + kde.dispersion.e2$se.fit
 
-fr.3 <- as.data.frame(predictSE.lme(fricmod_cdre3, new.df))
-fr.3$n_trait <- seq(2, 9, by = 1)
-fr.3$lwr <- fr.3$fit - fr.3$se.fit
-fr.3$upr <- fr.3$fit + fr.3$se.fit
-fe.3 <- as.data.frame(predictSE.lme(fevemod_cdre3, new.df))
-fe.3$n_trait <- seq(2, 9, by = 1)
-fe.3$lwr <- fe.3$fit - fe.3$se.fit
-fe.3$upr <- fe.3$fit + fe.3$se.fit
-fdis.3 <- as.data.frame(predictSE.lme(fdismod_cdre3, new.df))
-fdis.3$n_trait <- seq(2, 9, by = 1)
-fdis.3$lwr <- fdis.3$fit - fdis.3$se.fit
-fdis.3$upr <- fdis.3$fit + fdis.3$se.fit
-fdiv.3 <- as.data.frame(predictSE.lme(fdivmod_cdre3, new.df))
-fdiv.3$n_trait <- seq(2, 9, by = 1)
-fdiv.3$lwr <- fdiv.3$fit - fdiv.3$se.fit
-fdiv.3$upr <- fdiv.3$fit + fdiv.3$se.fit
-rq.3 <- as.data.frame(predictSE.lme(raoqmod_cdre3, new.df))
-rq.3$n_trait <- seq(2, 9, by = 1)
-rq.3$lwr <- rq.3$fit - rq.3$se.fit
-rq.3$upr <- rq.3$fit + rq.3$se.fit
-kde.alpha.3 <- as.data.frame(predictSE.lme(kde.alphamod_cdre3, new.df))
-kde.alpha.3$n_trait <- seq(2, 9, by = 1)
-kde.alpha.3$lwr <- kde.alpha.3$fit - kde.alpha.3$se.fit
-kde.alpha.3$upr <- kde.alpha.3$fit + kde.alpha.3$se.fit
+fr.e3 <- as.data.frame(predictSE.lme(fricmod_cdre3, new.df))
+fr.e3$n_trait <- seq(2, 9, by = 1)
+fr.e3$lwr <- fr.e3$fit - fr.e3$se.fit
+fr.e3$upr <- fr.e3$fit + fr.e3$se.fit
+fe.e3 <- as.data.frame(predictSE.lme(fevemod_cdre3, new.df))
+fe.e3$n_trait <- seq(2, 9, by = 1)
+fe.e3$lwr <- fe.e3$fit - fe.e3$se.fit
+fe.e3$upr <- fe.e3$fit + fe.e3$se.fit
+fdis.e3 <- as.data.frame(predictSE.lme(fdismod_cdre3, new.df))
+fdis.e3$n_trait <- seq(2, 9, by = 1)
+fdis.e3$lwr <- fdis.e3$fit - fdis.e3$se.fit
+fdis.e3$upr <- fdis.e3$fit + fdis.e3$se.fit
+fdiv.e3 <- as.data.frame(predictSE.lme(fdivmod_cdre3, new.df))
+fdiv.e3$n_trait <- seq(2, 9, by = 1)
+fdiv.e3$lwr <- fdiv.e3$fit - fdiv.e3$se.fit
+fdiv.e3$upr <- fdiv.e3$fit + fdiv.e3$se.fit
+rq.e3 <- as.data.frame(predictSE.lme(raoqmod_cdre3, new.df))
+rq.e3$n_trait <- seq(2, 9, by = 1)
+rq.e3$lwr <- rq.e3$fit - rq.e3$se.fit
+rq.e3$upr <- rq.e3$fit + rq.e3$se.fit
+kde.alpha.e3 <- as.data.frame(predictSE.lme(kde.alphamod_cdre3, new.df))
+kde.alpha.e3$n_trait <- seq(2, 9, by = 1)
+kde.alpha.e3$lwr <- kde.alpha.e3$fit - kde.alpha.e3$se.fit
+kde.alpha.e3$upr <- kde.alpha.e3$fit + kde.alpha.e3$se.fit
 kde.evenness.3 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre3, new.df))
 kde.evenness.3$n_trait <- seq(2, 9, by = 1)
 kde.evenness.3$lwr <- kde.evenness.3$fit - kde.evenness.3$se.fit
 kde.evenness.3$upr <- kde.evenness.3$fit + kde.evenness.3$se.fit
-kde.dispersion.3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre3, new.df))
-kde.dispersion.3$n_trait <- seq(2, 9, by = 1)
-kde.dispersion.3$lwr <- kde.dispersion.3$fit - kde.dispersion.3$se.fit
-kde.dispersion.3$upr <- kde.dispersion.3$fit + kde.dispersion.3$se.fit
+kde.dispersion.e3 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre3, new.df))
+kde.dispersion.e3$n_trait <- seq(2, 9, by = 1)
+kde.dispersion.e3$lwr <- kde.dispersion.e3$fit - kde.dispersion.e3$se.fit
+kde.dispersion.e3$upr <- kde.dispersion.e3$fit + kde.dispersion.e3$se.fit
 
-fr.4 <- as.data.frame(predictSE.lme(fricmod_cdre4, new.df))
-fr.4$n_trait <- seq(2, 9, by = 1)
-fr.4$lwr <- fr.4$fit - fr.4$se.fit
-fr.4$upr <- fr.4$fit + fr.4$se.fit
-fe.4 <- as.data.frame(predictSE.lme(fevemod_cdre4, new.df))
-fe.4$n_trait <- seq(2, 9, by = 1)
-fe.4$lwr <- fe.4$fit - fe.4$se.fit
-fe.4$upr <- fe.4$fit + fe.4$se.fit
-fdis.4 <- as.data.frame(predictSE.lme(fdismod_cdre4, new.df))
-fdis.4$n_trait <- seq(2, 9, by = 1)
-fdis.4$lwr <- fdis.4$fit - fdis.4$se.fit
-fdis.4$upr <- fdis.4$fit + fdis.4$se.fit
-fdiv.4 <- as.data.frame(predictSE.lme(fdivmod_cdre4, new.df))
-fdiv.4$n_trait <- seq(2, 9, by = 1)
-fdiv.4$lwr <- fdiv.4$fit - fdiv.4$se.fit
-fdiv.4$upr <- fdiv.4$fit + fdiv.4$se.fit
-rq.4 <- as.data.frame(predictSE.lme(raoqmod_cdre4, new.df))
-rq.4$n_trait <- seq(2, 9, by = 1)
-rq.4$lwr <- rq.4$fit - rq.4$se.fit
-rq.4$upr <- rq.4$fit + rq.4$se.fit
-kde.alpha.4 <- as.data.frame(predictSE.lme(kde.alphamod_cdre4, new.df))
-kde.alpha.4$n_trait <- seq(2, 9, by = 1)
-kde.alpha.4$lwr <- kde.alpha.4$fit - kde.alpha.4$se.fit
-kde.alpha.4$upr <- kde.alpha.4$fit + kde.alpha.4$se.fit
-kde.evenness.4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre4, new.df))
-kde.evenness.4$n_trait <- seq(2, 9, by = 1)
-kde.evenness.4$lwr <- kde.evenness.4$fit - kde.evenness.4$se.fit
-kde.evenness.4$upr <- kde.evenness.4$fit + kde.evenness.4$se.fit
-kde.dispersion.4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre4, new.df))
-kde.dispersion.4$n_trait <- seq(2, 9, by = 1)
-kde.dispersion.4$lwr <- kde.dispersion.4$fit - kde.dispersion.4$se.fit
-kde.dispersion.4$upr <- kde.dispersion.4$fit + kde.dispersion.4$se.fit
+fr.e4 <- as.data.frame(predictSE.lme(fricmod_cdre4, new.df))
+fr.e4$n_trait <- seq(2, 9, by = 1)
+fr.e4$lwr <- fr.e4$fit - fr.e4$se.fit
+fr.e4$upr <- fr.e4$fit + fr.e4$se.fit
+fe.e4 <- as.data.frame(predictSE.lme(fevemod_cdre4, new.df))
+fe.e4$n_trait <- seq(2, 9, by = 1)
+fe.e4$lwr <- fe.e4$fit - fe.e4$se.fit
+fe.e4$upr <- fe.e4$fit + fe.e4$se.fit
+fdis.e4 <- as.data.frame(predictSE.lme(fdismod_cdre4, new.df))
+fdis.e4$n_trait <- seq(2, 9, by = 1)
+fdis.e4$lwr <- fdis.e4$fit - fdis.e4$se.fit
+fdis.e4$upr <- fdis.e4$fit + fdis.e4$se.fit
+fdiv.e4 <- as.data.frame(predictSE.lme(fdivmod_cdre4, new.df))
+fdiv.e4$n_trait <- seq(2, 9, by = 1)
+fdiv.e4$lwr <- fdiv.e4$fit - fdiv.e4$se.fit
+fdiv.e4$upr <- fdiv.e4$fit + fdiv.e4$se.fit
+rq.e4 <- as.data.frame(predictSE.lme(raoqmod_cdre4, new.df))
+rq.e4$n_trait <- seq(2, 9, by = 1)
+rq.e4$lwr <- rq.e4$fit - rq.e4$se.fit
+rq.e4$upr <- rq.e4$fit + rq.e4$se.fit
+kde.alpha.e4 <- as.data.frame(predictSE.lme(kde.alphamod_cdre4, new.df))
+kde.alpha.e4$n_trait <- seq(2, 9, by = 1)
+kde.alpha.e4$lwr <- kde.alpha.e4$fit - kde.alpha.e4$se.fit
+kde.alpha.e4$upr <- kde.alpha.e4$fit + kde.alpha.e4$se.fit
+kde.evenness.e4 <- as.data.frame(predictSE.lme(kde.evennessmod_cdre4, new.df))
+kde.evenness.e4$n_trait <- seq(2, 9, by = 1)
+kde.evenness.e4$lwr <- kde.evenness.e4$fit - kde.evenness.e4$se.fit
+kde.evenness.e4$upr <- kde.evenness.e4$fit + kde.evenness.e4$se.fit
+kde.dispersion.e4 <- as.data.frame(predictSE.lme(kde.dispersionmod_cdre4, new.df))
+kde.dispersion.e4$n_trait <- seq(2, 9, by = 1)
+kde.dispersion.e4$lwr <- kde.dispersion.e4$fit - kde.dispersion.e4$se.fit
+kde.dispersion.e4$upr <- kde.dispersion.e4$fit + kde.dispersion.e4$se.fit
 
 
 A <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = fr.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = fr.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = fr.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = fr.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = fr.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = fr.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fr.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = fr.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = FRic, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "FRich") +
@@ -697,12 +697,12 @@ A <- ggplot() +
 C <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = fe.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = fe.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = fe.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = fe.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = fe.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = fe.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fe.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = fe.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = FEve, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "FEve") +
@@ -711,12 +711,12 @@ C <- ggplot() +
 E <-ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = fdis.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdis.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdis.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdis.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdis.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdis.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdis.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdis.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = FDis, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "FDis") +
@@ -725,12 +725,12 @@ E <-ggplot() +
 F <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = fdiv.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdiv.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdiv.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = fdiv.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdiv.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdiv.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = fdiv.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = fdiv.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = FDiv, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "FDiv") +
@@ -739,12 +739,12 @@ F <- ggplot() +
 G <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = rq.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = rq.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = rq.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = rq.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = rq.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = rq.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = rq.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = rq.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = RaoQ, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "Rao Q") +
@@ -753,12 +753,12 @@ G <- ggplot() +
 B <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.alpha.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.alpha.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Richness") +
@@ -771,8 +771,8 @@ D <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.2, lwd = 2, color = "#731279") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.3, alpha = 0.5, fill = "#00B7FF") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.evenness.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.evenness.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Evenness") +
@@ -781,12 +781,12 @@ D <- ggplot() +
 H <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.e1, alpha = 0.5, fill = "#9D8F0F") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.e1, lwd = 2, color = "#9D8F0F") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.2, alpha = 0.5, fill = "#731279") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.2, lwd = 2, color = "#731279") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.3, alpha = 0.5, fill = "#00B7FF") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.3, lwd = 2, color = "#00B7FF") + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.4, alpha = 0.5, fill = "#075A13") + 
-  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.4, lwd = 2, color = "#075A13") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.e2, alpha = 0.5, fill = "#731279") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.e2, lwd = 2, color = "#731279") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.e3, alpha = 0.5, fill = "#00B7FF") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.e3, lwd = 2, color = "#00B7FF") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr, x = n_trait), data = kde.dispersion.e4, alpha = 0.5, fill = "#075A13") + 
+  geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.e4, lwd = 2, color = "#075A13") + 
   geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = cdre.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F", "#00B7FF", "#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Dispersion") +
