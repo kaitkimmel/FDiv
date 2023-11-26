@@ -25,7 +25,7 @@ Frich_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fr.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fr.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FRic, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FRich") +
   theme_pubr()
 
@@ -44,7 +44,7 @@ FEve_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fe.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fe.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FEve, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FEve") +
   theme_pubr()
 
@@ -63,7 +63,7 @@ FDis_g <-ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdis.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fdis.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDis, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FDis") +
   theme_pubr()
 
@@ -82,7 +82,7 @@ FDiv_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdiv.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fdiv.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDiv, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "FDiv") +
   theme_pubr()
 
@@ -101,7 +101,7 @@ RaoQ_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = rq.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = rq.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = RaoQ, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
@@ -120,7 +120,7 @@ kderichness_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Richness") +
   theme_pubr()
 
@@ -139,7 +139,7 @@ kdeevenness_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Evenness") +
   theme_pubr()
 
@@ -158,7 +158,7 @@ kdedispersion_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = sev.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Number of Traits", y = "KDE Dispersion") +
   theme_pubr()
 
@@ -179,7 +179,7 @@ Frich_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fr.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fr.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FRic, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FRich") +
   theme_pubr()
 
@@ -198,7 +198,7 @@ FEve_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fe.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fe.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FEve, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FEve") +
   theme_pubr()
 
@@ -217,7 +217,7 @@ FDis_e <-ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdis.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fdis.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDis, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDis") +
   theme_pubr()
 
@@ -236,7 +236,7 @@ FDiv_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdiv.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fdiv.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDiv, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "FDiv") +
   theme_pubr()
 
@@ -255,7 +255,7 @@ RaoQ_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = rq.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = rq.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = RaoQ, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "Rao Q") +
   theme_pubr()
 
@@ -274,7 +274,7 @@ kderichness_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE Richness") +
   theme_pubr()
 
@@ -293,7 +293,7 @@ kdeevenness_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE Evenness") +
   theme_pubr()
 
@@ -312,7 +312,7 @@ kdedispersion_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.eblue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = seve.full, size = 3) + 
-  scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
+  #scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
