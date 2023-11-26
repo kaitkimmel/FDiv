@@ -879,6 +879,7 @@ new.df <- data.frame(n_trait = seq(2, 10, by = 1))
 
 fr.blue <- as.data.frame(predictSE.lme(fricmod_blue, new.df))
 fr.blue$n_trait <- seq(2, 10, by = 1)
+fr.blue$fit <- fr.blue$fit - 0.01
 fr.blue$lwr <- fr.blue$fit - fr.blue$se.fit
 fr.blue$upr <- fr.blue$fit + fr.blue$se.fit
 fe.blue <- as.data.frame(predictSE.lme(fevemod_blue, new.df))
@@ -912,6 +913,7 @@ kde.dispersion.blue$upr <- kde.dispersion.blue$fit + kde.dispersion.blue$se.fit
 
 fr.black <- as.data.frame(predictSE.lme(fricmod_black, new.df))
 fr.black$n_trait <- seq(2, 10, by = 1)
+fr.black$fit <- fr.black$fit - 0.05
 fr.black$lwr <- fr.black$fit - fr.black$se.fit
 fr.black$upr <- fr.black$fit + fr.black$se.fit
 fe.black <- as.data.frame(predictSE.lme(fevemod_black, new.df))
