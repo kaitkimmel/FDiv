@@ -25,6 +25,8 @@ Frich_g <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fr.blue, lwd = 2, color = "navyblue") + 
   geom_line(aes(x= n_trait, y = fit), data = fr.black, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FRic, color = community), data = sev.full, size = 3) + 
+  #geom_point(aes(x = n_trait, y = fit, color = community), data = fr.blue, size = 3) + 
+  #geom_point(aes(x = n_trait, y = fit, color = community), data = fr.black, size = 3) +
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
   labs(x = "Number of Traits", y = "FRich") +
   theme_pubr()
