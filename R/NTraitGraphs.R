@@ -324,3 +324,5 @@ ggarrange(plotlist = list(Frich_g,kderichness_g, Frich_e,kderichness_e, FEve_g,
                           RaoQ_g, FDiv_g,RaoQ_e, FDiv_e), ncol = 4, nrow = 4, 
           labels = c("A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'), common.legend = TRUE)
 dev.off()
+
+

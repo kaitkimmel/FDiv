@@ -319,7 +319,7 @@ kdedispersion_e <- ggplot() +
 png(here('Figures/mean_cor_full.png'), height = 9, width = 12, units = 'in', res = 150)
 ggarrange(plotlist = list(Frich_g, kderichness_g, Frich_e, kderichness_e,
                           FEve_g, kdeevenness_g, FEve_e, kdeevenness_e,
-                          FDis_g, FDiv_g, FDis_e, FDiv_e,
-                          RaoQ_g, kdedispersion_g, RaoQ_e, kdedispersion_e), ncol = 4, nrow = 4, 
+                          FDis_g, kdedispersion_g, FDis_e, kdedispersion_e,
+                          RaoQ_g, FDiv_g, RaoQ_e, FDiv_e), ncol = 4, nrow = 4, 
           labels = c("A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'), common.legend = TRUE)
 dev.off()
