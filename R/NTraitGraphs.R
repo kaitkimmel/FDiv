@@ -182,7 +182,7 @@ Frich_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fr.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FRic, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "FRich") +
+  labs(x = "Number of Traits", y = "FRich") +
   theme_pubr()
 
 FEve_e <- ggplot() + 
@@ -201,7 +201,7 @@ FEve_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fe.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FEve, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "FEve") +
+  labs(x = "Number of Traits", y = "FEve") +
   theme_pubr()
 
 FDis_e <-ggplot() + 
@@ -220,7 +220,7 @@ FDis_e <-ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdis.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDis, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "FDis") +
+  labs(x = "Number of Traits", y = "FDis") +
   theme_pubr()
 
 FDiv_e <- ggplot() + 
@@ -239,7 +239,7 @@ FDiv_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = fdiv.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = FDiv, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "FDiv") +
+  labs(x = "Number of Traits", y = "FDiv") +
   theme_pubr()
 
 RaoQ_e <- ggplot() + 
@@ -258,7 +258,7 @@ RaoQ_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = rq.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = RaoQ, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "Rao Q") +
+  labs(x = "Number of Traits", y = "Rao Q") +
   theme_pubr()
 
 kderichness_e <- ggplot() + 
@@ -277,7 +277,7 @@ kderichness_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.alpha.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.alpha, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Richness") +
+  labs(x = "Number of Traits", y = "KDE Richness") +
   theme_pubr()
 
 kdeevenness_e <- ggplot() + 
@@ -296,7 +296,7 @@ kdeevenness_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.evenness.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.evenness, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Evenness") +
+  labs(x = "Number of Traits", y = "KDE Evenness") +
   theme_pubr()
 
 kdedispersion_e <- ggplot() + 
@@ -315,12 +315,12 @@ kdedispersion_e <- ggplot() +
   geom_line(aes(x= n_trait, y = fit), data = kde.dispersion.eblack, lwd = 2, color = "black") + 
   geom_point(aes(x = n_trait, y = kde.dispersion, color = community), data = seve.full, size = 3) + 
   scale_color_manual(values = c("#9D8F0F","#000000", "navyblue", "#00B7FF","#731279", "#075A13"), name = "Community") +
-  labs(x = "Maximum Trait-Trait Correlation", y = "KDE Dispersion") +
+  labs(x = "Number of Traits", y = "KDE Dispersion") +
   theme_pubr()
 
 png(here('Figures/n_trait_full.png'), height = 9, width = 12, units = 'in', res = 150)
 ggarrange(plotlist = list(Frich_g,kderichness_g, Frich_e,kderichness_e, FEve_g,  
-                          kdeevenness_g, FEve_e,kdeevenness_e, FDis_g,  FDiv_g, FDis_e,FDiv_e, 
-                          RaoQ_g, kdedispersion_g,RaoQ_e, kdedispersion_e), ncol = 4, nrow = 4, 
+                          kdeevenness_g, FEve_e,kdeevenness_e, FDis_g,  kdedispersion_g, FDis_e,kdedispersion_e, 
+                          RaoQ_g, FDiv_g,RaoQ_e, FDiv_e), ncol = 4, nrow = 4, 
           labels = c("A", "B", 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'), common.legend = TRUE)
 dev.off()
