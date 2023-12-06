@@ -316,7 +316,7 @@ kdedispersion_e <- ggplot() +
   labs(x = "Maximum Trait-Trait Correlation", y = "KDE Dispersion") +
   theme_pubr()
 
-png(here('Figures/max_cor_full.png'), height = 9, width = 12, units = 'in', res = 150)
+pdf(here('Figures/max_cor_full.pdf'), height = 9, width = 12)#, units = 'in', res = 150)
 ggarrange(plotlist = list(Frich_g,kderichness_g, Frich_e,kderichness_e, FEve_g,  
                           kdeevenness_g, FEve_e,kdeevenness_e, FDis_g,  kdedispersion_g, FDis_e,kdedispersion_e, 
                           RaoQ_g, FDiv_g,RaoQ_e, FDiv_e), ncol = 4, nrow = 4, 
