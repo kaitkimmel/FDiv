@@ -59,7 +59,7 @@ FDis_g <-ggplot() +
   geom_line(aes(x= min_cor, y = fit), data = fdis.2, lwd = 1, color = "#731279", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdis.3, lwd = 1, color = "#00B7FF", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdis.4, lwd = 1, color = "#075A13", alpha = 0.5) + 
-  geom_point(aes(x = min_cor, y = FDis, color = community), data = cdr.full, size = 2), alpha = 0.5 + 
+  geom_point(aes(x = min_cor, y = FDis, color = community), data = cdr.full, size = 2, alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdis.blue, lwd = 1, color = "navyblue", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdis.black, lwd = 1, color = "black", alpha = 0.5) + 
   geom_point(aes(x = min_cor, y = FDis, color = community), data = sev.full, size = 2, alpha = 0.5) + 
@@ -97,7 +97,7 @@ RaoQ_g <- ggplot() +
   geom_line(aes(x= min_cor, y = fit), data = rq.2, lwd = 1, color = "#731279", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = rq.3, lwd = 1, color = "#00B7FF", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = rq.4, lwd = 1, color = "#075A13", alpha = 0.5) + 
-  geom_point(aes(x = min_cor, y = RaoQ, color = community), data = cdr.full, size = 2), alpha = 0.5 + 
+  geom_point(aes(x = min_cor, y = RaoQ, color = community), data = cdr.full, size = 2, alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = rq.blue, lwd = 1, color = "navyblue", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = rq.black, lwd = 1, color = "black", alpha = 0.5) + 
   geom_point(aes(x = min_cor, y = RaoQ, color = community), data = sev.full, size = 2, alpha = 0.5) + 
@@ -232,7 +232,7 @@ FDiv_e <- ggplot() +
   geom_line(aes(x= min_cor, y = fit), data = fdiv.e2, lwd = 1, color = "#731279", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdiv.e3, lwd = 1, color = "#00B7FF", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdiv.e4, lwd = 1, color = "#075A13", alpha = 0.5) + 
-  geom_point(aes(x = min_cor, y = FDiv, color = community), data = cdre.full, size = 2), alpha = 0.5 + 
+  geom_point(aes(x = min_cor, y = FDiv, color = community), data = cdre.full, size = 2, alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdiv.eblue, lwd = 1, color = "navyblue", alpha = 0.5) + 
   geom_line(aes(x= min_cor, y = fit), data = fdiv.eblack, lwd = 1, color = "black", alpha = 0.5) + 
   geom_point(aes(x = min_cor, y = FDiv, color = community), data = seve.full, size = 2, alpha = 0.5) + 
@@ -296,7 +296,7 @@ kdeevenness_e <- ggplot() +
   scale_color_manual(values = c("#9D8F0F","#731279", "#00B7FF", "#075A13","#000000", "navyblue"), name = "Community") +
   labs(x = "Minimum Trait-Trait Correlation", y = "KDE Evenness") +
   theme_pubr()
-dev.new()
+
 kdedispersion_e <- ggplot() + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = min_cor), data = kde.dispersion.e1, alpha = 0.1, fill = "#9D8F0F") + 
   geom_ribbon(aes(ymin = lwr, ymax = upr, x = min_cor), data = kde.dispersion.e2, alpha = 0.1, fill = "#731279") +
