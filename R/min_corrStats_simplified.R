@@ -63,7 +63,7 @@ mod <- lme(FEve ~ min_cor, random = ~1|sev.blueplots,  data = sev.blue[-which(is
 mod1 <- lme(FEve ~ min_cor + I(min_cor^2), random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(FEve~1, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FEve)),], method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) ## mod3 & 4 similar
+AIC(mod, mod1, mod4) ## mod & 4 similar
 fevemod_blue <- lme(FEve ~ 1, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FEve)),], correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ### KDE evenness
@@ -95,7 +95,7 @@ mod <- lme(FDiv ~ min_cor, random = ~1|sev.blueplots,  data = sev.blue[-which(is
 mod1 <- lme(FDiv ~ min_cor + I(min_cor^2), random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(FDiv~1, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FDiv)),], method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) #mod1
+AIC(mod, mod1, mod4) #mod4
 fdivmod_blue <- lme(FDiv ~ 1, random = ~1|sev.blueplots,  data = sev.blue[-which(is.na(sev.blue$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ### Rao's Q
