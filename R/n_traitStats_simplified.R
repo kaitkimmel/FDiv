@@ -15,13 +15,13 @@ library(dplyr)
 
 # load data
 
-cdr.1 <- read.csv(here("data/Cleaned/cdr1.csv"))
-cdr.2 <- read.csv(here("data/Cleaned/cdr2.csv"))
-cdr.3 <- read.csv(here("data/Cleaned/cdr3.csv"))
-cdr.4 <- read.csv(here("data/Cleaned/cdr4.csv"))
-sev.blue <- read.csv(here("data/Cleaned/sevblue.csv"))
+cdr.1 <- read.csv(here("data/Cleaned/cdr1_sc.csv"))
+cdr.2 <- read.csv(here("data/Cleaned/cdr2_sc.csv"))
+cdr.3 <- read.csv(here("data/Cleaned/cdr3_sc.csv"))
+cdr.4 <- read.csv(here("data/Cleaned/cdr4_sc.csv"))
+sev.blue <- read.csv(here("data/Cleaned/sevblue_sc.csv"))
 #sev.blue <- sev.blue[-which(sev.blue$SR == 1),]
-sev.black <- read.csv(here("data/Cleaned/sevblack.csv"))
+sev.black <- read.csv(here("data/Cleaned/sevblack_sc.csv"))
 #sev.black <- sev.black[-which(sev.black$SR ==1),]
 
 
@@ -134,7 +134,7 @@ mod <- lme(kde.alpha ~ n_trait, random = ~1|sev.blackplots,  data = sev.black, m
 mod1 <- lme(kde.alpha ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots, sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.alpha ~ 1, random = ~1|sev.blackplots,  data = sev.black, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod2
+AIC(mod, mod1, mod4) ### mod1
 kde.alphamod_black <- lme(kde.alpha ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
@@ -143,7 +143,7 @@ mod <- lme(FEve ~ n_trait, random = ~1|sev.blackplots,  data = sev.black[-which(
 mod1 <- lme(FEve ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(FEve ~ 1, random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FEve)),], method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ## mod all similar
+AIC(mod, mod1, mod4) ## mod similar
 
 fevemod_black <- lme(FEve ~ n_trait, random = ~1|sev.blackplots,  data = sev.black[-which(is.na(sev.black$FEve)),], correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
@@ -152,8 +152,8 @@ mod <- lme(kde.evenness ~ n_trait, random = ~1|sev.blackplots,  data = sev.black
 mod1 <- lme(kde.evenness ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots, sev.black, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = sev.black, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod
-kde.evennessmod_black <- lme(kde.evenness ~ n_trait, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod4) ### mod4
+kde.evennessmod_black <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = sev.black, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
 ## FDis
