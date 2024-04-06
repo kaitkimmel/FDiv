@@ -15,17 +15,17 @@ library(dplyr)
 
 # load data
 
-cdr.1 <- read.csv(here("data/Cleaned/cdr1.csv"))
+cdr.1 <- read.csv(here("data/Cleaned/cdr1_sc.csv"))
 cdr.1 <- cdr.1[-which(is.na(cdr.1$max_cor)),]
-cdr.2 <- read.csv(here("data/Cleaned/cdr2.csv"))
+cdr.2 <- read.csv(here("data/Cleaned/cdr2_sc.csv"))
 cdr.2 <- cdr.2[-which(is.na(cdr.2$max_cor)),]
-cdr.3 <- read.csv(here("data/Cleaned/cdr3.csv"))
+cdr.3 <- read.csv(here("data/Cleaned/cdr3_sc.csv"))
 cdr.3 <- cdr.3[-which(is.na(cdr.3$max_cor)),]
-cdr.4 <- read.csv(here("data/Cleaned/cdr4.csv"))
+cdr.4 <- read.csv(here("data/Cleaned/cdr4_sc.csv"))
 cdr.4 <- cdr.4[-which(is.na(cdr.4$max_cor)),]
-sev.blue <- read.csv(here("data/Cleaned/sevblue.csv"))
+sev.blue <- read.csv(here("data/Cleaned/sevblue_sc.csv"))
 sev.blue <- sev.blue[-which(is.na(sev.blue$max_cor)),]
-sev.black <- read.csv(here("data/Cleaned/sevblack.csv"))
+sev.black <- read.csv(here("data/Cleaned/sevblack_sc.csv"))
 sev.black <- sev.black[-which(is.na(sev.black$max_cor)),]
 
 
@@ -222,17 +222,16 @@ fevemod_cdr1 <- lme(FEve ~ max_cor, random = ~1|Plot,  data = cdr.1, correlation
 mod <- lme(kde.evenness ~ max_cor, random = ~1|Plot,  data = cdr.1, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(kde.evenness ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.1, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1,  mod4) ### mod
-anova(mod, mod4) # mod
-kde.evennessmod_cdr1 <- lme(kde.evenness ~ max_cor, random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1,  mod4) ### mod1
+kde.evennessmod_cdr1 <- lme(kde.evenness ~ max_cor+ I(max_cor^2), random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 
 ## FDis
 mod <- lme(FDis ~ max_cor, random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(FDis ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.1, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FDis ~ 1, random = ~1|Plot,  data = cdr.1, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1, mod4) #mod
-fdismod_cdr1 <- lme(FDis ~ max_cor, random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) #mod4
+fdismod_cdr1 <- lme(FDis ~ 1, random = ~1|Plot,  data = cdr.1, correlation = corCompSymm(form = ~ 1|Plot))
 
 ##kde dspersion
 mod <- lme(kde.dispersion ~ max_cor, random = ~1|Plot,  data = cdr.1, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
@@ -370,7 +369,7 @@ fricmod_cdr3 <- lme(FRic ~ max_cor, random = ~1|Plot,  data = cdr.3, correlation
 mod <- lme(kde.alpha ~ max_cor, random = ~1|Plot,  data = cdr.3, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(kde.alpha ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.3, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(kde.alpha ~ 1, random = ~1|Plot,  data = cdr.3, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1, mod4) ### mod1
+AIC(mod, mod1, mod4) ### mod
 anova(mod1, mod) #no sig dif use mod
 kde.alphamod_cdr3 <- lme(kde.alpha ~ max_cor, random = ~1|Plot,  data = cdr.3, correlation = corCompSymm(form = ~ 1|Plot))
 
@@ -453,8 +452,8 @@ kde.alphamod_cdr4 <- lme(kde.alpha ~ max_cor + I(max_cor^2), random = ~1|Plot,  
 mod <- lme(FEve ~ max_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(FEve ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FEve ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1, mod4) ## mod1
-fevemod_cdr4 <- lme(FEve ~ max_cor+ I(max_cor^2), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) ## mod4
+fevemod_cdr4 <- lme(FEve ~ 1, random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE evenness
 mod <- lme(kde.evenness ~ max_cor, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
@@ -476,14 +475,15 @@ mod <- lme(kde.dispersion ~ max_cor, random = ~1|Plot,  data = cdr.4, method = "
 mod1 <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(kde.dispersion ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 AIC(mod, mod1, mod4) ### mod1
+anova(mod, mod1)
 kde.dispersionmod_cdr4 <- lme(kde.dispersion ~ max_cor+ I(max_cor^2), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ max_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(FDiv ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FDiv ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1, mod4) #mod1
-fdivmod_cdr4 <- lme(FDiv ~ max_cor+ I(max_cor^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) #mod4
+fdivmod_cdr4 <- lme(FDiv ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 
 ### Rao's Q
 mod <- lme(RaoQ ~ max_cor, random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
