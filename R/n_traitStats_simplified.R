@@ -15,10 +15,14 @@ library(dplyr)
 
 # load data
 
-cdr.1 <- read.csv(here("data/Cleaned/cdr1_sc.csv"))
-cdr.2 <- read.csv(here("data/Cleaned/cdr2_sc.csv"))
-cdr.3 <- read.csv(here("data/Cleaned/cdr3_sc.csv"))
-cdr.4 <- read.csv(here("data/Cleaned/cdr4_sc.csv"))
+cdr.1 <- read.csv(here("data/Cleaned/cdr1_sc.csv"))%>%
+          subset(SR != "NA")
+cdr.2 <- read.csv(here("data/Cleaned/cdr2_sc.csv"))%>%
+  subset(SR != "NA")
+cdr.3 <- read.csv(here("data/Cleaned/cdr3_sc.csv"))%>%
+  subset(SR != "NA")
+cdr.4 <- read.csv(here("data/Cleaned/cdr4_sc.csv"))%>%
+  subset(SR != "NA")
 sev.blue <- read.csv(here("data/Cleaned/sevblue_sc.csv"))
 #sev.blue <- sev.blue[-which(sev.blue$SR == 1),]
 sev.black <- read.csv(here("data/Cleaned/sevblack_sc.csv"))
@@ -462,8 +466,8 @@ mod <- lme(FRic ~ n_trait, random = ~1|Plot,  data = cdr.4, method = "ML",correl
 mod1 <- lme(FRic ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FRic ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod4) ### mod1
-fricmod_cdr4 <- lme(FRic ~ n_trait+ I(n_trait^2), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) ### mod
+fricmod_cdr4 <- lme(FRic ~ n_trait, random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE richness
 mod <- lme(kde.alpha ~ n_trait, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
@@ -478,8 +482,8 @@ mod <- lme(FEve ~ n_trait, random = ~1|Plot,  data = cdr.4, method = "ML", corre
 mod1 <- lme(FEve ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = cdr.4, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FEve ~ 1, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod4) ## mod1 
-fevemod_cdr4 <- lme(FEve ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) ## mod4 
+fevemod_cdr4 <- lme(FEve ~ 1, random = ~1|Plot,  data = cdr.4, correlation = corCompSymm(form = ~ 1|Plot))
 
 ### KDE evenness
 mod <- lme(kde.evenness ~ n_trait, random = ~1|Plot,  data = cdr.4, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
