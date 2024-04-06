@@ -23,9 +23,9 @@ cdr.3 <- read.csv(here("data/Cleaned/cdr3_sc.csv"))
 cdr.3 <- cdr.3[-which(is.na(cdr.3$mean_cor)),]
 cdr.4 <- read.csv(here("data/Cleaned/cdr4_sc.csv"))
 cdr.4 <- cdr.4[-which(is.na(cdr.4$mean_cor)),]
-sev.blue <- read.csv(here("data/Cleaned/sevblue.csv"))
+sev.blue <- read.csv(here("data/Cleaned/sevblue_sc.csv"))
 sev.blue <- sev.blue[-which(is.na(sev.blue$mean_cor)),]
-sev.black <- read.csv(here("data/Cleaned/sevblack.csv"))
+sev.black <- read.csv(here("data/Cleaned/sevblack_sc.csv"))
 sev.black <- sev.black[-which(is.na(sev.black$mean_cor)),]
 
 
