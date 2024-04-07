@@ -58,49 +58,7 @@ trait_comb_list <- list()
 for (i in 2:9){
   trait_comb_list[[i-1]] <- combn(trait_list[[1]], i, simplify = FALSE)
 }
-
-# Create dataframe to store metrics
-df.out1 <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
-# Loop to run through different trait combinations
-for(j in 1:length(trait_comb_list)){
-  focal_list <- trait_comb_list[[j]]
-  for (i in 1:length(focal_list)){
-    x = dist(focal_list[[i]], method = 'euclidean')
-    a = comm_list[[1]]
-    out <- dbFD(x, a, m = 2) # calculating metrics m = 2
-    #####This is where Tim is going to start trying out KDE stuff
-    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
-    kde.alpha <- kernel.alpha(temp.to)
-    kde.alpha <- data.frame(kde.alpha)
-    
-    kde.evenness <- kernel.evenness(temp.to)
-    kde.evenness <- data.frame(kde.evenness)
-    
-    kde.dispersion <- kernel.dispersion(temp.to)
-    kde.dispersion <- data.frame(kde.dispersion)
-    
-    #####END TIM'S EXPERIMENT
-    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
-    temp <- cbind(temp, enviro_list[[1]])
-    temp$n_trait = ncol(focal_list[[i]])
-    temp$traits = i
-    if(ncol(focal_list[[i]]) == 4){
-      temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
-      temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
-      temp$min_cor <- min(abs(temp.cor$r$cor))
-      temp$max_cor <- max(abs(temp.cor$r$cor))
-    } else {
-      temp$mean_cor <- NA
-      temp$min_cor <- NA
-      temp$max_cor <- NA
-    }
-    df.out1 <- rbind(df.out1, temp)
-  }
-}
-
-df.out1 <- df.out1[-which(is.na(df.out1)),]
-
+ 
 
 #### COMMUNITY 2
 trait_comb_list2 <- list()
@@ -348,7 +306,8 @@ for(j in 1:length(trait_sc_comb_list)){
     a = comm_list[[1]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     #####This is where Tim is going to start trying out KDE stuff
-    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, 
+                            distance = "euclidean", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
     kde.alpha <- data.frame(kde.alpha)
     
@@ -378,7 +337,7 @@ for(j in 1:length(trait_sc_comb_list)){
 }
 
 #df.out1.sc <- df.out1.sc[-which(is.na(df.out1.sc)),]
-write.csv(df.out1.sc, here("data/Cleaned/cdr1_sc.csv"), row.names = FALSE)
+write.csv(df.out1.sc, here("data/Cleaned/cdr1_sc_euc.csv"), row.names = FALSE)
 #### COMMUNITY 2
 trait_sc_comb_list2 <- list()
 for (i in 2:9){
@@ -386,16 +345,21 @@ for (i in 2:9){
 }
 
 
-df.out2.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+df.out2.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, 
+                         RaoQ = NA, kde.alpha = NA, kde.evenness = NA, 
+                         kde.dispersion = NA, Plot = NA, Ring = NA,
+                         n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, 
+                         max_cor = NA)
 
-for(j in 1:length(trai_sct_comb_list2)){
+for(j in 1:length(trait_sc_comb_list2)){
   focal_list <- trait_sc_comb_list2[[j]]
   for (i in 1:length(focal_list)){
     x = dist(focal_list[[i]], method = 'euclidean')
     a = comm_list[[2]]
     out <- dbFD(x, a, m = 2)
     #####This is where Tim is going to start trying out KDE stuff
-    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, 
+                            distance = "euclidean", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
     kde.alpha <- data.frame(kde.alpha)
     
@@ -425,7 +389,7 @@ for(j in 1:length(trai_sct_comb_list2)){
 }
 
 #df.out2.sc <- df.out2.sc[-which(is.na(df.out2.sc)),]
-write.csv(df.out2.sc, here("data/Cleaned/cdr2_sc.csv"), row.names = FALSE)
+write.csv(df.out2.sc, here("data/Cleaned/cdr2_sc_euc.csv"), row.names = FALSE)
 ### COMMUNITY 3
 ### Get all combinations of traits for community 3
 trait_sc_comb_list3 <- list()
@@ -443,7 +407,7 @@ for(j in 1:length(trait_sc_comb_list3)){
     a = comm_list[[3]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     #####This is where Tim is going to start trying out KDE stuff
-    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
     kde.alpha <- data.frame(kde.alpha)
     
@@ -473,7 +437,7 @@ for(j in 1:length(trait_sc_comb_list3)){
 }
 
 #df.out3.sc <- df.out3.sc[-which(is.na(df.out3.sc)),]
-write.csv(df.out3.sc, here("data/Cleaned/cdr3_sc.csv"), row.names = FALSE)
+write.csv(df.out3.sc, here("data/Cleaned/cdr3_sc_euc.csv"), row.names = FALSE)
 
 ### COMMUNITY 4
 ### Get all combinations of traits for community 4
@@ -492,7 +456,7 @@ for(j in 1:length(trait_sc_comb_list4)){
     a = comm_list[[4]]
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     #####This is where Tim is going to start trying out KDE stuff
-    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "gower", axes = 2)
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, distance = "euclidean", axes = 2)
     kde.alpha <- kernel.alpha(temp.to)
     kde.alpha <- data.frame(kde.alpha)
     
@@ -522,4 +486,4 @@ for(j in 1:length(trait_sc_comb_list4)){
 }
 
 #df.out4.sc <- df.out4.sc[-which(is.na(df.out4.sc)),]
-write.csv(df.out4.sc, here("data/Cleaned/cdr4_sc.csv"), row.names = FALSE)
+write.csv(df.out4.sc, here("data/Cleaned/cdr4_sc_euc.csv"), row.names = FALSE)
