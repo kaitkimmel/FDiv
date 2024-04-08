@@ -344,19 +344,16 @@ for (i in 2:9){
   trait_sc_comb_list2[[i-1]] <- combn(trait_list_SC[[2]], i, simplify = FALSE)
 }
 
+# Create dataframe to store metrics
+df.out2.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, Plot = NA, Ring = NA, n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 
-df.out2.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, 
-                         RaoQ = NA, kde.alpha = NA, kde.evenness = NA, 
-                         kde.dispersion = NA, Plot = NA, Ring = NA,
-                         n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, 
-                         max_cor = NA)
-
+# Loop to run through different trait combinations
 for(j in 1:length(trait_sc_comb_list2)){
   focal_list <- trait_sc_comb_list2[[j]]
   for (i in 1:length(focal_list)){
     x = dist(focal_list[[i]], method = 'euclidean')
     a = comm_list[[2]]
-    out <- dbFD(x, a, m = 2)
+    out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     #####This is where Tim is going to start trying out KDE stuff
     temp.to <- kernel.build(comm = a, trait = focal_list[[i]],abund = TRUE, 
                             distance = "euclidean", axes = 2)
@@ -370,8 +367,8 @@ for(j in 1:length(trait_sc_comb_list2)){
     kde.dispersion <- data.frame(kde.dispersion)
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
-                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion) 
-    temp <- cbind(temp, enviro_list[[2]])
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)    
+    temp <- cbind(temp, enviro_list[[1]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -384,11 +381,9 @@ for(j in 1:length(trait_sc_comb_list2)){
       temp$min_cor <- NA
       temp$max_cor <- NA
     }
-    df.out2.sc <- rbind(df.out2.sc, temp)
+    df.out2.sc <- rbind(df.out1.sc, temp)
   }
 }
-
-#df.out2.sc <- df.out2.sc[-which(is.na(df.out2.sc)),]
 write.csv(df.out2.sc, here("data/Cleaned/cdr2_sc_euc.csv"), row.names = FALSE)
 ### COMMUNITY 3
 ### Get all combinations of traits for community 3
