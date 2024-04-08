@@ -302,7 +302,8 @@ fevemod_cdr2 <- lme(FEve ~ mean_cor, random = ~1|Plot,  data = cdr.2, correlatio
 mod <- lme(kde.evenness ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-AIC(mod, mod1,  mod4) ### mod4
+AIC(mod, mod1,  mod4) ### mod1
+anova(mod1, mod, mod4) #no diff mod4
 kde.evennessmod_cdr2 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ## FDis
@@ -313,11 +314,11 @@ AIC(mod, mod1, mod4) #mod1
 fdismod_cdr2 <- lme(FDis ~ mean_cor+ I(mean_cor^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 ##KDE disperion
-mod <- lme(kde.evenness ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-mod1 <- lme(kde.evenness ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
-mod4 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
+mod <- lme(kde.dispersion ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
+mod1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
+mod4 <- lme(kde.dispersion ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 AIC(mod, mod1,  mod4) ### mod4
-kde.dispersionmod_cdr2 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+kde.dispersionmod_cdr2 <- lme(kde.dispersion ~ 1, random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))

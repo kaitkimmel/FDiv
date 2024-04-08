@@ -316,13 +316,13 @@ mod4 <- lme(FDis ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation
 AIC(mod, mod1,mod4) #mod1
 fdismod_cdr2 <- lme(FDis ~ max_cor+ I(max_cor^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
-##KDE disperion
-mod <- lme(kde.evenness ~ max_cor, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
-mod1 <- lme(kde.evenness ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
-mod4 <- lme(kde.evenness ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
+##KDE dispersion
+mod <- lme(kde.dispersion ~ max_cor, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
+mod1 <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
+mod4 <- lme(kde.dispersion ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod4) ### mod1
-kde.dispersionmod_cdr2 <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
+AIC(mod, mod1, mod4) ### mod
+kde.dispersionmod_cdr2 <- lme(kde.dispersion ~ max_cor, random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
 # FDiv
 mod <- lme(FDiv ~ max_cor, random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))

@@ -319,7 +319,7 @@ mod <- lme(FEve ~ n_trait, random = ~1|Plot,  data = cdr.2, method = "ML", corre
 mod1 <- lme(FEve ~ n_trait + I(n_trait^2), random = ~1|Plot,  data = cdr.2, method = "ML", correlation = corCompSymm(form = ~ 1|Plot))
 mod4 <- lme(FEve ~ 1, random = ~1|Plot,  data = cdr.2, method = "ML",correlation = corCompSymm(form = ~ 1|Plot))
 
-AIC(mod, mod1, mod4) ## mod2 best fit
+AIC(mod, mod1, mod4) ## mod1 best fit
 anova(mod, mod1) # no sig diff. using mod
 fevemod_cdr2 <- lme(FEve ~ n_trait, random = ~1|Plot,  data = cdr.2, correlation = corCompSymm(form = ~ 1|Plot))
 
