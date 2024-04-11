@@ -185,13 +185,11 @@ write.csv(df.outblue, here("data/Cleaned/sevblue_euc.csv"), row.names = FALSE)
 ###############################################################################
 # SCALE AND CENTER ANALYSIS : re: R1 comments
 
-sev.blacktr.sc <- as.data.frame(scale(sev.blacktr[c(1:8,10)], center = TRUE, scale = TRUE))
-sev.blacktr.sc <- cbind(sev.blacktr$PhotoPath, sev.blacktr.sc)
-names(sev.blacktr.sc)[1] <- 'PhotoPath'
+sev.blacktr.sc <- as.data.frame(scale(sev.blacktr, center = TRUE, scale = TRUE))
 
-sev.bluetr.sc <- as.data.frame(scale(sev.bluetr[,c(1:8,10)], center = TRUE, scale = TRUE))
-sev.bluetr.sc <- cbind(sev.bluetr$PhotoPath, sev.bluetr.sc)
-names(sev.bluetr.sc)[1] <- 'PhotoPath'
+
+sev.bluetr.sc <- as.data.frame(scale(sev.bluetr, center = TRUE, scale = TRUE))
+
 
 ### Make trait df into one list 
 trait_list_SC <- list(sev.blacktr.sc, sev.bluetr.sc)
@@ -203,7 +201,7 @@ trait_list_SC <- list(sev.blacktr.sc, sev.bluetr.sc)
 ### COMMUNITY 1
 ### Get all combinations of traits for community 1
 trait_comb_list_sc <- list()
-for (i in 2:10){
+for (i in 2:9){
   trait_comb_list_sc[[i-1]] <- combn(trait_list_SC[[1]], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
@@ -268,7 +266,7 @@ write.csv(df.outblack.sc, here("data/Cleaned/sevblack_sc_euc.csv"), row.names = 
 #### COMMUNITY 2
 
 trait_comb_list1_sc <- list()
-for (i in 2:10){
+for (i in 2:9){
   trait_comb_list1_sc[[i-1]] <- combn(trait_list_SC[[2]], i, simplify = FALSE)
 }
 # Create dataframe to store metrics
