@@ -85,7 +85,7 @@ df.outblack <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, R
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = dist(focal_list[[i]], method = 'euclidean')
     a = sev.black2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     if(is.null(out$FDiv)){
@@ -138,7 +138,7 @@ sev.blueplots <- sev.blue[,2]
 for(j in 1:length(trait_comb_list)){
   focal_list <- trait_comb_list1[[j]]
   for (i in 1:length(focal_list)){
-    x = focal_list[[i]]
+    x = dist(focal_list[[i]], method = 'euclidean')
     a = sev.blue2
     out <- dbFD(x, a, m = 2) # calculating metrics m = 2
     if(is.null(out$FDiv)){
@@ -182,4 +182,150 @@ df.outblue <- df.outblue[-which(is.na(df.outblue)),]
 write.csv(df.outblack, here("data/Cleaned/sevblack_euc.csv"), row.names = FALSE)
 write.csv(df.outblue, here("data/Cleaned/sevblue_euc.csv"), row.names = FALSE)
 
+###############################################################################
+# SCALE AND CENTER ANALYSIS : re: R1 comments
+
+sev.blacktr.sc <- as.data.frame(scale(sev.blacktr[c(1:8,10)], center = TRUE, scale = TRUE))
+sev.blacktr.sc <- cbind(sev.blacktr$PhotoPath, sev.blacktr.sc)
+names(sev.blacktr.sc)[1] <- 'PhotoPath'
+
+sev.bluetr.sc <- as.data.frame(scale(sev.bluetr[,c(1:8,10)], center = TRUE, scale = TRUE))
+sev.bluetr.sc <- cbind(sev.bluetr$PhotoPath, sev.bluetr.sc)
+names(sev.bluetr.sc)[1] <- 'PhotoPath'
+
+### Make trait df into one list 
+trait_list_SC <- list(sev.blacktr.sc, sev.bluetr.sc)
+
+
+#############################################################
+######## FD METRIC CALCULATION #############################
+###########################################################
+### COMMUNITY 1
+### Get all combinations of traits for community 1
+trait_comb_list_sc <- list()
+for (i in 2:10){
+  trait_comb_list_sc[[i-1]] <- combn(trait_list_SC[[1]], i, simplify = FALSE)
+}
+# Create dataframe to store metrics
+df.outblack.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, 
+                             kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, 
+                             n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+# get plots
+sev.blackplots <- sev.black2[,2]
+# Loop to run through different trait combinations
+for(j in 1:length(trait_comb_list_sc)){
+  focal_list <- trait_comb_list_sc[[j]]
+  for (i in 1:length(focal_list)){
+    x = dist(focal_list[[i]], method = 'euclidean')
+    a = sev.black2
+    out <- dbFD(x, a, m = 2) # calculating metrics m = 2
+    if(is.null(out$FDiv)){
+      out$FDiv = rep(NA,27)
+    }
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]], abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
+    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, 
+                       kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
+    temp <- cbind(temp, sev.blackplots)
+    temp$n_trait = ncol(focal_list[[i]])
+    temp$traits = i
+    if(ncol(focal_list[[i]]) == 4){
+      if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
+        temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
+        temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+        temp$min_cor <- min(abs(temp.cor$r$cor))
+        temp$max_cor <- max(abs(temp.cor$r$cor))
+      }
+      else {
+        temp$mean_cor <- NA
+        temp$min_cor <- NA
+        temp$max_cor <- NA
+      }
+    } else {
+      temp$mean_cor <- NA
+      temp$min_cor <- NA
+      temp$max_cor <- NA
+    }
+    df.outblack.sc <- rbind(df.outblack.sc, temp)
+  }
+}
+
+df.outblack.sc <- df.outblack.sc[-which(is.na(df.outblack.sc)),]
+
+#df.out1.sc <- df.out1.sc[-which(is.na(df.out1.sc)),]
+write.csv(df.outblack.sc, here("data/Cleaned/sevblack_sc_euc.csv"), row.names = FALSE)
+#### COMMUNITY 2
+
+trait_comb_list1_sc <- list()
+for (i in 2:10){
+  trait_comb_list1_sc[[i-1]] <- combn(trait_list_SC[[2]], i, simplify = FALSE)
+}
+# Create dataframe to store metrics
+df.outblue.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA, RaoQ = NA, 
+                            kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blueplots = NA, 
+                            n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
+# get plots
+sev.blueplots <- sev.blue[,2]
+# Loop to run through different trait combinations
+for(j in 1:length(trait_comb_list1_sc)){
+  focal_list <- trait_comb_list1_sc[[j]]
+  for (i in 1:length(focal_list)){
+    x = dist(focal_list[[i]], method = 'euclidean')
+    a = sev.blue2
+    out <- dbFD(x, a, m = 2) # calculating metrics m = 2
+    if(is.null(out$FDiv)){
+      out$FDiv = rep(NA,28)
+    }
+    #####This is where Tim is going to start trying out KDE stuff
+    temp.to <- kernel.build(comm = a, trait = focal_list[[i]], abund = TRUE, distance = "gower", axes = 2)
+    kde.alpha <- kernel.alpha(temp.to)
+    kde.alpha <- data.frame(kde.alpha)
+    
+    kde.evenness <- kernel.evenness(temp.to)
+    kde.evenness <- data.frame(kde.evenness)
+    
+    kde.dispersion <- kernel.dispersion(temp.to)
+    kde.dispersion <- data.frame(kde.dispersion)
+    
+    #####END TIM'S EXPERIMENT
+    temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
+                       FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, 
+                       kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)
+    temp <- cbind(temp, sev.blueplots)
+    temp$n_trait = ncol(focal_list[[i]])
+    temp$traits = i
+    if(ncol(focal_list[[i]]) == 4){
+      if(is.numeric(focal_list[[i]][,c(1)])==TRUE&is.numeric(focal_list[[i]][,c(2)])==TRUE&is.numeric(focal_list[[i]][,c(3)])==TRUE&is.numeric(focal_list[[i]][,c(4)])==TRUE){
+        temp.cor <- rquery.cormat(focal_list[[i]], type="flatten", graph=FALSE, method = 'spearman')
+        temp$mean_cor <- mean(abs(temp.cor$r$cor)) # USE ABSOLUTE VALUES? 
+        temp$min_cor <- min(abs(temp.cor$r$cor))
+        temp$max_cor <- max(abs(temp.cor$r$cor))
+      }
+      else {
+        temp$mean_cor <- NA
+        temp$min_cor <- NA
+        temp$max_cor <- NA
+      }
+    } else {
+      temp$mean_cor <- NA
+      temp$min_cor <- NA
+      temp$max_cor <- NA
+    }
+    df.outblue.sc <- rbind(df.outblue.sc, temp)
+  }
+}
+
+df.outblue.sc <- df.outblue.sc[-which(is.na(df.outblue.sc)),]
+write.csv(df.outblue.sc, here("data/Cleaned/sevblue_sc_euc.csv"), row.names = FALSE)
 
