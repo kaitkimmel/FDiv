@@ -154,8 +154,8 @@ mod <- lme(kde.evenness ~ n_trait, random = ~1|sev.blackplots,  data = sev.eblac
 mod1 <- lme(kde.evenness ~ n_trait + I(n_trait^2), random = ~1|sev.blackplots, sev.eblack, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = sev.eblack, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod
-kde.evennessmod_eblack <- lme(kde.evenness ~ n_trait, random = ~1|sev.blackplots,  data = sev.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod4) ### mod4
+kde.evennessmod_eblack <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = sev.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
 
