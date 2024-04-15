@@ -53,9 +53,8 @@ mod <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blueplots,  data = seve.eblue, 
 mod1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots, seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(kde.alpha ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) ### mod1
-anova(mod1, mod) #no sig dif use mod
-kde.alphamod_eblue <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1, mod4) ### mod4
+kde.alphamod_eblue <- lme(kde.alpha ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|sev.blueplots,  data = seve.eblue[-which(is.na(seve.eblue$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -86,8 +85,8 @@ mod <- lme(kde.dispersion ~ mean_cor, random = ~1|sev.blueplots,  data = seve.eb
 mod1 <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2), random = ~1|sev.blueplots, seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(kde.dispersion ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) ### mod1
-kde.dispersionmod_eblue <- lme(kde.dispersion ~ mean_cor + I(mean_cor^2) , random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1, mod4) ### mod4
+kde.dispersionmod_eblue <- lme(kde.dispersion ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 # FDiv
 mod <- lme(FDiv ~ mean_cor, random = ~1|sev.blueplots,  data = seve.eblue[-which(is.na(seve.eblue$FDiv)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -138,8 +137,8 @@ mod <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blackplots,  data = seve.eblack
 mod1 <- lme(kde.alpha ~ mean_cor + I(mean_cor^2), random = ~1|sev.blackplots, seve.eblack, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.alpha ~ 1, random = ~1|sev.blackplots,  data = seve.eblack, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod
-kde.alphamod_eblack <- lme(kde.alpha ~ mean_cor, random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod4) ### mod1
+kde.alphamod_eblack <- lme(kde.alpha ~ mean_cor+ I(mean_cor^2), random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 ### FEve
 mod <- lme(FEve ~ mean_cor, random = ~1|sev.blackplots,  data = seve.eblack[-which(is.na(seve.eblack$FEve)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
