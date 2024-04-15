@@ -53,8 +53,9 @@ mod <- lme(kde.alpha ~ max_cor, random = ~1|sev.blueplots,  data = seve.eblue, m
 mod1 <- lme(kde.alpha ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots, seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(kde.alpha ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) ### mod1
-kde.alphamod_eblue <- lme(kde.alpha ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1, mod4) ### mod
+anova(mod, mod4) #sig dif use mod
+kde.alphamod_eblue <- lme(kde.alpha ~ max_cor, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 
 ### FEve
@@ -70,8 +71,8 @@ mod <- lme(kde.evenness ~ max_cor, random = ~1|sev.blueplots,  data = seve.eblue
 mod1 <- lme(kde.evenness ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots, seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1, mod4) ### mod1
-kde.evennessmod_eblue <- lme(kde.evenness ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1, mod4) ### mod
+kde.evennessmod_eblue <- lme(kde.evenness ~ max_cor, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ## FDis
 mod <- lme(FDis ~ max_cor, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
@@ -86,8 +87,8 @@ mod <- lme(kde.dispersion ~ max_cor, random = ~1|sev.blueplots,  data = seve.ebl
 mod1 <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots, seve.eblue, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(kde.dispersion ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
-AIC(mod, mod1,mod4) ### mod1
-kde.dispersionmod_eblue <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
+AIC(mod, mod1,mod4) ### mod4
+kde.dispersionmod_eblue <- lme(kde.dispersion ~ 1, random = ~1|sev.blueplots,  data = seve.eblue, correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 
 # FDiv
@@ -154,8 +155,8 @@ mod <- lme(kde.evenness ~ max_cor, random = ~1|sev.blackplots,  data = seve.ebla
 mod1 <- lme(kde.evenness ~ max_cor + I(max_cor^2), random = ~1|sev.blackplots, seve.eblack, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = seve.eblack, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod
-kde.evennessmod_eblack <- lme(kde.evenness ~ max_cor, random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod4) ### mod4
+kde.evennessmod_eblack <- lme(kde.evenness ~ 1, random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
 ## FDis
@@ -171,8 +172,8 @@ mod <- lme(kde.dispersion ~ max_cor, random = ~1|sev.blackplots,  data = seve.eb
 mod1 <- lme(kde.dispersion ~ max_cor + I(max_cor^2), random = ~1|sev.blackplots, seve.eblack, method = "ML", correlation = corCompSymm(form = ~ 1|sev.blackplots))
 mod4 <- lme(kde.dispersion ~ 1, random = ~1|sev.blackplots,  data = seve.eblack, method = "ML",correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
-AIC(mod, mod1, mod4) ### mod
-kde.dispersionmod_eblack <- lme(kde.dispersion ~ max_cor, random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
+AIC(mod, mod1, mod4) ### mod1
+kde.dispersionmod_eblack <- lme(kde.dispersion ~ max_cor+ I(max_cor^2), random = ~1|sev.blackplots,  data = seve.eblack, correlation = corCompSymm(form = ~ 1|sev.blackplots))
 
 
 # FDiv
