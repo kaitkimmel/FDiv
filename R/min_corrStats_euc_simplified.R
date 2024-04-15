@@ -45,7 +45,7 @@ seve.eblack <- seve.eblack[-which(is.na(seve.eblack$min_cor)),]
 mod <- lme(FRic ~ min_cor, random = ~1|sev.blueplots,  data = seve.eblue[-which(is.na(seve.eblue$FRic)),], method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod1 <- lme(FRic ~ min_cor + I(min_cor^2), random = ~1|sev.blueplots, seve.eblue[-which(is.na(seve.eblue$FRic)),], method = "ML", correlation = corCompSymm(form = ~ 1|sev.blueplots))
 mod4 <- lme(FRic ~ 1, random = ~1|sev.blueplots,  data = seve.eblue[-which(is.na(seve.eblue$FRic)),], method = "ML",correlation = corCompSymm(form = ~ 1|sev.blueplots))
-AIC(mod, mod1, mod4) ### mod3
+AIC(mod, mod1, mod4) ### mod1
 fricmod_eblue <- lme(FRic ~ min_cor + I(min_cor^2), random = ~1|sev.blueplots,  data = seve.eblue[-which(is.na(seve.eblue$FRic)),], correlation = corCompSymm(form = ~ 1|sev.blueplots))
 
 ### KDE richness
