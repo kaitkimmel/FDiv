@@ -610,4 +610,4 @@ plots <- cbind(cdr1_plots, cdr2_plots)
 test2 <- dplyr::left_join(test, plots, by = c("Plot", "Ring")) %>%
   select(-c('Plot', "Ring")) %>%
   rename(Plot = plot_2, Ring = ring_2)
-write.csv(test2, here('Data/Cleaned/cdr2_sc_euc.csv'), row.names = FALSE)
+write.csv(test2, here('Data/Cleaned/cdr2_sc.csv'), row.names = FALSE)

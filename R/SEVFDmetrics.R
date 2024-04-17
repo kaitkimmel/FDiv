@@ -293,7 +293,6 @@ df.outblack.sc <- data.frame(SR = NA, FRic = NA, FEve = NA, FDiv = NA, FDis = NA
                             kde.alpha = NA, kde.evenness = NA, kde.dispersion = NA, sev.blackplots = NA, 
                             n_trait = NA, traits = NA, mean_cor = NA, min_cor = NA, max_cor = NA)
 # get plots
-sev.blackplots <- sev.black2[,2]
 # Loop to run through different trait combinations
 for(j in 1:length(trait_comb_list_sc)){
   focal_list <- trait_comb_list_sc[[j]]
