@@ -482,7 +482,7 @@ for(j in 1:length(trait_sc_comb_list2)){
     #####END TIM'S EXPERIMENT
     temp <- data.frame(SR = out$nbsp, FRic = out$FRic, FEve = out$FEve, FDiv = out$FDiv,
                        FDis = out$FDis, RaoQ = out$RaoQ, kde.alpha = kde.alpha$kde.alpha, kde.evenness = kde.evenness$kde.evenness, kde.dispersion = kde.dispersion$kde.dispersion)    
-    temp <- cbind(temp, enviro_list[[1]])
+    temp <- cbind(temp, enviro_list[[2]])
     temp$n_trait = ncol(focal_list[[i]])
     temp$traits = i
     if(ncol(focal_list[[i]]) == 4){
@@ -598,3 +598,16 @@ for(j in 1:length(trait_sc_comb_list4)){
 
 #df.out4.sc <- df.out4.sc[-which(is.na(df.out4.sc)),]
 write.csv(df.out4.sc, here("data/Cleaned/cdr4_sc.csv"), row.names = FALSE)
+
+##################
+# Fix cdr2 columns
+test <- read.csv(here('Data/Cleaned/cdr2_sc.csv'))
+cdr1_plots <- enviro_list[[1]]
+cdr2_plots <- enviro_list[[2]]
+names(cdr2_plots) <-c('plot_2', 'ring_2')
+plots <- cbind(cdr1_plots, cdr2_plots)
+
+test2 <- dplyr::left_join(test, plots, by = c("Plot", "Ring")) %>%
+  select(-c('Plot', "Ring")) %>%
+  rename(Plot = plot_2, Ring = ring_2)
+write.csv(test2, here('Data/Cleaned/cdr2_sc_euc.csv'), row.names = FALSE)

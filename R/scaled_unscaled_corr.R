@@ -50,6 +50,7 @@ sev2.comb <- cbind(sev.black, sev.black.sc)
 #CDR1
 cdr1.FRic <- lm(FRic.y~FRic.x, data = cdr1.comb)
 summary(cdr1.FRic)
+cor(cdr1.comb$FRic.y, cdr1.comb$FRic.x)
 
 cdr1.kde.alpha <- lm(kde.alpha.y~kde.alpha.x, data = cdr1.comb)
 summary(cdr1.kde.alpha)
